@@ -16,6 +16,18 @@ const guardarProductos = async (productos) => {
   
 
 
+class Producto {
+    constructor (nombre, id, precio) {
+        this.nombre = nombre,
+        this.id = id,
+        this.precio = precio
+
+    }
+}
+
+const productoUno = new Producto ("Mouse logitech", 1, 2000)
+
+
 // FUNCION SAVE:
 
 const save = async (data) => {
