@@ -13,8 +13,8 @@ app.get("/", (req, res) => {
   );
 });
 app.get("/productos", (req, res) => {
-  const allProducts = productos.getAll().then((unProducto) => {
-    res.json(unProducto);
+  const allProducts = productos.getAll().then((product) => {
+    res.json(product);
   });
 });
 app.get("/productoRandom", (req, res) => {
