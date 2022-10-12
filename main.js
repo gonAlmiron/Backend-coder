@@ -6,9 +6,11 @@ const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send(
-    `<h1>
+    `<br/>
+    <h2>
     "Hola! podés ver los productos ingresando a /productos. Para ver un producto aleatorio ingresa a /productoRandom"
-    </h1>
+    </h2>
+    <hr/>
   `
   );
 });
