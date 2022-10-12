@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Mouse Genius DX-110",
+      "price": 1000,
+      "id": 1
+    },
+    {
+      "name": "Teclado Logitech MK120",
+      "price": 2100,
+      "id": 2
+    },
+    {
+      "name": "Teclado Genius KM-160",
+      "price": 1800,
+      "id": 3
+    },
+  
+    {
+      "name": "Mouse Corsair Katar Pro",
+      "price": 4400,
+      "id": 4
+    }
+  ]
+  
