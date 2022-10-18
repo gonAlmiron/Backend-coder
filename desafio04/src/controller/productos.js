@@ -6,9 +6,6 @@ class ProductosAPI {
         this.productos = [
             {
                 id: uuidv4(),
-                title: "Mouse Logitech",
-                price: 2500,
-                thumbnail: ''
             }
         ];
     }
@@ -41,8 +38,15 @@ class ProductosAPI {
 
         }
 
-        save() {
-            
+        save(data) {
+            const nuevoProducto = {
+                title: data.title,
+                price: data.price,
+                id: uuidv4(),
+            }
+
+            this.productos.push(nuevoProducto)
+            return nuevoProducto
         }
 
         findByIdAndUpdate() {
