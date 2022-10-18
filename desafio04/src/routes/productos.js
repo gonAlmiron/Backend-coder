@@ -31,3 +31,5 @@ router.delete('/:id', (req, res) => {
         msj: 'delete by id'
     })
 })
+
+module.exports = router;
