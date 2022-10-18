@@ -1,34 +1,38 @@
 const { Router } = require('express');
-
+const { ProductosController } = require('../controller/productos')
 const router = Router();
 
 router.get('/', (req, res) => {
 res.json({
-    msj: 'get all products'
+    msj:  ProductosController.getAll()
 })
-});
+})
 
 router.get('/:id', (req, res) => {
+    const id  = req.params.id;
+
+    const product = ProductosController.getById(id)
     res.json({
-        msj: 'get product by id'
+        msj: product
     })
-});
+    
+})
 
 router.post('/', (req, res) => {
     res.json({
-        msj: 'post new product'
+        msj: ProductosController.save()
     })
 });
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     res.json({
-        msj: 'update product'
+        msj: ProductosController.findByIdAndUpdate()
     })
 })
 
 router.delete('/:id', (req, res) => {
     res.json({
-        msj: 'delete by id'
+        msj: ProductosController.findByIdAndDelete()
     })
 })
 
