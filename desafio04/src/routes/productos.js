@@ -5,7 +5,7 @@ const AsyncHandler = require('express-async-handler')
 
 router.get('/', (req, res) => {
 res.json({
-    msj:  ProductosController.getAll()
+    msg:  ProductosController.getAll()
 })
 })
 
@@ -14,37 +14,46 @@ router.get('/:id', (req, res) => {
 
     const product = ProductosController.getById(id)
     res.json({
-        msj: product
+        msg: product
     })
     
 })
 
-//metodo sin asyncHandler
+//metodo sin asyncHandler:
+
 router.post('/', async (req, res, next) => {
     const body = req.body 
     try {
 
-        const data = await ProductosController.save(req.body);
+        const data = await ProductosController.save(body);
         res.json({
-            msj: data
+            msg: data
         })
     } catch (err) {
         next(err)
     }
+
 });
 
 //metodo con asyncHandler sin try/catch y sin next 
-// SE ENGLOBA LA FUNCION DEL ROUTER.PUT EN PARENTESIS Y SE PONE AsyncHandler
+// SE ENGLOBA LA FUNCION DEL ROUTER.PUT EN PARENTESIS Y SE PONE AsyncHandler:
+
 router.put('/:id', AsyncHandler(async (req, res) => {
-    const data = await ProductosController.save();
+    const id = req.params.id;
+    const { body } = req
+
+    const data = await ProductosController.findByIdAndUpdate(id, body);
     res.json({
-        msj: data
+        msg: data
     })
 }))
 
 router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+
+
     res.json({
-        msj: ProductosController.findByIdAndDelete()
+        msg: ProductosController.findByIdAndDelete(id)
     })
 })
 

@@ -5,6 +5,8 @@ class ProductosAPI {
     constructor() {
         this.productos = [
             {
+                title: "botines",
+                price: 1500,
                 id: uuidv4(),
             }
         ];
@@ -13,15 +15,13 @@ class ProductosAPI {
         exists(id) {
         
         const indice = this.productos.findIndex(aProduct => aProduct.id == id)
-        
-        // if (indice > 0) {
-        //     return false
-        // } else {
-        //     return true
-        // }
         console.log(indice);
         return indice >= 0;
     }
+
+        validateBody(data) {
+            if(!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw createError(400, 'Datos invalidos')
+        }
 
         getAll() {
             return this.productos
@@ -39,22 +39,50 @@ class ProductosAPI {
         }
 
         save(data) {
+            this.validateBody(data)
+
             const nuevoProducto = {
                 title: data.title,
                 price: data.price,
                 id: uuidv4(),
             }
 
-            this.productos.push(nuevoProducto)
-            return nuevoProducto
+            this.productos.push(nuevoProducto);
+            return nuevoProducto;
         }
 
-        findByIdAndUpdate() {
+        findByIdAndUpdate(id, datanueva) {
             
+            const exist = this.exists(id);
+            
+            if (!exist) throw createError(404, 'El producto no existe');
+
+            this.validateBody();
+
+            const indice = this.productos.findIndex(aProduct => aProduct.id == id)
+
+            const oldProduct = this.productos[indice];
+
+            const nuevoProducto = {
+                id: oldProduct.id,
+                title: datanueva.title,
+                price: datanueva.price
+            }
+
+            this.productos.splice(indice, 1, nuevoProducto)
+
+            return nuevoProducto;
         }
 
-        findByIdAndDelete() {
+        findByIdAndDelete(id) {
         
+        const exist = this.exists(id);
+            if(!exist) return;
+
+            const indice = this.productos.findIndex(aProduct => aProduct.id == id)
+
+            this.productos.splice(indice, 1);
+
         }
     }
 
