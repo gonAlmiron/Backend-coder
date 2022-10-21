@@ -11,20 +11,26 @@ const viewsFolderPath = path.resolve(__dirname, '../../views');
 const layoutsFolderPath = `${viewsFolderPath}/layouts`;
 
 
+app.set('view engine', 'hbs');
+app.set('views', './views');
+
 app.engine('hbs', engine({
     layoutsDir: layoutsFolderPath,
 	extname: 'hbs'
 }));
-app.set('view engine', 'hbs');
-app.set('views', './views');
 
 
 
-app.get('/', (req, res) => {
+app.get('/test', (req, res) => {
 	res.json({
 		msg: 'ok'
 	})
 })
+
+app.get('/', (req, res) => {
+	res.render('main', {layout: 'main'})
+})
+
 
 
 
