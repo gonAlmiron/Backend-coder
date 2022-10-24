@@ -12,7 +12,7 @@ const layoutsFolderPath = `${viewsFolderPath}/layouts`;
 
 
 app.set('view engine', 'hbs');
-app.set('views', './views');
+app.set('views', viewsFolderPath);
 
 app.engine('hbs', engine({
     layoutsDir: layoutsFolderPath,
@@ -28,9 +28,12 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-	res.render('main', {layout: 'main'})
+	res.render('main', {layout: 'index'})
 })
 
+app.get('/productos', (req, res) => {
+	res.render('productos', {layout: 'index'})
+})
 
 
 
