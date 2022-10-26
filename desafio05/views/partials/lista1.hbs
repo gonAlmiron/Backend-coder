@@ -1,21 +1,20 @@
 
-<div class="container my-4">
-<table>
+<div class="container">
 
 <h4 > Lista de Productos:</h4>
 <hr/>
-<ul>
 
-
-
+<table>
     {{#each productos}}
 
-    <li>{{this.productos}}</li>
+    <tr>
+        <td>{{this.nombre}}</td>
+        <td>{{this.precio}}</td>
+
 
     {{/each }}
 
-
-</ul>
+    </tr>
 </table>
 </div>
 
