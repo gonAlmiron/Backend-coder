@@ -1,0 +1,18 @@
+<h1 class="container my-2"> Lista Mercado de {{nombre}} {{apellido}}</h1>
+
+{{#if mostrarProductos}}
+
+<ul>
+
+    {{#each productos}}
+
+    <li class="{{this.estilo}}">{{this.nombre}}</li>
+
+    {{/each }}
+
+</ul>
+
+
+{{/if}}
+
+
