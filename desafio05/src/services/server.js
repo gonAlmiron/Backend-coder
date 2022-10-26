@@ -2,8 +2,9 @@ const express = require('express');
 const { engine } = require('express-handlebars');
 const { partials } = require('handlebars');
 const path = require('path');
+const mainRouter = require('../routes/index');
 const app = express();
-
+const productosController = require('../controller/productos');
 
 
 app.use(express.static('public'));
@@ -24,41 +25,14 @@ app.engine('hbs', engine({
 }));
 
 
-// nombre: poner un ID al input form y luego va el INPUTFORM1.value
-// despues hay que hacer un += para sumarlo a la lista
-// armar una base de la lista
-app.get('/test', (req, res) => {
-	const objetoConDataDinamica = {
-		nombre: 'Carlitos',
-		apellido: 'Tevez'
-	}
-	res.json({
-		msg: 'ok'
-	})
-})
-
 app.get('/', (req, res) => {
-	const objetoConDataDinamica = {
-		nombre: "Ricardo",
-		apellido: "Bochini",
-		productos: ["Mate", "Cafe", "Harina","Palmitos"],
-		productoss: [{
-			nombre: 'mate', estilo: 'toplaner',
-			nombre: 'cafe', estilo: 'midlaner',
-			nombre: 'harina', estilo: 'toplaner',
-			nombre: 'palmitos', estilo: 'midlaner',
-		}],
-		mostrarProductos: true
-	};
-	res.render('main', objetoConDataDinamica)
+	const productos = productosController.getAll();
+	res.render('main', { partials: productos } )
 })
 
-app.get('/productos', (req, res) => {
-	res.render('productos', {layout: 'index'})
-})
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
+app.use('/api', mainRouter)
 
-
-
-
-module.exports = app;
+module.exports = app
