@@ -1,5 +1,4 @@
 const socket = io.connect();
-console.log("HOLAAAA")
 
 const form = document.getElementById('formulario');
 const author = document.getElementById('username');
@@ -18,7 +17,14 @@ form.addEventListener('submit', (ev) => {
 
     console.log(cartaParaElServer)
 
+    socket.emit('nombreDeEvento', cartaParaElServer)
+
+    
     author.value = '';
     text.value = ''; // CON ESTO RESETEAMOS EL INPUT LUEGO DEL SUBMIT
+    })
 
-})
+    socket.on('respuesta', (data) => {
+        console.log(`El server me respondio con ${JSON.stringify(data)}`)
+    })
+

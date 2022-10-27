@@ -19,8 +19,20 @@ const myHTTPServer = http.Server(app)
 
 const myWebSocketServer = io(myHTTPServer)
 
-myWebSocketServer.on('connection', (socket  ) => {
+myWebSocketServer.on('connection', (socket) => {
     console.log("Se acaba de conectar un cliente")
+    console.log('ID SOCKET SERVER', socket.id);
+    console.log('ID SOCKET CLIENTE', socket.client.id);
+
+    socket.on('nombreDeEvento', (dataRecibida) => {
+        
+    console.log(`El cliente ${socket.client.id} acaba de mandar un mensaje de tipo nombreDeEvento`)
+    
+    socket.emit('respuesta', {recibido: 'ok'})
+})
+
+   
+
 }) //cuando se cumple el evento Connection, se ejecuta una funcion
     // el socket de parametro es como un (req, res) todo junto
 
