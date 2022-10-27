@@ -20,8 +20,24 @@ const myHTTPServer = http.Server(app)
 const myWebSocketServer = io(myHTTPServer)
 
 myWebSocketServer.on('connection', (socket  ) => {
-    console.log("Se acaba de conectar un cliente")
+    console.log('Se acaba de conectar un cliente!! =)')
+	console.log('ID SOCKET SERVER', socket.id);
+    console.log('ID SOCKET CLIENTE', socket.client.id);
+
+    socket.emit('notificacionPersonal', {msg: 'Bienvenido al chat!'});
+
+	socket.on('nombreDeEventoSuperLindo', (dataRecibida) => {
+		console.log(`El cliente ${socket.client.id } Me acaban de mandar un mensaje del tipo nombreDeEventoSuperLindo`);
+		console.log(dataRecibida);
+		myWebSocketServer.emit('notificacionGeneral', { dataRecibida });
+	});
+
 }) //cuando se cumple el evento Connection, se ejecuta una funcion
     // el socket de parametro es como un (req, res) todo junto
+
+
+//     setInterval(() => {
+// 	myWebSocketServer.emit('notificacionGeneral', { data: new Date(), capacidadMontanaRusa: Math.random() });
+// }, 1000)
 
 module.exports = myHTTPServer;

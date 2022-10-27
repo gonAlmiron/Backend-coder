@@ -18,7 +18,18 @@ form.addEventListener('submit', (ev) => {
 
     console.log(cartaParaElServer)
 
+    socket.emit('nombreDeEventoSuperLindo', cartaParaElServer);
+
     author.value = '';
     text.value = ''; // CON ESTO RESETEAMOS EL INPUT LUEGO DEL SUBMIT
 
-})
+});
+
+socket.on('notificacionPersonal', (data) => {
+	console.log(`El server me mando una notificacion personal con ${JSON.stringify(data)}`)
+});
+
+socket.on('notificacionGeneral', (data) => {
+	console.log(`El server me mando una notificacion general con ${JSON.stringify(data)}`)
+});
+
