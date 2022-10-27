@@ -27,7 +27,7 @@ app.engine('hbs', engine({
 
 app.get('/', (req, res) => {
 	const productos = productosController.getAll();
-	res.render('main', { partials: productos } )
+	res.render('main', { productos } )
 })
 
 app.use(express.json());

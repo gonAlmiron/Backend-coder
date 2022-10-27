@@ -21,6 +21,7 @@ class Productos {
 			precio: data.precio
 		};
 		this.productos.push(nuevoProducto)
+		return nuevoProducto
 	}
 }
 

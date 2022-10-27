@@ -7,12 +7,12 @@
 <div class="input-group mb-3">
   <div class="input-group-prepend">
   
-  <input type="text" class="form-control" placeholder="Nombre del producto" aria-label="Nombre del producto" aria-describedby="basic-addon1">
+  <input name="nombre"id="nombre" type="text" class="form-control" placeholder="Nombre del producto" aria-label="Nombre del producto" aria-describedby="basic-addon1" required>
   </div>
 </div>
 <br/>
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Fetch URL" aria-label="Fetch URL" aria-describedby="basic-addon2">
+  <input name="img" id="img" type="text" class="form-control" placeholder="Fetch URL" aria-label="Fetch URL" aria-describedby="basic-addon2" required>
   
 </div>
 
@@ -22,14 +22,14 @@
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
 
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <input name="precio" id="precio" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
   <div class="input-group-append">
     <span class="input-group-text">.00</span>
     </div>
   </div>
 </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <input type="submit" class="btn btn-primary"></input>
 </div>
 </form>
 

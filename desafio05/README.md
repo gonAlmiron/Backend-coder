@@ -1,0 +1,1 @@
+Mi eleccion fue Handlebars porque me resulta mas facil para llamar los componentes o layouts/partials
