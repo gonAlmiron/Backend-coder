@@ -19,4 +19,9 @@ const myHTTPServer = http.Server(app)
 
 const myWebSocketServer = io(myHTTPServer)
 
+myWebSocketServer.on('connection', (socket  ) => {
+    console.log("Se acaba de conectar un cliente")
+}) //cuando se cumple el evento Connection, se ejecuta una funcion
+    // el socket de parametro es como un (req, res) todo junto
+
 module.exports = myHTTPServer;
