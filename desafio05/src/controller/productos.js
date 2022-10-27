@@ -4,7 +4,7 @@ class Productos {
 	constructor() {
 		this.productos = [{
 			id: uuidv4(),
-			nombre: "Mouse Logitech G203",
+			nombre: "Mouse Logitech G-203",
 			img: "",
 			precio: 4500
 		}];
