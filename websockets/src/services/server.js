@@ -19,7 +19,7 @@ const myHTTPServer = http.Server(app)
 
 const myWebSocketServer = io(myHTTPServer)
 
-myWebSocketServer.on('connection', (socket  ) => {
+myWebSocketServer.on('connection', (socket) => {
     console.log('Se acaba de conectar un cliente!! =)')
 	console.log('ID SOCKET SERVER', socket.id);
     console.log('ID SOCKET CLIENTE', socket.client.id);
