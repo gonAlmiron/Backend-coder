@@ -17,14 +17,8 @@ form.addEventListener('submit', (ev) => {
 
     console.log(cartaParaElServer)
 
-    socket.emit('nombreDeEvento', cartaParaElServer)
-
-    
     author.value = '';
     text.value = ''; // CON ESTO RESETEAMOS EL INPUT LUEGO DEL SUBMIT
     })
 
-    socket.on('respuesta', (data) => {
-        console.log(`El server me respondio con ${JSON.stringify(data)}`)
-    })
-
+})
