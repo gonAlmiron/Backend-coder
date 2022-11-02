@@ -3,7 +3,7 @@ const { engine } = require('express-handlebars');
 const { partials } = require('handlebars');
 const http = require('http');
 const path = require('path')
-const mainRouter = require('../routes/index');
+const mainRouter = require('../routes/');
 const io = require('socket.io');
 const productosController = require('../controller/productos');
 
@@ -39,6 +39,8 @@ app.get('/', (req, res) => {
 const myHTTPServer = http.Server(app);
 
 const myWebSocketServer = io(myHTTPServer);
+
+
 
 app.use('/api', mainRouter)
 

@@ -27,22 +27,19 @@ myWebSocketServer.on('connection', (socket) => {
     socket.on('nombreDeEvento', (dataRecibida) => {
         
     console.log(`El cliente ${socket.client.id} acaba de mandar un mensaje de tipo nombreDeEvento`)
-    
+    console.log(dataRecibida)
     socket.emit('respuesta', {recibido: 'ok'})
+    socket.emit('notificacionPersonal', {msg: 'Bienvenido al chat!'});
+  
 })
 
-   
-    console.log('Se acaba de conectar un cliente!! =)')
-	console.log('ID SOCKET SERVER', socket.id);
-    console.log('ID SOCKET CLIENTE', socket.client.id);
 
-    socket.emit('notificacionPersonal', {msg: 'Bienvenido al chat!'});
 
-	socket.on('nombreDeEventoSuperLindo', (dataRecibida) => {
-		console.log(`El cliente ${socket.client.id } Me acaban de mandar un mensaje del tipo nombreDeEventoSuperLindo`);
-		console.log(dataRecibida);
-		myWebSocketServer.emit('notificacionGeneral', { dataRecibida });
-	});
+	// socket.on('nombreDeEventoSuperLindo', (dataRecibida) => {
+	// 	console.log(`El cliente ${socket.client.id } Me acaban de mandar un mensaje del tipo nombreDeEventoSuperLindo`);
+	// 	console.log(dataRecibida);
+
+	// });
 
 }) //cuando se cumple el evento Connection, se ejecuta una funcion
     // el socket de parametro es como un (req, res) todo junto

@@ -17,6 +17,12 @@ form.addEventListener('submit', (ev) => {
 
     console.log(cartaParaElServer)
 
+    socket.emit('nombreDeEvento', cartaParaElServer)
+
+    socket.on('notificacionPersonal', () => {
+        console.log('Recibiste la notificacion')
+    })
+
     author.value = '';
     text.value = ''; // CON ESTO RESETEAMOS EL INPUT LUEGO DEL SUBMIT
     })
