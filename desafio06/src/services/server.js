@@ -3,9 +3,10 @@ const { engine } = require('express-handlebars');
 const { partials } = require('handlebars');
 const http = require('http');
 const path = require('path')
-const mainRouter = require('../routes/');
+const mainRouter = require('../routes');
 const io = require('socket.io');
 const productosController = require('../controller/productos');
+const { initWsServer } = require('./socket');
 
 const app = express()
 
@@ -36,13 +37,14 @@ app.get('/', (req, res) => {
 })
 
 
-const myHTTPServer = http.Server(app);
+const server = http.Server(app);
 
-const myWebSocketServer = io(myHTTPServer);
+const myWebSocketServer = io(server);
+
 
 
 
 app.use('/api', mainRouter)
 
 
-module.exports = myHTTPServer;
+module.exports = server;

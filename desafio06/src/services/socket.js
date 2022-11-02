@@ -1,7 +1,6 @@
 const socketIo = require('socket.io');
 const productosController  = require('../controller/productos');
 
-
 let io;
 
 const initWsServer = (server) => {

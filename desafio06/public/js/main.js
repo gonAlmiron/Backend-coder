@@ -15,6 +15,10 @@ form.addEventlistener('submit', (e) => {
         precio: inputPrecio.value
     }
     socket.emit('nuevoProducto', nuevoProducto)
+
+    inputNombre.value = '';
+    inputImg.value = '';
+    inputPrecio.value = '';
 })
 
 socket.on('todosLosProductos', async (data) => {
