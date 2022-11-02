@@ -14,6 +14,7 @@ form.addEventlistener('submit', (e) => {
 
 socket.on('todosLosProductos', async (data) => {
     const productos = await data;
-    //aca iria la lista
-    
+    //aca iria la lista se puede hacer un innnetHtml con un div x cada producto
+    // o lo que seria la tabla
+
 })
