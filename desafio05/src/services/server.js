@@ -3,11 +3,13 @@ const { engine } = require('express-handlebars');
 const { partials } = require('handlebars');
 const path = require('path');
 const mainRouter = require('../routes/index');
-const app = express();
 const productosController = require('../controller/productos');
 
+const app = express();
 
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');
 const layoutsFolderPath = `${viewsFolderPath}/layouts`;
@@ -31,8 +33,7 @@ app.get('/', (req, res) => {
 	res.render('main', { productos } )
 })
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+
 
 app.use('/api', mainRouter)
 
