@@ -21,4 +21,3 @@ form.addEventListener('submit', (ev) => {
     text.value = ''; // CON ESTO RESETEAMOS EL INPUT LUEGO DEL SUBMIT
     })
 
-})
