@@ -22,6 +22,7 @@ app.engine('hbs', engine({
 	extname: 'hbs',
 	defaultLayout: defaultLayoutPath,
 	partialsDir: partialsFolderPath
+
 }));
 
 
