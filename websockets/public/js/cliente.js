@@ -14,9 +14,11 @@ form.addEventListener('submit', (ev) => {
         text: text.value,
     }
 
-    console.log(cartaParaElServer)
+
 
     socket.emit('nombreDeEvento', cartaParaElServer)
+
+    console.log(cartaParaElServer)
 
     socket.on('notificacionPersonal', () => {
         console.log('Recibiste la notificacion')

@@ -8,7 +8,7 @@ router.get('/saludar', (req, res) => {
 
     const wsServer = getWSServer();
     console.log(wsServer);
-    wsServer.emit('message', formatMessages(data));
+    wsServer.emit('message', todosLosProductos);
     res.json({ msg: 'OK' });  //hasta ac es el endpoint normal
 
 })

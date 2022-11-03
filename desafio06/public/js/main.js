@@ -1,11 +1,9 @@
-const socket = io();
+const socket = io.connect();
 
 const form = document.getElementById('form');
 const inputNombre = document.getElementById('nombre');
 const inputImg = document.getElementById('img');
 const inputPrecio = document.getElementById('precio')
-
-
 
 
 form.addEventlistener('submit', (e) => {
@@ -17,7 +15,7 @@ form.addEventlistener('submit', (e) => {
         precio: inputPrecio.value
     }
     socket.emit('nuevoProducto', nuevoProducto)
-    
+
     console.log(nuevoProducto)
 
     inputNombre.value = '';
