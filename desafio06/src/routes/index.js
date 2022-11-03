@@ -4,9 +4,13 @@ const { getWSServer } = require('../services/socket');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/saludar', (req, res) => {
 
-    
+    const wsServer = getWSServer();
+    console.log(wsServer);
+    wsServer.emit('message', formatMessages(data));
+    res.json({ msg: 'OK' });  //hasta ac es el endpoint normal
+
 })
 
 router.use('/productos', ProductosRouter)

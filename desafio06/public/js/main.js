@@ -6,6 +6,8 @@ const inputImg = document.getElementById('img');
 const inputPrecio = document.getElementById('precio')
 
 
+
+
 form.addEventlistener('submit', (e) => {
     e.preventDefault();
 
@@ -15,6 +17,8 @@ form.addEventlistener('submit', (e) => {
         precio: inputPrecio.value
     }
     socket.emit('nuevoProducto', nuevoProducto)
+    
+    console.log(nuevoProducto)
 
     inputNombre.value = '';
     inputImg.value = '';
@@ -23,7 +27,7 @@ form.addEventlistener('submit', (e) => {
 
 socket.on('todosLosProductos', async (data) => {
     const productos = await data;
-    //aca iria la lista se puede hacer un innnetHtml con un div x cada producto
+    // aca iria la lista se puede hacer un innnetHtml con un div x cada producto
     // o lo que seria la tabla
     
 })

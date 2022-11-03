@@ -9,7 +9,6 @@ form.addEventListener('submit', (ev) => {
 
     console.log('Se ejecuto el submit')
 
-
     const cartaParaElServer = {
         author: author.value,
         text: text.value,

@@ -41,8 +41,21 @@ const server = http.Server(app);
 
 const myWebSocketServer = io(server);
 
+myWebSocketServer.on('connection', (socket) => {
+    console.log("Se acaba de conectar un cliente")
+    console.log('ID SOCKET SERVER', socket.id);
+    console.log('ID SOCKET CLIENTE', socket.client.id);
 
+    socket.on('nuevoProducto', (dataRecibida) => {
 
+	console.log(dataRecibida)
+    
+    socket.emit('respuesta', {recibido: 'ok'});
+
+	
+
+})
+})
 
 app.use('/api', mainRouter)
 
