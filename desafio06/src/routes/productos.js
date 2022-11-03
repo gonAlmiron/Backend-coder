@@ -3,6 +3,8 @@ const productosController = require('../controller/productos')
 
 const router = express.Router();
 
+
+
 router.post('/', (req, res) => {
     const body = req.body;
 
