@@ -1,12 +1,11 @@
 import {Router} from 'express';
-import ProductosRouter from './productos';
-import CarritoRouter from './carrito';
+import productosRouter from './productos';
 
 
-const router = Router();
 
-router.use('/productos', ProductosRouter);
-router.use('/carrito', CarritoRouter);
+const MainRouter:Router = Router();
+
+MainRouter.use('/productos', productosRouter);
 
 
-export default router;
+export default MainRouter;
