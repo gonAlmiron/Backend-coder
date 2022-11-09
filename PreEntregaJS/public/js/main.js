@@ -1,11 +1,11 @@
-const socket = io.connect();
-
 const form = document.getElementById('form');
 const inputNombre = document.getElementById('nombre');
 const inputImg = document.getElementById('img');
 const inputPrecio = document.getElementById('precio')
 
+
 if (form) {
+
 
     form.addEventlistener('submit', (e) => {
         e.preventDefault();
@@ -15,7 +15,6 @@ if (form) {
             img: inputImg.value,
             precio: inputPrecio.value
         }
-        socket.emit('nuevoProducto', nuevoProducto)
     
         console.log(nuevoProducto)
     
@@ -24,10 +23,3 @@ if (form) {
         inputPrecio.value = '';
     })
 }
-
-socket.on('todosLosProductos', async (data) => {
-    const productos = await data;
-    // aca iria la lista se puede hacer un innnetHtml con un div x cada producto
-    // o lo que seria la tabla
-    
-})
