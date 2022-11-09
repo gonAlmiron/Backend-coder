@@ -1,7 +1,5 @@
 import {Router} from 'express';
-
 import productosRouter from './productos';
-
 
 const router = Router();
 
