@@ -1,5 +1,4 @@
-import {Router} from 'express';
-
+import Router from 'express';
 import productosRouter from './productos';
 
 
