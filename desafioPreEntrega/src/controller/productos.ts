@@ -10,6 +10,7 @@ class ProductosAPI {
                 id: uuidv4(),
     }
         exists (id: number) {
+
         
         const indice = this.productos.findIndex(aProduct => aProduct.id == id)
         console.log(indice);
