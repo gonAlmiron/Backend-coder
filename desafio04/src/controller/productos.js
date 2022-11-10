@@ -5,8 +5,13 @@ class ProductosAPI {
     constructor() {
         this.productos = [
             {
-                title: "botines",
-                price: 1500,
+                title: "Mouse Logitech M203",
+                price: 7500,
+                id: uuidv4(),
+            },
+            {
+                title: "Teclado Corsair K65",
+                price: 21000,
                 id: uuidv4(),
             }
         ];

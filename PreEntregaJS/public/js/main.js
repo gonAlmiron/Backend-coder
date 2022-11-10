@@ -1,25 +1,38 @@
-const form = document.getElementById('form');
-const inputNombre = document.getElementById('nombre');
-const inputImg = document.getElementById('img');
-const inputPrecio = document.getElementById('precio')
+const nombre = document.querySelector("#name");
+const precio = document.querySelector("#price");
+const boton = document.querySelector("#boton");
 
 
-if (form) {
+async function postData(url = '', data = {}) {
 
-
-    form.addEventlistener('submit', (e) => {
-        e.preventDefault();
-    
-        const nuevoProducto = {
-            nombre: inputNombre.value,
-            img: inputImg.value,
-            precio: inputPrecio.value
-        }
-    
-        console.log(nuevoProducto)
-    
-        inputNombre.value = '';
-        inputImg.value = '';
-        inputPrecio.value = '';
-    })
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data),
+    });
+    return response.json();
 }
+
+boton.addEventListener('click', async () => {
+    try {
+
+        const data = {
+            nombre: nombre.value,
+            precio: precio.value,
+        };
+
+        boton.reset()
+        const url = 'http://localhost:8080/api/productos';
+        response = await postData(url, data);
+
+    } catch (err) {
+        console.log(err)
+    }
+})

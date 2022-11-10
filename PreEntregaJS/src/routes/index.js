@@ -1,8 +1,18 @@
-const Router = require('express');
-const productosRouter = require('./productos')
+const { Router } = require('express');
+const ProductosRouter = require ('./productos')
+const CarritoRouter = require ('./carrito')
+
 
 const router = Router();
 
-router.use('/productos', productosRouter)
+router.get('/', (req, res) => {
+    res.json({
+        msj: 'ok router'
+    })
+})
 
-module.exports = router
+router.use('/productos', ProductosRouter);
+router.use('/carrito', CarritoRouter);
+
+
+module.exports = router;
