@@ -37,7 +37,6 @@ class ProductosAPI {
             const indice = products.findIndex((aProduct) => aProduct.id === id)
 
 			
-			
             return JSON.parse(indice);
 
         }

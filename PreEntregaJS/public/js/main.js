@@ -1,5 +1,5 @@
-const nombre = document.querySelector("#name");
-const precio = document.querySelector("#price");
+const nombre = document.querySelector("#nombre");
+const precio = document.querySelector("#precio");
 const boton = document.querySelector("#boton");
 
 

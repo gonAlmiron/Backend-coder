@@ -20,11 +20,20 @@ router.get('/:id', (req, res) => {
 })
 
 //metodo sin asyncHandler:
-router.post('/', async (req, res, next) => {
+router.post('/',  (req, res, next) => {
     const body = req.body 
+ 
+    const nuevoProducto = {
+        title:body.title,
+        price: body.price,
+        id: 4
+    };
+
+    ProductosController.save(nuevoProducto)
+
     try {
 
-        const data = await ProductosController.save(body);
+        const data =  ProductosController.save(body);
         res.json({
             msg: data
         })
