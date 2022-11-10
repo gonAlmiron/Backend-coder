@@ -1,4 +1,4 @@
-const {v4: uuidv4} = require('uuid');
+const { uuid } = require('uuidv4');
 const createError = require('http-errors')
 
 class ProductosAPI {
@@ -46,7 +46,7 @@ class ProductosAPI {
             const nuevoProducto = {
                 title: data.title,
                 price: data.price,
-                id: uuidv4(),
+                id: 4
             }
 
             this.productos.push(nuevoProducto);

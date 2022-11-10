@@ -88,8 +88,8 @@ class CarritoAPI {
     }
 
 
-const instanciaCarritoApi = new CarritosAPI();
+const instanciaCarritoApi = new CarritoAPI();
 
 module.exports = {
-    ProductosController : instanciaCarritoApi
+    CarritoController : instanciaCarritoApi
 }

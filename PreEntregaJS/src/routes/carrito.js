@@ -1,25 +1,24 @@
 const { Router } = require('express');
-const { ProductosController } = require('../controller/productos')
+const { CarritoController } = require('../controller/carrito')
 const router = Router();
 const AsyncHandler = require('express-async-handler')
 const uuidv4 = require('uuidv4')
 
 router.get('/', (req, res) => {
 res.json({
-    msg:  ProductosController.getAll()
+    msg:  CarritosController.getAll()
 })
 })
 
 router.get('/:id', (req, res) => {
     const id  = req.params.id;
-    const product = ProductosController.getById(id)
+    const product = CarritoController.getById(id)
     res.json({
         msg: product
     })
     
 })
 
-//metodo sin asyncHandler:
 
 router.post('/', async (req, res, next) => {
     const body = req.body 
@@ -32,7 +31,7 @@ router.post('/', async (req, res, next) => {
             price: body.price,
             id: 3
         }
-        ProductosController.save(nuevoProducto);
+        CarritoController.save(nuevoProducto);
 
         res.json({
             msg: nuevoProducto
@@ -44,14 +43,12 @@ router.post('/', async (req, res, next) => {
 
 });
 
-//metodo con asyncHandler sin try/catch y sin next 
-// SE ENGLOBA LA FUNCION DEL ROUTER.PUT EN PARENTESIS Y SE PONE AsyncHandler:
 
 router.put('/:id', AsyncHandler(async (req, res) => {
     const id = req.params.id;
     const { body } = req
 
-    const data = await ProductosController.findByIdAndUpdate(id, body);
+    const data = await CarritoController.findByIdAndUpdate(id, body);
     res.json({
         msg: data
     })
@@ -62,7 +59,7 @@ router.delete('/:id', (req, res) => {
 
 
     res.json({
-        msg: ProductosController.findByIdAndDelete(id)
+        msg: CarritoController.findByIdAndDelete(id)
     })
 })
 

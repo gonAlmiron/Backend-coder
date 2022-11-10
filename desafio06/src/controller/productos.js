@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+const { uuid } = require('uuidv4');
 
 class Productos {
 	constructor() {
@@ -15,7 +15,7 @@ class Productos {
 
 	save(data) {
 		const nuevoProducto = {
-			id: uuidv4(),
+			id: uuid(),
 			nombre: data.nombre,
 			img: data.img,
 			precio: data.precio
