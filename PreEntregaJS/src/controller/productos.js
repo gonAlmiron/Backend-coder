@@ -1,56 +1,48 @@
-const { uuid } = require('uuidv4');
+// const { uuid } = require('uuidv4');
 const createError = require('http-errors')
 
 class ProductosAPI {
     constructor() {
         this.productos = [
-            {
-                title: "Mouse Logitech M203",
-                price: 7500,
-                id: 1
-            },
-            {
-                title: "Teclado Corsair K65",
-                price: 21000,
-                id: 2
-            }
+           
         ];
     }
 
         exists(id) {
         
-        const indice = this.productos.findIndex(aProduct => aProduct.id == id)
+        const indice = this.productos.findIndex( (aProduct) => aProduct.id == id)
         console.log(indice);
         return indice >= 0;
     }
 
-        getAll() {
-            return this.productos
-        }
-    
-        getById(id) {
-            const exist = this.exists(id);
+    getAll() {
+		return this.productos;
+	}
 
-            if (!exist) throw createError(404, 'El producto no existe');
-            
-			const products = this.getAll()
-            const indice = products.findIndex((aProduct) => aProduct.id === id)
+	//Ojo que este metodo es sincronico
+	getById(id) {
+		const exist = this.exists(id);
 
-			
-            return JSON.parse(indice);
+		//mandame un error propio con un http status definido y un mensaje definido
+		if(!exist) throw createError(404, 'El producto no existe');
 
-        }
+		const indice = this.productos.findIndex(aProduct =>  aProduct.id == id)
 
-        save(data) {
-            const nuevoProducto = {
-                title: data.title,
-                price: data.price,
-                id: 4
-            }
+		return this.productos[indice];
+	}
 
-            this.productos.push(nuevoProducto);
-            return nuevoProducto;
-        }
+	save(data) {
+		this.validateBody(data);
+
+		const nuevoProducto = {
+			title: data.title,
+			price: data.price,
+			id: uuidv4(),
+		}
+
+		this.productos.push(nuevoProducto);
+		return nuevoProducto;
+	}
 
         findByIdAndUpdate(id, datanueva) {
             
