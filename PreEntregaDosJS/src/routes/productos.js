@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const {ProductosController} = require('../controller/productos')
+const asyncHandler = require('express-async-handler')
 
 const router = Router();
 
@@ -21,23 +22,36 @@ router.get('/:id', (req, res) => {
         })
 });
 
-router.post('/', (req, res) => {
-    res.json({
-        msg: ProductosController.save()
-    })
-});
+router.post('/', asyncHandler(async  (req, res) => {
+	const { body }  = req
 
-router.put('/:id', (req, res) => {
-    res.json({
-        msg:  ProductosController.getByIdAndUpdate()
-    })
-});
+		const data = await ProductosController.save(body);
+		res.json({
+			msg: data
+		})
 
-router.delete('/:id', (req, res) => {
+}))
+
+router.put('/:id', asyncHandler (async (req, res) => {
+    const id = req.params.id;
+	const { body }  = req
+        const data = await ProductosController.getByIdAndUpdate(id, body);
+
+        res.json({
+            msg:  data
+        })
+    }))
+   
+
+
+router.delete('/:id', asyncHandler ( async (req, res) => {
+    const id = req.params.id;
+    const data = await ProductosController.getByIdAndDelete(id)
+    
     res.json({
-        msg: ProductosController.getByIdAndDelete()
+        msg: data
     })
-});
+}));
 
 
 module.exports = router
