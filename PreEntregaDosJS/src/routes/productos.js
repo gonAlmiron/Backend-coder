@@ -4,23 +4,23 @@ const asyncHandler = require('express-async-handler')
 
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', asyncHandler( async (req, res) => {
 
     res.json({
-        msg: ProductosController.getAll()
+        msg: await ProductosController.getAll()
     })
-});
+}));
 
-router.get('/:id', (req, res) => {
+router.get('/:id', asyncHandler( async (req, res) => {
 
         const id = req.params.id
 
-        const product = ProductosController.getById(id)
+        const product = await ProductosController.getById(id)
     
         res.json({
             msg:  product
         })
-});
+}));
 
 router.post('/', asyncHandler(async  (req, res) => {
 	const { body }  = req
