@@ -1,8 +1,22 @@
 const {Router} = require('express');
 const {ProductosController} = require('../controller/productos')
 const asyncHandler = require('express-async-handler')
+const fs = require('fs/promises')
+const path = require('path')
 
 const router = Router();
+
+const filePath = path.resolve(__dirname, '../../usuarios.json')
+console.log(filePath)
+
+
+// router.get('/', asyncHandler(async (req, res) => {
+//     const fileData = await fs.readFile(filePath, 'utf-8');
+//     const productos = JSON.parse(fileData)
+//     res.json({
+//         msg: productos
+//     })
+// }))
 
 router.get('/', asyncHandler( async (req, res) => {
 

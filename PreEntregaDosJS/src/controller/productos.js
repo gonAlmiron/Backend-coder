@@ -1,5 +1,7 @@
 const {v4: uuidv4} = require('uuid')
 const createError = require('http-errors')
+const fs = require('fs/promises');
+const path = require('path')
 
 class ProductosAPI {
     constructor() {
@@ -14,8 +16,8 @@ class ProductosAPI {
     }
 
    
-    exists(id) {
-        const indice = this.productos.findIndex((unProducto) => unProducto.id == id)
+    async exists(id) {
+        const indice = await this.productos.findIndex((unProducto) => unProducto.id == id)
         
         return indice >= 0;
     }
@@ -24,20 +26,34 @@ class ProductosAPI {
     }
 
     getAll() {
+
         return this.productos
     }
 
-    getById(id) {
 
-    
-       const exist = this.exists(id);
+    getById (id) {
+
+        const exist = this.exists(id);
 
        if(!exist) throw createError(404, 'El producto no existe')
         
        const indice = this.productos.findIndex(unProducto => unProducto.id == id)
-       
-       return this.productos[indice];
+
+
+
     }
+
+    // getById(id) {
+
+    
+    //    const exist = this.exists(id);
+
+    //    if(!exist) throw createError(404, 'El producto no existe')
+        
+    //    const indice = this.productos.findIndex(unProducto => unProducto.id == id)
+       
+    //    return this.productos[indice];
+    // }
     save(data) {
         this.validateBody(data);
         const nuevoProducto = {

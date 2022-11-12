@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "title": "Mouse Logitech M203",
+        "description": "Mouse Gamer con botones laterales",
+        "price": 4500,
+        "foto": "url",
+        "stock": 20
+    },
+    {
+        "id": 2,
+        "title": "Teclado Corsair K65",
+        "description": "Teclado mecánico gamer 65% mechanic",
+        "price": 27000,
+        "foto": "url",
+        "stock": 20
+    },
+    {
+        "id": 3,
+        "title": "Memoria Ram 4GB",
+        "description": "Corsair 3200MHz DDR4 SODDIM",
+        "price": 9300,
+        "foto": "url",
+        "stock": 20
+    },
+    {
+        "id": 4,
+        "title": "Disco SSD Gygabite 480GB",
+        "description": "Disco de estado sólido x10 faster",
+        "price": 11300,
+        "foto": "url",
+        "stock": 20
+    }
+]
