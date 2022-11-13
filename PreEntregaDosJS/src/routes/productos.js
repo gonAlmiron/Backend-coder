@@ -2,12 +2,10 @@ const {Router} = require('express');
 const {ProductosController} = require('../controller/productos')
 const asyncHandler = require('express-async-handler')
 const fs = require('fs/promises')
-const path = require('path')
 
 const router = Router();
 
-const filePath = path.resolve(__dirname, '../../usuarios.json')
-console.log(filePath)
+
 
 
 // router.get('/', asyncHandler(async (req, res) => {

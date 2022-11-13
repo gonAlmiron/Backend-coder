@@ -3,6 +3,9 @@ const createError = require('http-errors')
 const fs = require('fs/promises');
 const path = require('path')
 
+const filePath = path.resolve(__dirname, '../../productos.json')
+console.log(filePath)
+
 class ProductosAPI {
     constructor() {
         this.productos = [
