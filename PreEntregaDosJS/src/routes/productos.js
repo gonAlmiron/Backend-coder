@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const {ProductosController} = require('../controller/productos')
 const asyncHandler = require('express-async-handler')
-const fs = require('fs/promises')
+// const fs = require('fs/promises')
 
 const router = Router();
 

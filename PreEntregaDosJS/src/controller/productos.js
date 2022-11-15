@@ -1,26 +1,52 @@
 const {v4: uuidv4} = require('uuid')
 const createError = require('http-errors')
-const fs = require('fs/promises');
-const path = require('path')
+// const fs = require('fs/promises');
+// const path = require('path')
 
-const filePath = path.resolve(__dirname, '../../productos.json')
-console.log(filePath)
+// const filePath = path.resolve(__dirname, '../../productos.json')
+// console.log(filePath)
 
 class ProductosAPI {
     constructor() {
         this.productos = [
             {
-                title: "remera",
-                price: 1500,
-                id: uuidv4()
-               
+                id: 1,
+                title: "Mouse Logitech M203",
+                description: "Mouse Gamer con botones laterales",
+                price: 4500,
+                foto: "url",
+                stock: 20
+            },
+            {
+                id: 2,
+                title: "Teclado Corsair K65",
+                description: "Teclado mecánico gamer 65% mechanic",
+                price: 27000,
+                foto: "url",
+                stock: 20
+            },
+            {
+                id: 3,
+                title: "Memoria Ram 4GB",
+                description: "Corsair 3200MHz DDR4 SODDIM",
+                price: 9300,
+                foto: "url",
+                stock: 20
+            },
+            {
+                id: 4,
+                title: "Disco SSD Gygabite 480GB",
+                description: "Disco de estado sólido x10 faster",
+                price: 11300,
+                foto: "url",
+                stock: 20
             }
         ];
     }
 
    
-    async exists(id) {
-        const indice = await this.productos.findIndex((unProducto) => unProducto.id == id)
+     exists(id) {
+        const indice =  this.productos.findIndex(unProducto => unProducto.id == id)
         
         return indice >= 0;
     }
@@ -34,29 +60,30 @@ class ProductosAPI {
     }
 
 
-    getById (id) {
+    // getById (id) {
 
-        const exist = this.exists(id);
-
-       if(!exist) throw createError(404, 'El producto no existe')
-        
-       const indice = this.productos.findIndex(unProducto => unProducto.id == id)
-
-
-
-    }
-
-    // getById(id) {
-
-    
-    //    const exist = this.exists(id);
+    //     const exist = this.exists(id);
 
     //    if(!exist) throw createError(404, 'El producto no existe')
         
     //    const indice = this.productos.findIndex(unProducto => unProducto.id == id)
-       
-    //    return this.productos[indice];
+
+    //    return this.productos[indice]
+
+
     // }
+
+    getById(id) {
+
+    
+        const exist = this.exists(id);
+
+        if(!exist) throw createError(404, 'El producto no existe')
+ 
+        const indice = this.productos.findIndex((unProducto) => unProducto.id == id)
+ 
+        return this.productos[indice];
+    }
     save(data) {
         this.validateBody(data);
         const nuevoProducto = {
