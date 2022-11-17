@@ -1,4 +1,4 @@
-import  {listProducts, createProduct, updateProduct, deleteProduct} from '../services/services.cars.js';
+import  {listProducts, createProduct, updateProduct, deleteProduct} from '../services/services.products.js';
 
 export const list = async (req, res) => {
     try {

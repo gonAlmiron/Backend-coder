@@ -1,6 +1,6 @@
 import db from '../db.js'
 
-export const lisProduct = (id={}) => {
+export const listProducts = (id={}) => {
     return db('product')
     .where(id)
     .select('*')

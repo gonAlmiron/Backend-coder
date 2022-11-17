@@ -5,7 +5,7 @@ const PORT = 8080;
 
 const app = express()
 
-import productos from './routes/routes.productos.js';
+import productos from './routes/routes.products.js';
 
 app.use(morgan('dev'));
 app.use(express.json());
