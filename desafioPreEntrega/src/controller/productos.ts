@@ -3,12 +3,7 @@ const createError = require('http-errors')
 
 class ProductosAPI {
     constructor() {
-        this.productos = [
-            {
-                title: "botines",
-                price: 1500,
-                id: uuidv4(),
-    }
+        this.productos = productos
         exists (id: number) {
 
         
@@ -82,7 +77,7 @@ class ProductosAPI {
             this.productos.splice(indice, 1);
 
         }
-    }
+    }}
 
 
 const instanciaProductosApi = new ProductosAPI();
