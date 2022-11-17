@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesafioSQL</title>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    
+    <form id="form">
+        <div class="container my-5">
+        
+            <h4>Ingrese su producto aqui</h4>
+            <hr/>
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+          
+          <input name="nombre"id="nombre" type="text" class="form-control" placeholder="Nombre del producto" aria-label="Nombre del producto" aria-describedby="basic-addon1" required>
+          </div>
+        </div>
+        <br/>
+        <div class="input-group mb-3">
+          <input name="img" id="img" type="text" class="form-control" placeholder="Fetch URL" aria-label="Fetch URL" aria-describedby="basic-addon2" required>
+          
+        </div>
+        
+        <br/>
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+        
+          <input name="precio" id="precio" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+            </div>
+          </div>
+        </div>
+        
+          <input type="submit" class="btn btn-primary"></input>
+        </div>
+        </form>
+        
+
+</body>
+</html>
