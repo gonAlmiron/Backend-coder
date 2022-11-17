@@ -1,0 +1,35 @@
+<div class="container">
+    <h4 > Lista de Productos:</h4>
+    <hr/>
+
+
+
+
+    {{#each productos}}
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">NOMBRE DEL PRODUCTO</th>
+            <th scope="col">PRECIO</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    {{/each }}
+
+
+
+    <hr/>
+    <br/>
+
+</div>
+
