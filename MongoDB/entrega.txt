@@ -1,5 +1,10 @@
-[
-    {
+use db ecommerce
+
+db.createCollection("productos")
+
+db.createCollection("mensajes")
+
+db.productos.insertMany([    {
         "id": 1,
         "title": "Mouse Logitech M203",
         "description": "Mouse Gamer con botones laterales",
@@ -11,7 +16,7 @@
         "id": 2,
         "title": "Teclado Corsair K65",
         "description": "Teclado mecánico gamer 65% mechanic",
-        "price": 1500,
+        "price": 2700,
         "foto": "url",
         "stock": 20
     },
@@ -19,7 +24,7 @@
         "id": 3,
         "title": "Memoria Ram 4GB",
         "description": "Corsair 3200MHz DDR4 SODDIM",
-        "price": 400,
+        "price": 930,
         "foto": "url",
         "stock": 20
     },
@@ -27,7 +32,7 @@
         "id": 4,
         "title": "Disco SSD Gygabite 480GB",
         "description": "Disco de estado sólido x10 faster",
-        "price": 100,
+        "price": 1130,
         "foto": "url",
         "stock": 20
     },
@@ -35,7 +40,7 @@
         "id": 5,
         "title": "Monitor",
         "description": "Mouse Gamer con botones laterales",
-        "price": 4000,
+        "price": 450,
         "foto": "url",
         "stock": 20
     },
@@ -43,7 +48,7 @@
         "id": 6,
         "title": "Parlantes",
         "description": "Teclado mecánico gamer 65% mechanic",
-        "price": 4300,
+        "price": 2700,
         "foto": "url",
         "stock": 20
     },
@@ -51,7 +56,7 @@
         "id": 7,
         "title": "Auriculares",
         "description": "Corsair 3200MHz DDR4 SODDIM",
-        "price": 2500,
+        "price": 930,
         "foto": "url",
         "stock": 20
     },
@@ -59,8 +64,29 @@
         "id": 8,
         "title": "Microfono",
         "description": "Disco de estado sólido x10 faster",
-        "price": 4999,
+        "price": 1300,
         "foto": "url",
         "stock": 20
-    }
-]
+    }])
+
+
+
+db.productos.find()
+
+
+db.productos.countDocuments()
+
+
+db.productos.insert({ id: 9,
+  title: 'MousePad',
+  description: 'MousePad XXL Corsair',
+  price: 3900,
+  foto: 'url',
+  stock: 35 })
+
+  db.productos.find( {  price:   { $lt: 1000 }  } )
+
+  db.productos.find({$and: [ { price:   { $gt: 1000 } },{ price:   { $lt: 3000 } } ] })
+
+
+  db.productos.find( {  price:   { $gt: 3000 }  } )
