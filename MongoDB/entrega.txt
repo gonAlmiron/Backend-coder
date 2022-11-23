@@ -1,8 +1,8 @@
 use db ecommerce
 
-db.createCollection("productos")
+    db.createCollection("productos")
 
-db.createCollection("mensajes")
+    db.createCollection("mensajes")
 
 db.productos.insertMany([    {
         "id": 1,
@@ -71,10 +71,10 @@ db.productos.insertMany([    {
 
 
 
-db.productos.find()
+    db.productos.find()
 
 
-db.productos.countDocuments()
+    db.productos.countDocuments()
 
 
 db.productos.insert({ id: 9,
@@ -83,10 +83,39 @@ db.productos.insert({ id: 9,
   price: 3900,
   foto: 'url',
   stock: 35 })
+    
 
-  db.productos.find( {  price:   { $lt: 1000 }  } )
-
-  db.productos.find({$and: [ { price:   { $gt: 1000 } },{ price:   { $lt: 3000 } } ] })
+    db.productos.find( {  price:   { $lt: 1000 }  } )
 
 
-  db.productos.find( {  price:   { $gt: 3000 }  } )
+    db.productos.find({$and: [ { price:   { $gt: 1000 } },{ price:   { $lt: 3000 } } ] })
+
+
+    db.productos.find( {  price:   { $gt: 3000 }  } )
+
+
+    db.productos.updateMany({}, { $set: {"stock2": 100}})
+
+
+    db.productos.updateMany({ price:   { $gt: 4000 }  }, { $set: {"stock2": 0}})
+
+
+    db.productos.deleteMany( {  price:   { $gt: 3000 } } )
+
+
+    db.createUser(
+  {
+    user: "Pepe",
+    pwd: "asd456",
+    roles: [
+       { role: "read", db: "ecommerce" }
+    ]
+  }
+)
+
+
+
+
+
+
+
