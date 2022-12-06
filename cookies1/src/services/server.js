@@ -73,10 +73,10 @@ app.use(
   });
   
   app.get('/admin-secret-endpoint', validateLogIn, isAdmin, (req, res) => {
-    req.session.info.contador++;
+    req.session.contador++;
     res.json({
       msg: 'informacion super secreta de admins',
-      contador: req.session.info.contador,
+      contador: req.session.contador,
       session: req.session
     });
   });
