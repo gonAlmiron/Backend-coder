@@ -1,4 +1,3 @@
-const { application } = require('express');
 const express = require('express');
 const ProductosRouter = require('./productos');
 // const { getWSServer } = require('../services/socket');
