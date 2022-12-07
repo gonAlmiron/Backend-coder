@@ -1,13 +1,7 @@
-import express from 'express';
-import mainRouter from '../routes/index'
-import http from 'http'
+import server from './services/server'
 
-const app = express()
+const PORT = 8080
 
-app.use(express.json());
-
-app.use('/api', mainRouter)
-
-const httpServer = http.Server(app)
-
-export default httpServer
+server.listen(PORT, () => {
+    console.log(`Servidor UP escuchando en el puerto ${PORT}`)
+})
