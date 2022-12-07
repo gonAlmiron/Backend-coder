@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-export const productCollectionName = 'product';
+export const msgCollectionName = 'msg';
 
-const productSchema = new mongoose.Schema({
+const msgSchema = new mongoose.Schema({
     author: {
         id: 'mail del usuario',
         nombre: 'nombre del usuario',
@@ -16,4 +16,5 @@ const productSchema = new mongoose.Schema({
 {timestamps: true, versionKey: false}
 );
 
-export const ProductModel = mongoose.model(productCollectionName, productSchema)    
+export const msgModel = mongoose.model(msgCollectionName, msgSchema)    
+
