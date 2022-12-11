@@ -47,9 +47,6 @@ app.engine('hbs', engine({
 
 app.use('/api', mainRouter)
 
-app.get('/', (req, res) => {
-    res.json({msg: "ok"})
-})
 
 app.use(function (err, req, res, next) {
     return res.status('500').json({
