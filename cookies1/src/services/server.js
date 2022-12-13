@@ -31,6 +31,8 @@ app.use(cookieParser(mySecret));
 app.use(express.static('public'));
 app.use(express.json())
 app.use(session(StoreOptions))
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');
 const layoutsFolderPath = `${viewsFolderPath}/layouts`;

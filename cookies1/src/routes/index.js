@@ -32,6 +32,19 @@ const users = [
       res.json({msg: 'Bienvenido!!'})
     }
   });
+
+  router.get('/', (req, res) => {
+    console.log(`SESSION =>${JSON.stringify(req.session)}`);
+    if (req.session.nombre) {
+      res.redirect('/datos');
+    } else {
+      res.render('login');
+    }
+  });
+
+  router.get('/login', (req, res) => {
+    res.render('login')
+  });
   
   router.post('/logout', (req, res) => {
     req.session.destroy();
