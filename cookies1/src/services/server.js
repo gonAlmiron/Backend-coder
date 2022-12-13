@@ -3,6 +3,9 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import mainRouter from '../routes';
 import MongoStore from 'connect-mongo';
+import path from 'path';
+import {engine} from 'express-handlebars' 
+
 
 const ttlSeconds = 180;
 
@@ -25,8 +28,25 @@ const app = express();
 
 const mySecret = 'mySecret';
 app.use(cookieParser(mySecret));
+app.use(express.static('public'));
 app.use(express.json())
 app.use(session(StoreOptions))
+
+const viewsFolderPath = path.resolve(__dirname, '../../views');
+const layoutsFolderPath = `${viewsFolderPath}/layouts`;
+const partialsFolderPath = `${viewsFolderPath}/partials`;
+const defaultLayoutPath = `${layoutsFolderPath}/index.hbs`;
+
+app.set('view engine', 'hbs');
+app.set('views', viewsFolderPath);
+
+app.engine('hbs', engine({
+    layoutsDir: layoutsFolderPath,
+	extname: 'hbs',
+	defaultLayout: defaultLayoutPath,
+    partialsDir: partialsFolderPath
+}));
+
 
 app.use('/api', mainRouter)
 
