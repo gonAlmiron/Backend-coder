@@ -16,7 +16,7 @@ const users = [
   ]
 
   router.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
   
     const index = users.findIndex((aUser) => aUser.username === username && aUser.password === password);
     console.log(index)
@@ -35,7 +35,7 @@ const users = [
 
   router.get('/', (req, res) => {
     console.log(`SESSION =>${JSON.stringify(req.session)}`);
-    if (req.session.nombre) {
+    if (req.session.username) {
       res.redirect('/datos');
     } else {
       res.render('login');
