@@ -29,9 +29,10 @@ const app = express();
 const mySecret = 'mySecret';
 app.use(cookieParser(mySecret));
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(session(StoreOptions))
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../../public')));
 
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');
