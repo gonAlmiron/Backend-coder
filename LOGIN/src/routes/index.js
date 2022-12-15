@@ -14,15 +14,6 @@ const isLoggedIn = (req, res, next) => {
   next();
 }
 
-const isAdmin = (req, res, done) => {
-  console.log('Is Admin Middleware')
-  console.log(req.user)
-
-  if (!req.user.admin) return res.status(401).json({ msg: 'Unathorized - Admin Only' });
-
-  done();
-};
-
 router.post('/signup', (req, res, next) => {
   passport.authenticate('signup', passportOptions, (err, user, info) => {
     console.log('Info SIGNUP');
@@ -46,7 +37,7 @@ router.post(
 );
 
 
-router.get('/', isLoggedIn, isAdmin, async (req, res) => {
+router.get('/', isLoggedIn, async (req, res) => {
   console.log(util.inspect(req.session, true, 7, true));
   res.json({
     mgs: "HOLA",
