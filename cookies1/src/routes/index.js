@@ -5,33 +5,27 @@ const router = Router();
 const users = [
     {
         username: 'pepe',
-        password : 'BokitaTheBiggest',
+        password : '1234',
         admin: true,
     },
     {
-      username: 'juancarlos',
-      password : 'BokitaTheBiggest',
+      username: 'juan',
+      password : '1234',
       admin: false,
     }
   ]
 
   router.post('/login', (req, res) => {
     let { username, password } = req.body;
-  
-    const index = users.findIndex((aUser) => aUser.username === username && aUser.password === password);
-    console.log(index)
-    if(index < 0)
-      res.status(401).json({ msg: 'no estas autorizado' });
-    else {
-      const user = users[index];
-      req.session.loggedIn = true;
-      req.session.contador = 1;
-      req.session.admin = user.admin;
-      req.session.username = user.username;
-      res.redirect('/datos')
-  
-      res.json({msg: 'Bienvenido!!'})
-    }
+
+    let credencialesOk = users.filter(
+      (usuario) => usuario.username == username && usuario.password == password
+    ).length;
+    if (credencialesOk) 
+      req.session.username = username;
+      req.session.contador = 0;
+      res.redirect('/datos');
+    
   });
 
   router.get('/', (req, res) => {
@@ -48,7 +42,7 @@ const users = [
   });
 
   router.get('/datos', (req, res) => {
-    if (req.session.nombre) {
+    if (req.session.username) {
       req.session.contador++;
       res.render('datos', {
         datos: usuarios.find((user) => user.username == req.session.username),

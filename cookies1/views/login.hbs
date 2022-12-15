@@ -1,18 +1,18 @@
 <div class="container my-5">
-<h1>LOGIN</h1>
-<hr/>
-
-<form action="/api/login" method="post" role="form" autocomplete="off">
+  <h4>LOGIN</h4>
+  <hr/>
+  <form class="form" action="/login" method="post" role="form" autocomplete="off">
+    <div class="mb-3">
+      <input id="nombre" name='nombre' placeholder="nombre" class="form-control" type="text" required>
+    </div>
+    <div class="mb-3">
+      <input id="password" name='password' placeholder="password" class="form-control" type="password" required>
+    </div>
+    <div class="mb-3">
+      <input class="btn btn-primary my-3" type="submit" value="Login">
+    </div>
+  </form>
   <div class="mb-3">
-    <label class="form-label">Nombre de Usuario</label>
-    <input class="form-control" id="username">
+    <button class="btn btn-primary" onclick="location.href = '/register'">Ir a Register</button>
   </div>
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password">
-  </div>
-  <div class="mb-3 form-check">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 </div>
