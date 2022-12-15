@@ -28,6 +28,7 @@ const users = [
       req.session.contador = 1;
       req.session.admin = user.admin;
       req.session.username = user.username;
+      res.redirect('/datos')
   
       res.json({msg: 'Bienvenido!!'})
     }
@@ -45,37 +46,25 @@ const users = [
   router.get('/login', (req, res) => {
     res.render('login')
   });
+
+  router.get('/datos', (req, res) => {
+    if (req.session.nombre) {
+      req.session.contador++;
+      res.render('datos', {
+        datos: usuarios.find((user) => user.username == req.session.username),
+        contador: req.session.contador,
+      });
+    } else {
+      res.redirect('/login');
+    }
+  });
   
   router.post('/logout', (req, res) => {
     req.session.destroy();
     res.json({ msg: 'session destruida' });
   });
   
-  const validateLogIn = (req, res, next) => {
-    if (req.session.loggedIn === true) next();
-    else res.status(401).json({ msg: 'no estas autorizado' });
-  };
-  
-  const isAdmin = (req, res, next) => {
-    if (req.session.admin) next();
-    else res.status(401).json({ msg: 'no estas autorizado' });
-  };
-  
-  router.get('/secret-endpoint', validateLogIn, (req, res) => {
-    req.session.contador++;
-    res.json({
-      msg: `${req.session.username} ha visitado el sitio ${req.session.contador} veces`,
-    
-    });
-  });
-  
-  router.get('/admin-secret-endpoint', validateLogIn, isAdmin, (req, res) => {
-    req.session.contador++;
-    res.json({
-      msg: `${req.session.username} ha visitado el sitio ${req.session.contador} veces`,
-     
-    });
-  });
+
 
 export default router
 
