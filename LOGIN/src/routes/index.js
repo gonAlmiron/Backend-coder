@@ -1,4 +1,3 @@
-import util from 'util';
 import passport from 'passport';
 import { Router } from "express";
 
@@ -38,7 +37,6 @@ router.post(
 
 
 router.get('/', isLoggedIn, async (req, res) => {
-  console.log(util.inspect(req.session, true, 7, true));
   res.json({
     mgs: "HOLA",
     session : req.session,
