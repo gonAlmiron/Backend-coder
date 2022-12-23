@@ -5,16 +5,10 @@ import passport from 'passport';
 import { loginFunc, signUpFunc } from './auth';
 import MongoStore from 'connect-mongo';
 import Config from '../config';
-
-import {engine} from 'express-handlebars'
 import path from 'path'; 
+import {engine} from 'express-handlebars'
+import cookieParser from 'cookie-parser';
 
-const app = express();
-
-app.use(express.json());
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}))
-app.use(express.static(path.join(__dirname, '../../public')));
 
 const ttlSeconds = 180;
 
@@ -33,21 +27,14 @@ const StoreOptions = {
   },
 };
 
+const app = express();
+const mySecret = 'mySecret';
 
-
-app.use(session(StoreOptions));
-
-//Indicamos que vamos a usar passport en todas nuestras rutas
-app.use(passport.initialize());
-
-//Permitimos que passport pueda manipular las sessiones de nuestra app
-app.use(passport.session());
-
-// Cuando un usuario se autentique correctamente, passport va a devolver en la session la info del usuario
-passport.use('login', loginFunc);
-
-//signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
-passport.use('signup', signUpFunc);
+app.use(cookieParser(mySecret));
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
+app.use(express.static(path.join(__dirname, '../../public')));
 
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');
@@ -64,6 +51,22 @@ app.engine('hbs', engine({
 	defaultLayout: defaultLayoutPath,
     partialsDir: partialsFolderPath
 }));
+
+
+app.use(session(StoreOptions));
+
+//Indicamos que vamos a usar passport en todas nuestras rutas
+app.use(passport.initialize());
+
+//Permitimos que passport pueda manipular las sessiones de nuestra app
+app.use(passport.session());
+
+// Cuando un usuario se autentique correctamente, passport va a devolver en la session la info del usuario
+passport.use('login', loginFunc);
+
+//signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
+passport.use('signup', signUpFunc);
+
 
 app.use('/api', mainRouter);
 
