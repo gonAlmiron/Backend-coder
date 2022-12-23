@@ -3,7 +3,7 @@ import { Router } from "express";
 
 const router = Router();
 
-const passportOptions = { };
+const passportOptions = { badRequestMessage: 'Falta username / password' };
 
 const isLoggedIn = (req, res, next) => {
   console.log('Is Authenticated')
