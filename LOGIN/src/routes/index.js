@@ -45,19 +45,12 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/datos', (req, res) => {
-  res.render('datos')
+  const userData = req.user;
+
+  res.render('datos', {
+    nombre: userData.username
+  })
 });
 
-
-
-
-
-router.get('/', isLoggedIn, async (req, res) => {
-  res.json({
-    mgs: "HOLA",
-    session : req.session,
-    user: req.user
-  })
-})
 
 export default router;
