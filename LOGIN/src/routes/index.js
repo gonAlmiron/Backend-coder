@@ -43,6 +43,12 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 });
 
+router.get('/datos', (req, res) => {
+  res.render('datos')
+});
+
+
+
 
 
 router.get('/', isLoggedIn, async (req, res) => {

@@ -3,8 +3,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../model/user';
 
 const strategyOptions = {
-  usernameField: 'usuario',
-  passwordField: 'contrasena',
+  usernameField: 'username',
+  passwordField: 'password',
   passReqToCallback: true,
 };
 
