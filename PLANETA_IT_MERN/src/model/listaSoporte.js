@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const UserSchema = new Schema({
+const ListaSchema = new Schema({
   cliente: { type: String, required: true, unique: true },
   producto: {type: String, required: true},
   numeroOrden: {type: Number, required: true},
@@ -9,4 +9,4 @@ const UserSchema = new Schema({
   // TIMESTAMPS
 });
 
-export const UserModel = model('user', UserSchema);
+export const ListaModel = model('lista', ListaSchema);

@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const UserSchema = new Schema({
+const OTSchema = new Schema({
   cliente: { type: String, required: true, unique: true },
   tecnico: { type: Number, required: true },
   descripcion: { type: String, required: true},
@@ -11,4 +11,4 @@ const UserSchema = new Schema({
   
 });
 
-export const UserModel = model('user', UserSchema);
+export const OTModel = model('OT', OTSchema);
