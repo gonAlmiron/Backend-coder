@@ -8,6 +8,9 @@ import Config from '../config';
 import path from 'path'; 
 import {engine} from 'express-handlebars'
 import cookieParser from 'cookie-parser';
+import minimist from 'minimist';
+
+
 
 
 const ttlSeconds = 180;
@@ -67,6 +70,20 @@ passport.use('login', loginFunc);
 //signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
 passport.use('signup', signUpFunc);
 
+
+
+const argumentos = {
+  alias: {
+      p: 'port'
+  },
+  default: {
+      port: 8080,
+
+  }
+};
+
+const args = minimist(process.argv.slice(2), argumentos)
+console.log(args)
 
 app.use('/api', mainRouter);
 

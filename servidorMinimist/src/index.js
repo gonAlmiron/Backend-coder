@@ -1,6 +1,6 @@
 import minimist from 'minimist';
 
-console.log('BUUUUUUENAS')
+console.log('BUUUUUUENAS') 
 
 const optionalArgsObject = {
     alias: {
