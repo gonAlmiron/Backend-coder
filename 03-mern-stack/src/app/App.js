@@ -14,6 +14,7 @@ class App extends Component {
     this.addTask = this.addTask.bind(this);
   }
 
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({
