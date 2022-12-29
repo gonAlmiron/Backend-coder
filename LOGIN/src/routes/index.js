@@ -52,6 +52,23 @@ router.get('/datos', (req, res) => {
   })
 });
 
+router.get('/info', (req, res) => {
+  
+})
+
+
+const scriptPath = path.resolve(__dirname, './utils/calculo.js');
+
+router.get('/randoms', (req, res) => {
+  const {cantidad} = req.query;
+  const computo = fork(scriptPath);
+  computo.send(cantidad);
+  computo.on('message', (sum) => {
+    res.json({
+      resultado: sum
+    })
+  })
+  })
 
 
 export default router;
