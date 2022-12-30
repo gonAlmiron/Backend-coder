@@ -1,17 +1,18 @@
 import passport from 'passport';
 import { Router } from "express";
+import path from 'path'
 
 const router = Router();
 
 const passportOptions = { badRequestMessage: 'Falta username / password' };
 
-const isLoggedIn = (req, res, next) => {
-  console.log('Is Authenticated')
-  console.log(req.isAuthenticated());
-  if (!req.isAuthenticated()) return res.status(401).json({ msg: 'Unathorized' });
+// const isLoggedIn = (req, res, next) => {
+//   console.log('Is Authenticated')
+//   console.log(req.isAuthenticated());
+//   if (!req.isAuthenticated()) return res.status(401).json({ msg: 'Unathorized' });
 
-  next();
-}
+//   next();
+// }
 
 router.post('/signup', (req, res, next) => {
   passport.authenticate('signup', passportOptions, (err, user, info) => {
@@ -45,10 +46,10 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/datos', (req, res) => {
-  const userData = req.user;
+  
 
   res.render('datos', {
-    nombre: userData.username
+    nombre: req.user
   })
 });
 

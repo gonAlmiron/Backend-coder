@@ -1,7 +1,7 @@
 
 const random = (cantidad = 10000000) => {
     const salida = [];
-    for(let i=0, i<cantidad, i++) {
+    for(let i=0, i < 100000000, i++) {
         salida.push(Math.random())
     }
 }
