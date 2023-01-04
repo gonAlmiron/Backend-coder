@@ -1,0 +1,90 @@
+NODEMON ES MÁS PARA DESARROLLO
+
+Y FOREVER Y PM2 SIRVEN MÁS PARA PRODUCCION
+
+CLUSTER:
+el modulo CLUSTER es nativo de Nodejs. no hace falta instalarlo, solo se importa en la aplicacion
+
+el cluster sirve para crear procesos hijos
+
+lo que hace es clonar el worker maestro y delegarle la carga de trabajo a cada uno de ellos, 
+asi se evita la sobrecarga sobre un solo nucleo del procesador
+
+sirve para utilizar todos los nucleos del procesador que estemos usando
+
+primero se usa un if para ver si el proceso es el proceso maestro asi:
+cluster.isPrimary (antes era isMaster pero lo cambiaron)
+
+el codigo es igual para todos lso procesos, por eso hay que diferenciar si estamos en el maestro o no
+
+PARA CREAR LOS PROCESOS hijos
+
+if (cluster.isMaster) {
+    console.log(`Master ${process.pid} is running`)
+
+    for (let i = 0; i < numCPUs; i++)  {
+
+    cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`Worker ${worker.process.pid} died`);
+    })
+}
+
+el cluster.fork() crea el proceso
+se lo llama tantas veces como nucleos de procesador yo tengo
+esto crea una replica del proceso
+
+si uno de los procesos hijos muere tenemos que recibir un evento 'exit'
+y en base a eso podemos hacer el console.log como arriba
+o crear uno nuevo para siempre tener un num determinado de hijos
+
+la parte del else:
+si estamos en el proceso hijo solo hay que poner a escuchar el servidor
+ya que esto estariamos en el index.js
+
+SERVER.js
+aca van los endpoints
+
+import express from 'express'
+const app = express();
+
+app.get('/', (req, res) => {
+    res.json({
+        pid: process.pid,
+        msg: 'HOLA'
+    });
+});
+
+para ver que proceso nos esta contestando es el get
+
+y un endpoint en el que lo exigimos y que tarda tiempo en contestar:
+
+app.get('/slow', (req, res) => {
+    let sum = 0;
+    for (let i = 0; i < 6e9; i++) {
+        sum +=1;
+        for (let i = 0; i < 6e9; i++) {
+        }
+        res.json({
+            pid: process.pid,
+            sum
+        })
+    }
+})
+
+y un endpoint para mostrar del otro lado cuando se muere un proceso:
+
+app.get('/muerte', (req,res) => {
+    res.json({msg: 'OK'});
+    console.log(`PID => ${process.pid} will die`);
+    process.exit(0);
+})
+
+export default app;
+
+VENTAJA DE CLUSTER:
+solo tenemos que modificar nuestro index para poner lo del index en nuestros procesos hijos
+eso va en el ELSE del if (cluster.isPrimary)
+esto es receta de cocina
