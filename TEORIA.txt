@@ -314,4 +314,33 @@ y poner:
 
 esto se usa mucho para cuando hacemos un cambio recargamos con esto el servidor
 
+IMPORTANTE DESPUES DE HACER CADA COSA HACER EL 
 
+./NGIX.EXE -S RELOAD
+
+la movida de nginex se crean archuvos con extension .conf
+y dentro de esas .conf va una base siempre asi:
+----------------------------------------------------------
+events {
+
+}
+
+http {
+    server {
+        listen: 80;
+        server_name nginx-handbook.test;
+
+        return 200 "hello from port 80!\n"
+    }
+        server {
+        listen: 8080;
+        server_name nginx-handbook.test;
+
+        return 200 "hello from port 8080!\n"
+    }
+}
+
+-----------------------------------------------------------
+
+podemos crear varios servidores asi temporales y lo que pongamos dentro de server {}
+va a ser la configuracion de ese servidor
