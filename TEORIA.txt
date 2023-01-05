@@ -88,3 +88,230 @@ VENTAJA DE CLUSTER:
 solo tenemos que modificar nuestro index para poner lo del index en nuestros procesos hijos
 eso va en el ELSE del if (cluster.isPrimary)
 esto es receta de cocina
+
+FOREVER:
+es como un nodemon que va corriendo el servidor cuando hacemos un cambiaron
+pero hace una cosa mas:
+
+es un modulo que nos permite correr nuestra app en segundo plano, 
+lo cual nos permite presindir de la ventana de la terminal
+
+y tambien:
+a forever le podemos decir q si nuestra app se muere q la reinicie
+
+instalar libreria: pero de forma global
+
+npm i forever -g
+
+eso significa q la podemos llamar de cualquier parte de nuestra computadora
+
+luego se inicializa asi: (en vez de npm run dev)
+"forever start dist/index.js"
+
+como se q mi app esta corriendo?
+agarramos cualquier terminal:
+
+forever list
+
+y vemos los procesos q estan activos
+
+esto no tiene cluster, es solo un proceso
+
+si lo mato forever la revive, asi que ahora es un nuevo ID de proceso
+
+es instalar la aplicacion
+levantarla con forever start 
+despues con forever list vemos los procesos funcionando
+
+con forever --help vemos los comandos que tenemos
+uno importante es forever logs, o forever stop
+
+ya veremos que con forever vamos a usar un script para iniciar produccion:
+
+"prod": "npm run build && forever start dist/index.js",
+"stop:all": "npm forever stopall"
+
+con npm run prod levantamos forever
+esto levanta al aplicacion ya podemos entrar a localhost
+
+el stopall mata todos los procesos, si hacemos forever list no aparece ninguno
+y no estaria ya nuestra aplicacion online en localhost
+
+forever nos permite correr la aplicacion sin necesidad de una terminal
+y su otra funcion es revivir el servidor cuando se muere
+(pero no tiene cluster)
+
+--------------------------------------------------
+
+CLASE CLUSTERS HORA 1.00 EXPLICA COMO PASAR PUERTOS POR PARAMETRO
+SE SACA LA BASE DE MINIMIST DE LA CLASE ANTERIOR
+
+SE HACE CON MINIMIST, SE INSTALA LA LIBRERIA SE IMPORTA Y TIENE UNA funcion
+donde le pasamos los alias "p": "puerto"
+y los default 
+dsp se hace forever start dist/index.js --puerto=8081   
+
+ej:
+
+import server from './services/server';
+import minimist from 'minimist';
+
+const argsObject = {
+    alias: {
+        p: 'puerto'
+    },
+    default: {
+        puerto: '8080'
+    }
+};
+
+const args = minimist(process.argv, argsObject)
+
+const PORT = args.puerto;
+
+server.listen(PORT, () => {
+    console.log(`server ON escuchando en puerto ${PORT} - PID WORKER ${process.pid}`)
+})
+
+
+
+---------------------------------------------------
+
+PM2:
+
+hace una fusion entre FOREVER y CLUSTERS
+
+cumple las mismas funciones de forever de:
+- levantar el servidor cuando muere,
+- correr en segundo plano sin necesidad de consola,
+- hace toda la movida del clustering como hicimos en el ejercicio de 01-cluster
+pero lo hace solo PM2 eso
+
+npm i pm2 -g
+
+para iniciar la ejecucion:
+
+pm2 start dist/index.js 
+
+a esto le podemos pasar argumentos como:
+
+--name="serverUno" 
+
+--watch 
+el watch es como modo nodemon que cuando se detecte un cambio actualice
+
+para ver todos nuestros procesos:
+
+pm2 list
+
+para ver detalles de un proceso se busca por orden tipo array de los ID asi:
+
+pm2 describe 0 (nos da descripcion del primero de los procesos)
+
+para frenar proceso:
+
+pm2 stop 0
+
+MODO CLUSTER
+(tiene que haber de antemano un script de cluster:
+"prod:fork": "npm run build && start dist/index.js --watch --name="ejemploPM2Fork")
+"prod:cluster": "npm run build && start dist/index.js --watch -i max --name="ejemploPM2cluster")
+el -i es el numero de clusters
+el max sabe cuantos nucleos tenemos y crea un cluster para cada nucleo
+
+
+pm2 start dist/index.js --name="ejemplo1" --watch -i 3
+
+para ver todo con detalle los procesos:
+pm2 monit
+
+PM2 nos permite crear en la carpeta a nivel package.json un archivo: 
+ecosystem.config.js (nombre del archivo)
+donde ira una configuracion:
+
+ module.exports = {
+    apps: [
+        {
+            script: 'dist/index.js',
+            watch: true,
+            autorestart: true,
+            instances: 3 (puede ser instances: max y usa el maximo de nucleos que tiene mi procesador)
+        },
+    ],
+ };
+
+ esto no hace falta hacerlo a mano, poniendo el comando:
+ pm2 init simple
+ ya genera el archivo, y ese lo modificamos con lo de arriba
+
+y despues en el package.json iria el comando asi:
+
+"start": "node dist/index.js",
+"start:prod": "pm2 start ecosystem.config.js"
+
+----------------------------------------------------------------------------
+
+PROXY
+
+es un servidor extra que ira de intermediario entre nustro cliente y servidor
+tiene ventajas como:
+-evitar que la conexion entre cliente-servidor sea directa, y esto lo hace mas seguro xq nadie conoce la direccion exacta de nuestro servidor, no se conoce IP 
+-si hay q cambiar nuestro servidor de backend facilita todo
+- al tener el intermediario podemos sumar funciones como:
+    control de acceso: tipo filtro/firewall de ciertos clientes, podemos permitir q solo ciertos clientes peudan entrar,
+    monitoreo y registro del trafico: el registro lo hace el servidor proxy, podemos ver quien hizo las peticiones, 
+    podemos hacer un balanceo de carga, si entra mucha gente podemos crear muchos servidores replicas y al tener el proxy adelante todos le pegan a este y el proxy redirige las solicitudes a los dif servidores
+-potente caching: podemos ligar un cacheo al servidor proxy, si llega una request y ya esta en cache ni siquiera pasa por el backend ya que se le responde antes con lo q estaba guardado
+-compresion: a la respuesta comprimirla para que viaje menos data y llege mas rapido,
+- cifrado SSL: para establecer una conexion segura entre el cliente y el servidor. Muy importante y es mas para produccion.
+
+2 tipos de proxy:
+SEGUN DE QUE LADO DE LA NUBE DE INTERNET SE ENCUENTREN:
+
+DIRECTOS O FORWARD PROXY:
+Es mas para el dia a dia, se coloca entre el clente y la INTERNET
+esto se utiliza para ocultar la IP y mejorar la privacidad,
+y evadir limitaciones por la geografia q tengamos 
+(x ej si tenemos IP argentina y entramos a netflix hay ciertas peliculas q aca no se estrenaron x copyright en latinoamerica por ejemplo)
+
+
+
+INVERSOS O REVERSE PROXY:
+Sirve para actualizar la app de backend, es el que vamos a utilizar
+procesa las solicitudes del cliente llevandolas al servidor backend, distribuyendo la carga entre varios servidores
+en el servidor podemos crear replicas de servidores para agilizar la aplicacion
+el proxy crea estos servidores replicas
+
+
+
+------------------------------
+
+NGINX
+
+es un servidor web, le hace la contra al servidor Apache
+actua como un proxy q vamos a configurar y decirle que hacer
+
+utilizando NGINX creariamos un servidor que vamos a escuchar en puerto 80 si es HTTP (80 es el por defecto de HTTP)
+y en puerto 443 HTTPS (puerto por defecto de HTTPS)
+
+PARA INSTALAR NGINX
+se descarga un .rar de la pagina nginx.org (la version estable)
+
+lo descomprimimos en una carpeta en Disco Local C:
+
+
+
+GUIA INSTALACION EN WINDOWS: 
+HOW TO INSTALL NGINX WEBSERVER ON WINDOWS 10/8/7
+
+minuto 0.29 clase proxy:
+explica comandos para windows para operar con nginx
+hay que posicionarnos en la carpeta donde estamos
+
+y poner:
+
+ ./nginx.exe -s reload
+
+esto se usa mucho para cuando hacemos un cambio recargamos con esto el servidor
+
+
