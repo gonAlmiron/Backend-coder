@@ -344,3 +344,49 @@ http {
 
 podemos crear varios servidores asi temporales y lo que pongamos dentro de server {}
 va a ser la configuracion de ese servidor
+
+
+PARA CREAR UNA CARPETA TIPO ESTÁTICA DONDE VA A IR TODO LO DE FRONT
+
+EN LA CARPETA QUE DESCOMPRIMIMOS DE NGINX:
+ESTA DENTRO DE LA CARPETA HTML TODO
+
+Y EN EL CODIGO PONEMOS ROOT HTML
+DENTRO DE HTTP{
+
+}
+
+----------------------------------------
+
+PARA DEFINIR RUTAS CON NGINX:
+
+DENTRO DE HTTP {
+    SERVER {
+        LISTEN 80;
+        SERVER_NAME NGINX-HANDBOOK.TEST;
+
+        LOCATION /INICIO {
+            RETURN 200 "ESTA ES LA RUTA DE INICIO"
+
+        }
+            (cuando ponemos de esta forma todo lo que empieza con /inicio
+            va a mostrar ese mensaje
+            puede ser un /inicio-algomas
+            y va a seguir mostrando eso)
+
+        LOCATION = /IGUALACION {
+            RETURN "DEVUELVO A IGUALACION
+        }
+            (cuando ponemos el = antes, buscamos un match exacto de la ruta)
+
+
+        LOCATION ~ /REGULAR[0-9] {
+            RETURN 200 "LOCATION CON EXPRESION REGULAR"
+        }
+            (  )
+
+        LOCATION ~* /MAYUSCULA[0-9] {
+            RETURN 200 "DEVUELVO CON MAYUSCULA.\n"
+        }
+    }
+}
