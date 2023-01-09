@@ -533,3 +533,25 @@ server {
 
 
 }
+
+--------------------------
+
+PROXY INVERSO
+
+events {
+
+}
+
+http {
+
+    include mime.types
+
+    server {
+        listen 80;
+        server_name ngnix.test
+        
+        location /ejemplo1 {
+            proxy_pass "http://nginx.org/ 
+        }
+    }
+}
