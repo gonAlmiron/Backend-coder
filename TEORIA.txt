@@ -360,7 +360,8 @@ DENTRO DE HTTP{
 
 PARA DEFINIR RUTAS CON NGINX:
 
-DENTRO DE HTTP {
+DENTRO DE 
+HTTP {
     SERVER {
         LISTEN 80;
         SERVER_NAME NGINX-HANDBOOK.TEST;
@@ -383,10 +384,152 @@ DENTRO DE HTTP {
         LOCATION ~ /REGULAR[0-9] {
             RETURN 200 "LOCATION CON EXPRESION REGULAR"
         }
-            (  )
+            ( esto hace que podamos poner cualqueir numero luegode la / )
 
         LOCATION ~* /MAYUSCULA[0-9] {
             RETURN 200 "DEVUELVO CON MAYUSCULA.\n"
+
+            ( lo mismo que el anterior pero con el * se vuelve case sensitive la ruta
+            gralmente queremos que distinga las mayusculas en las rutas )
         }
     }
+}
+
+---------------------------------------------
+
+Para crear varios servidores a la vez con NGINX:
+
+events {
+
+}
+
+http {
+    server {
+        listen 80;
+        server_name ngnix-handbook.text
+
+        return 200 "hello from port 80 \n"
+    }
+
+    server {
+        listen 8080;
+        server_name ngnix-handbook.text
+
+        return 200 "hello from port 8080 \n"
+    }
+}
+
+
+-------------------------------------------------------------
+
+PARA INCORPORAR un HTML Y CSS al servidor:
+hay que mandarle donde esta la ruta de nuestros archivos estaticos
+se hace poniendo dentro de:
+
+http {
+
+    types {
+        text/html html;
+        text/css css;
+    }
+
+    server {
+        listen 80;
+
+        root /var/www/html; 
+    }
+}
+
+lo que esta dentro de types significa:
+los archivos que terminen en html, que proxy los trate como html
+los archivos que terminen en css, que proxy los trate como css
+si no ponemos esto y hacemos los archivos, no los va a tomar
+
+
+
+y lo que esta en root es la carpeta donde vamos a poner los archivos
+
+----------------------------------------------------
+
+otra forma facil de decirle que types de archivos vamos a usar
+es importar el mime.types
+es un archivo q esta donde instalamos todo
+y tiene todos los tipos de archivos segun como terminan ya armados
+
+para importar es asi:
+
+http {
+    include     mime.types;
+
+    server {
+        listen 80;
+        server_name localhost;
+    }
+}
+
+
+IMPORTANTE TERMINAR CADA SENTENCIA/RENGLON CON UN PUNTO Y COMA ;
+
+EN WINDOWS USAMOS ROOT HTML (LLEVA A LA CARPETA DONDE INSTALAMOS TODO)
+
+en esa carpeta podemos poner fotos, gifs, archivos html/css/js
+
+----------------------
+
+VARIABLES EN NGINX:
+
+events {
+
+}
+
+http {
+    
+    server {
+        
+        listen 80;
+        server_name localhost;
+
+        location = /variables {
+            return 200 " Host - $host\nURI - $uri\nARGS - $args"
+        }
+    }
+}
+
+los $host - $args - $URI 
+SON VARIABLES PREDETERMINADAS DE NGINX Y MUESTRAN X EJEMPLO ESOS DATOS CUANDO LAS LLAMAMOS
+SE PUEDEN ENCONTRAR EN:
+HTTPS://NGINX.ORG/EN/DOCS/VARINDEX.HTML
+
+
+-----------------------------------------------------
+
+TRY FILES
+
+es una forma de decirle a NGINX como tiene que trabajar en la resolucion
+
+si tenemos archivos estaticos + endpoints
+como sabemos si lo q pedimos es un archivo o un endpoint
+x ej si /css/estilos.css es un archivo o un endpoint
+
+entonces le decimos como tiene q trabajar
+
+server {
+    listen 80;
+    server_name localhost;
+
+    root /var/www/html;  -> aca vemos en la carpeta estatica si existen los archivos
+
+                            si no existe lo buscamos como si fuese una ruta de location /
+
+                            queda asi:
+
+    try_files $uri $uri/ /not_found;    
+
+                            si no existe, ejecutate la ruta /not_found
+
+    location /not_found {
+        return 404 "sadly, you've hit a brick wall \n"
+    }
+
+
 }
