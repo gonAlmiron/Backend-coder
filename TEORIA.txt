@@ -537,6 +537,11 @@ server {
 --------------------------
 
 PROXY INVERSO
+sirve para poner location / {
+    
+}
+y eso significa que todo lo que pongamos como endpoint , es como un *
+lo mande a tal puerto o haga tal cosa
 
 events {
 
@@ -555,3 +560,474 @@ http {
         }
     }
 }
+
+-------------------------------------------------------
+
+BALANCEADOR DE CARGA
+
+events {
+
+}
+
+http {
+
+    upstream mibackend {
+        server localhost:3001;
+        server localhost:3002;
+    }
+
+    server {
+        listen 80
+        server_name nginx-handbook.test;
+
+        location / {
+            proxy_pass http://mibackend;
+        }
+    }
+}
+
+IMPORTANTE
+
+A ESTO HAY QUE SUMARLE EL ecosystem.config.js
+algo asi por cada servidor:
+
+module.exports = {
+    apps [
+
+{
+    name: 'app1',
+    script: 'dist/index.js',
+    watch: true,
+    autorestart: true;
+    args: '--puerto=3001'
+},
+{
+    name: 'app2',
+    script: 'dist/index.js',
+    watch: true,
+    autorestart: true;
+    args: '--puerto=3002'
+},
+{
+    name: 'app3',
+    script: 'dist/index.js',
+    watch: true,
+    autorestart: true,
+
+    instances: 'max',
+
+    args: '--puerto=3002'
+
+}
+
+
+{
+    script: './service-worker',
+    watch: ['./service-worker']
+    },
+    ]
+}
+
+
+
+para que corra en modo FORK 
+no se le pasan en la config:
+
+instances: 'max'
+
+si le pasamos esa instancia, va a correr en modo CLUSTER
+que significa que reparta el servidor entre todos los nucleos que tiene mi PROCESOS
+
+EN ESTE CASO LA APP3 CORRE EN MODO CLUSTER, Y LAS PRIMERAS 2 EN MODO FORK
+tambien se puede poner un numero que no sea 'max' en instances
+
+-------------------------
+
+la idea es crear una aplicacion q se va a dividir en 2
+son 2 aplicaciones iguales que se escuchan en puertos distintos
+como que lo estamos duplicando
+
+y NGINX empieza a repartir equitativamente entre estos 2 servidores
+
+SIRVE PARA QUE SE REPARTA EN PARTES IGUALES CADA ENTRADA DE UN CLIENTE AL servidor
+si ponemos los 2 puertos como arriba
+y recargamos la pagina, va a mandarnos una vez a cada puerto de esos 2
+
+esto lo hace NGINX
+
+el codigo uno solo
+pero gracias a q le podemos pasar por argumento q puerto queremos escuchar 
+
+al nginx le llegan las solicitudes y sabe q tiene esos 2 y los va repartiendo
+
+----------------------------------------------------------
+
+PARA HACER UNA GRAN APP BALANCEADA ES IMPORTANTE:
+
+USAR EL MODO CLUSTER PONIENDO INSTANCES: 'MAX'
+
+Y A ESO SE SUMA:
+
+PONER EN HTTP {
+    UPSTREAM MIBACKEND {
+        SERVER LOCALHOST:3001;
+        SERVER LOCALHOST:3002;
+        SERVER LOCALHOST:3003;
+    }
+}
+
+AHI TENEMOS 3 SERVIDORES AL MISMO TIEMPO FUNCIONANDO CON EL MISMO CODIGO
+Y A ESO SE LE SUMA QUE SE REPARTE ENTRE LOS NUCLEOS DE LA PROCESOS
+
+---------------------------------------------------
+
+Para el desafio
+
+agregar un parametro mas a la ruta del comando
+q permita ejecutar en modo cluster o modo fork
+
+es como el ejemplo de loadbalancer
+pero nosotros estamos usando minimist 
+
+la onda es que si ponemos en modo FORK arranque como siempre
+pero si ponemos en argumento modo CLUSTER la idea es que hagamos por codigo la ejecucion del cluster
+
+eso esta en 29-cluster -> 01-cluster 
+
+donde creamos los hilos y cuando uno muere crea el otro
+es lo de:
+
+---------------------------------------------------------
+
+import cluster from 'cluster';
+import os from 'os';
+import server from './services/server';
+
+const numCPUs = os.cpus().length
+
+const modoCluster = (aca armar el codigo para ver si recibi el argumento --modo=cluster)
+
+ if (cluster.isMaster) {
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code) => {
+        cluster.fork();
+    })
+} else {
+    const PORT = 8080;
+
+    server.listen(PORT, () => {
+        console.log('Servidor express escuchando en puerto')
+    })
+}
+
+
+-------------
+
+despues habria que poner para iniciar el servidor asi:
+
+node dist/index.js --modo=fork
+
+o
+
+node dist/index.js --modo=cluster
+
+usar minimist
+
+------------------------------
+
+CONSIGNA 2
+
+ES SUMANDO A ESTO EJECUTARLO CON FOREVER
+Y PROBARLO CON PM2
+
+-------------------------
+
+CONSIGNA 3 NGINX
+
+la misma app que tenemos, la levantamos en el puerto 8081
+despues en el archivo de configuracion: 
+nginx.conf
+todo lo que vaya a 
+
+location /api/randoms {
+    proxy_pass http://localhost:8081;
+}
+
+location / {
+    proxy_pass http://localhost:8080;
+}
+
+luego:
+
+en el ecosystem.config.js
+
+en los args:    '--puerto=8080'
+y               '--puerto=8081'
+
+Y LUEGO:
+
+PARA CORRERLO EN 8081, 8082, 8083, 8084
+
+se pone en:
+
+http {
+    upstream mibackend {
+        server localhost: 8081;
+        server localhost: 8082;
+        server localhost: 8083;
+        server localhost: 8084;
+
+    }
+
+    server {
+        listen 80;
+        server name localhost;
+
+        location / {
+            proxy_pass http://mibackend;
+        }
+    }
+}
+
+
+-------------------------------------------------------------
+
+TECNICAS PARA NO BARDEAR EN PRODUCCION CUANDO HAY MUCHOS clientes
+
+EN EL CODIGO:
+
+COMPRESION
+
+SE COMPRIME EN UN GZIP
+SE REDUCE EL TAMAÑO DEL CUERPO DE RESPUESTA Y AUMENTA LA VELOCIDAD DE LA APP
+USAMOS GZIP, UN MIDDLEWARE DE COMPRESION DE NODE PARA APLICACIONES express
+
+SI TENEMOS UN TRAFICO ELEVADO EN PRODUCCION NO ES LA MEJOR OPCION
+
+SOLO HAY QUE IMPORTAR 
+
+import express from 'express';
+import compression from 'compression';
+
+const app = express();
+
+app.use(compression())
+
+--------------------------------------------
+
+si probamos esto en local no se mostraria la rapidez ,
+hay que probarlo en produccion por ejemplo con GLITCH
+
+y ahi es donde tarda en llegar al info de un servidor
+
+------------------------------------------
+
+IMPORTANTE SIEMPRE EN NODEJS 
+
+
+NO UTILIZAR FUNCIONES SINCRONICAS
+TRATAR DE UTILIZAR TODO CON FUNCIONES ASINCRONICAS QUE ES LA CLAVE DE NODEJS
+
+EVITAR SU USO EN PRODUCCION
+
+LA UNICA VEZ QUE SE PUEDE USAR LA FUNCION SINCRONICA ES EN EL ARRANQUE INICIAL 
+OSEA EN EL INDEX.js
+
+-----------------------------------------------
+
+REALIZAR UN REGISTRO CORRECTO
+
+ACA ENTRAN LOS CONSOLE.LOG() O CONSOLE.ERR()  QUE SON COMUNES EN DESARROLLO
+PERO EN PRODUCCION NO SIRVEN PORQUE SON SINCRONICAS
+
+PARA PRODUCCION:
+- VAMOS A USAR LA LIBRERIA DE DEBUG
+QUE SIRVE PARA DEPURACION
+
+- Y PARA REGISTRAR LA ACTIVIDAD DE LA APLICACION,
+QUE EN VEZ DE USAR CONSOLE.LOG(),
+VAMOS A USAR BIBLIOTECAS DE REGISTRO COMO 
+WINSTON O BUNYAN
+
+---------------------------------------------
+
+MANEJAR LAS EXCEPCIONES CORRECTAMENTE
+
+las aplicaciones Node se bloquean cuando encuentran una excepcion no capturada
+si no manejamos las excepciones la aplicacion Express se bloquea y queda fuera del intermediario
+
+si nos aseguramos de que la aplicacion se reinicie automaticamente mas abajo,
+esta se recupera de un bloqueo
+
+PARA ESTO SE UTILIZA TRY / CATCH 
+Y PROMISES
+
+-------------------------------------------------
+
+CAMBIOS EN EL ENTORNO QUE PODEMOS HACER (EN VEZ DEL CODIGO QUE ES LO DE ARRIBA)
+
+- CREAR UNA VARIABLE DE ENTORNO NODE_ENV Y PONERLA COMO PRODUCTION
+ASI HACEMOS QUE EXPRESS MISMO SE COMPORTE EN MODO PRODUCCION Y MEJORA SU RENDIMIENTO
+
+ESTO LO HACEMOS DESDE LA TERMINAL O USANDO DOTENV CREANDO EN NUESTRO .NODE_ENV
+Y LO METEMOS HAI JUNTO CON EL STRING DE CONEXION Y PUERTOS
+
+- HACER QUE LA APP SE REINICIE automaticamente
+USANDO FOREVER O PM2 LOGRAMOS QUE SI MUERE HAYA ALGO QUE LA REINICIE automaticamente
+ES CLAVE PARA QUE SIEMPRE ESTE VIVE
+
+IDEAL ES USAR PM2
+
+- EJECUTAR LA APP EN MODO CLUSTER 
+(SISTEMA MULTINUCLEO PARA MULTIPLICAR EL RENDIMIENTO DE LA APLCIACION)
+USANDO 1 PROCESO POR CADA NUCLEO QUE tengamos
+ACA TAMBIEN ENTRA PM2
+
+SE INSTALA PM2
+SE CONFIGURA 
+Y SE PONEN LOS INSTANCES: 'MAX'
+
+Y LISTO, NO ES NECESARIO TOCAR EL CODIGO 
+
+- ALMACENAR LAS RESPUESTAS EN cache
+ESTO LIBERA AL BACKEND DE RESPONDER UNA Y OTRA VEZ LO MISMO
+
+ACA PODEMOS USAR NGINX O TAMBIEN REDIS
+
+- UTILIZAR UN BALANCEADOR DE CARGAS
+
+ESTO ES NGINX
+DONDE PONEMOS LA APP EN MODO CLUSTER
+Y ADEMAS REPLICARLA EN VARIOS PUERTOS A LA VEZ
+USANDO UN PROXY INVERSO ADELANTE MULTIPLICAMOS LA CAPACIDAD DE NUESTRA APLCIACION
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+LOS LOGS SON LOS REGISTROS DE LA ACTIVIDAD DE NUESTRA APP
+
+INGRESANDO A LOS LOGS SABRIAMOS SI ESTA FUNCIONANDO O NO
+
+SI NOS DICEN QUE NO FUNCIONA LA APP
+ENTRAMOS A LOS LOGS PARA VERIFICAR DONDE ESTA EL ERROR
+AHI ESTAN LAS PRUEBAS DE TODO
+
+LA FORMA MAS FACIL ES PONER CONSOLE.LOG A TODO
+
+LIBRERIA QUE HACE ESTO DE GUARDAR LOS LOGS CON HORA Y DIA:
+
+log4js
+
+SE INSTALA Y SE IMPORTA
+
+luego dentro de alguna funcion ponemos
+
+export const funcion1 = () => {
+    const logger = log4js.getLogger();
+
+    logger.level = 'warn';
+}
+
+tambien hay otras funciones como
+logger.trace
+logger.debug 
+logger.info (si quiero que sea algo informativo) 
+logger.warn (para avisar algo q valga la pena pero q la app sigue funcionando)
+logger.error (para imprimir el error)
+logger.fatal (para cuando la app murio)
+
+estan en orden desde el menos importante al menos importante em lo que es el aviso
+ 
+ENTONCES SI PONEMOS EL NUVEL DESDE EL QUE QUEREMOS IMPRMIR
+LOGGER.LEVEL = 'WARN';
+NOS IMPRIME LOS LOGS DESDE ESE NIVEL HACIA ARRIBA EN IMPORTANCIA, todos
+
+PODEMOS DECIRNOS QUE MANDE LOS LOGS A UN ARCHIVO
+
+----------------------
+
+PARA IMPRIMIR NUESTROS LOGS EN UN ARCHIVO 
+- USAMOS APPENDER, QUE DICE A DONDE VAMOS A MANDAR ESO 
+- USAMOS CATEGORIES,  
+
+export const funcion2 = () => {
+    log4js.configure({
+        appenders: {
+            fileAppender: {type: 'file', filename: './logs/example-1.log'}
+        }
+        categories: {
+            default: {appenders: ['fileAppender'], level: 'error'}
+        }
+    });
+
+    const logger = log4js.getLogger();
+
+    logger.level = 'warn';
+
+}
+
+en el appender ceramos una salida que le ponemos como nombre fileAppender
+que sera del tipo file
+y sera ubicado en la carpeta /logs 
+en el archivo example-1.logs
+(osea, voy a crear una salida donde los logs vayan a un archivo, que es el filename: '')
+
+para utilizar esta salida tenemos que configurar una categoria
+en categories: 
+creamos nuestros loggers
+ahi le decimos que appenders tiene que utilizar
+
+DONDE GUARDAR ESTOS ARCHIVOS : 
+HAY PLATAFORMAS EN LA NUBE (CLOUDWATCH, DATALOG, HAY ALGUNOS GRATIS )
+
+
+
+O GUARDARLO EN EL MISMO SERVIDOR DE MI BACKEND
+PERO HAY QUE TENER CUIDADO PORQUE SE VA A LLENAR ESE ARCHIVO
+ENTONCES PODEMOS PONER QUE A LOS 15 DIAS BORRE LOS LOGS ANTERIORES, O ALGO ASI
+
+----------------
+
+SI QUEREMOS SUMAR UN APPENDER SE PONE ASI:
+
+    log4js.configure({
+        appenders: {
+            fileAppender: {type: 'file', filename: './logs/example-1.log'}
+            consola: {type: 'console'}
+        }
+        categories: {
+            default: {appenders: ['fileAppender', 'consola'], level: 'error'}
+        }
+    })
+
+------------------
+
+esto haria que se imprima en un archivo, y tambien en la consola
+
+------------------------------------------------------------------------
+
+YA CON ESTO PODRIAMOS IMPLEMENTARLO EN NUESTRAS APLICACIONES
+Y EN VEZ DE PONER CONSOLE.LOG() EN LAS FUNCIONES
+HAY QUE ACOSTUMBRARSE A PONER:
+LOGER.WARN()
+O LOGGER.INFO()
+
+
+-------------------------------------------------------------------------------------
+
+WINSTON (es como log4js)
+
+ES UNA LIBRERIA QUE SOPORTA PARA MANDAR A ARCHIVOS, A CONSOLA, NUBE... SE BANCA TODO
+A ESTO TAMBIEN SE LE DICE QUE TIENE SOPORTE PARA MULTIPLES TRANSPORTES DISEÑADA PARA EL REGISTRO
+
+UN TRANSPORTE ES UN DISPOSITIVO QUE NOS PERMITE ALMACENAR MENSAJES EN UN ARCHIVO O CONSOLA
+
+LA LOGICA ES PARECIDA A log4js, tiene nombres parecidos los logger.debug, logger.error, etc pero parecidos
+
+LA DIFERENCIA ES QUE NOS MANDA LOS LOGS EN UN OBJETO
+CADA LOG EN UN OBJETO
+SON MEJORES PARA HACER BUSQUEDAS DESPUES
+
