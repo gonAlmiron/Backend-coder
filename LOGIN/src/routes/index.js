@@ -54,7 +54,7 @@ router.get('/datos', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
-  
+  res.render('info')
 })
 
 

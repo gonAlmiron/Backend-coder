@@ -1031,3 +1031,30 @@ LA DIFERENCIA ES QUE NOS MANDA LOS LOGS EN UN OBJETO
 CADA LOG EN UN OBJETO
 SON MEJORES PARA HACER BUSQUEDAS DESPUES
 
+
+--------------------------------------------------------------------------------------
+
+PINO 
+
+ES COMO log4js y WINSTON
+
+LO QUE TIENE DE BUENO ES QUE EN LOS
+LOGGER.trace
+LOGGER.FATAL 
+
+PODEMOS PASARLE OBJETOS
+
+export const ejemplo1 = () => {
+    const logger = pino({ level: 'trace' })
+
+    logger.trace({
+    mensaje: 'Imprimimos trace',
+    nombre: 'cristian',
+    edad: 22
+    });
+
+}
+
+
+
+
