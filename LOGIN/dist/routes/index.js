@@ -6,18 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _passport = _interopRequireDefault(require("passport"));
 var _express = require("express");
+var _path = _interopRequireDefault(require("path"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var router = (0, _express.Router)();
 var passportOptions = {
   badRequestMessage: 'Falta username / password'
-};
-var isLoggedIn = function isLoggedIn(req, res, next) {
-  console.log('Is Authenticated');
-  console.log(req.isAuthenticated());
-  if (!req.isAuthenticated()) return res.status(401).json({
-    msg: 'Unathorized'
-  });
-  next();
 };
 router.post('/signup', function (req, res, next) {
   _passport["default"].authenticate('signup', passportOptions, function (err, user, info) {
@@ -32,6 +25,12 @@ router.post('/signup', function (req, res, next) {
     });
   })(req, res, next);
 });
+router.get('/', function (req, res) {
+  res.json({
+    pid: process.pid,
+    msg: 'hola'
+  });
+});
 router.post('/login', _passport["default"].authenticate('login', passportOptions), function (req, res) {
   res.render('datos');
 });
@@ -42,11 +41,23 @@ router.get('/signup', function (req, res) {
   res.render('signup');
 });
 router.get('/datos', function (req, res) {
-  var userData = req.user;
   res.render('datos', {
-    nombre: userData.username
+    nombre: req.user
   });
 });
-router.get('/info', function (req, res) {});
+router.get('/info', function (req, res) {
+  res.render('info');
+});
+var scriptPath = _path["default"].resolve(__dirname, './utils/calculo.js');
+router.get('/randoms', function (req, res) {
+  var cantidad = req.query.cantidad;
+  var computo = fork(scriptPath);
+  computo.send(cantidad);
+  computo.on('message', function (sum) {
+    res.json({
+      resultado: sum
+    });
+  });
+});
 var _default = router;
 exports["default"] = _default;

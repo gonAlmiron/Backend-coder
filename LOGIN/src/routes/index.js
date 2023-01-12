@@ -6,13 +6,6 @@ const router = Router();
 
 const passportOptions = { badRequestMessage: 'Falta username / password' };
 
-// const isLoggedIn = (req, res, next) => {
-//   console.log('Is Authenticated')
-//   console.log(req.isAuthenticated());
-//   if (!req.isAuthenticated()) return res.status(401).json({ msg: 'Unathorized' });
-
-//   next();
-// }
 
 router.post('/signup', (req, res, next) => {
   passport.authenticate('signup', passportOptions, (err, user, info) => {
@@ -27,6 +20,12 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
+router.get('/', (req, res) => {
+  res.json({
+    pid: process.pid,
+    msg: 'hola'
+  })
+})
 
 router.post(
   '/login',
@@ -46,8 +45,6 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/datos', (req, res) => {
-  
-
   res.render('datos', {
     nombre: req.user
   })
