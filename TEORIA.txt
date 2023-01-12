@@ -90,7 +90,7 @@ eso va en el ELSE del if (cluster.isPrimary)
 esto es receta de cocina
 
 FOREVER:
-es como un nodemon que va corriendo el servidor cuando hacemos un cambiaron
+es como un nodemon que va corriendo el servidor cuando hacemos un cambio
 pero hace una cosa mas:
 
 es un modulo que nos permite correr nuestra app en segundo plano, 
@@ -1055,6 +1055,24 @@ export const ejemplo1 = () => {
 
 }
 
+---------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------
+
+PROFILING Y DEBUG
+
+PARA QUE NOS SIRVE EL PROFILING?
+HACE TESTS DE CARGA/ESTRES QUE SIMULA COMO SE VA A COMPORTAR NUESTRA APP EN PRODUCCION
+
+ARTILLERY 
+
+es una dependencia de Node que nos permite obtener informacion a nivel cuantitativo
+sobre como se va a comprortar nuestra app en produccion
+sirve para cuando las paginas van a recibir muchos clientes y prevenir problemas
+
+nos da pruebas reales para darle a nuestro cliente
+
+SE INSTALA ARTILLERY DE FORMA GLOBAL
+NPM I ARTILLERY -g
 
 
