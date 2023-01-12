@@ -969,7 +969,7 @@ export const funcion2 = () => {
 
 }
 
-en el appender ceramos una salida que le ponemos como nombre fileAppender
+en el appender creamos una salida que le ponemos como nombre fileAppender
 que sera del tipo file
 y sera ubicado en la carpeta /logs 
 en el archivo example-1.logs
@@ -1180,3 +1180,34 @@ COSAS QUE HAY QUE HACER PARA TENER UN SERVIDOR BALANCEADO Y QUE SE BANQUE MUCHOS
 - NGINX PARA QUE TRABAJEMOS EL MISMO SERVIDOR EN VARIOS PUERTOS A LA VEZ QUE PASAN POR EL NGINX AL FINAL Y ES TODO UN SERVIDOR 
 - EVITAR CODIGO SINCRONICO SIEMPRE 
 - EVITAR CONSOLE.LOGS, USAR LOS LOGGERS QUE RECONTRA VAN 
+
+
+--------------------------------------------------------------------------
+
+PROFILING
+
+EL PROFILING ES UN ANALISIS DE RENDIMIENTO 
+ANALIZAMOS CIERTAS PARTES DE CODIGO PARA DETECTAR POSIBLES CUELLOS DE BOTELLA
+
+en el package.json hay que meter estos script:
+
+"start:profiling": "node --prof --logfile=foo.log --no-logfile-per-isolate dist/index.js",
+"start:inspect": "node --inspect dist/index.js"
+
+
+CURL 
+
+ES UN CLIENTE PARA REALIZAR PETICIONES HTTP DESDE LA TERMINAL 
+SE UTILIZA MUCHO PARA EJECUTAR SCRIPTS 
+
+PARA HERRAMIENTAS COMO AXIOS POR DEBAJO SE USA ALGO COMO ESTO 
+
+NODEJS AXIOS NOS ESCRIBE EL CODIGO 
+
+LA VERSION AXIOS NATIVA ESTA BUENA 
+
+--------------
+
+PARA ENCRIPTAR CONTRASEÑAS SE USA UNA LIBRERIA LLAMADA CRYPTO 
+
+---------------------------------
