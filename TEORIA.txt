@@ -1075,4 +1075,108 @@ nos da pruebas reales para darle a nuestro cliente
 SE INSTALA ARTILLERY DE FORMA GLOBAL
 NPM I ARTILLERY -g
 
+ y en el package.json van:
+ como en el ejercicio de cluster/fork
+ "start:fork": "node dist/index.js --puerto=8081", (esto con el minimist armado en el index.js para pasar parametro de puerto)
+ "start:cluster": node dist/index.js --puerto=8082 --cluster",
 
+ "artillery:fork": "artillery quick --count 50 n- 40 http://localhost:8081/prime?max=100000",
+ "artillery:cluster": "artillery quick --count 50 n- 40 http://localhost:8082/prime?max=100000",
+
+el --count 50 simula que hay 50 clientes
+el -n 40 simula que cada cliente hace 40 requests
+
+este sería un test rapido "a lo bruto", le pegan todos juntos al mismo tiempo
+-----------------------------------------------
+luego ARTILLERY nos permite hacer una segmentacion
+
+si tenemos corriendo fork y cluster en los puertos 8081 y 8082 al mismo tiempo
+
+---------------------------------------
+
+FORMATO .YML EN ARTYLLERY
+
+ES UN FORMATO AMIGABLE, ES COMO UN OBJETO PERO SACA LAS LLAVES Y CORCHETES, COMAS...
+
+UN ARCHIVO .YML ES COMO UN PUG
+
+hay un JSON - YAML CONVERTER PARA VER QUE onda
+
+LOS ARRAY SE PONEN ASI
+
+HOBBIES:
+-FUTBOL
+-PLAY
+-ASADO
+
+en vez de:
+
+{
+    "hobbies": ["futbol", "play", "asado"]
+}
+
+LOS ARRAY DE OBJETOS ASI:
+
+arrayCalificaciones:
+-materia: ingles
+ nota: 8
+-materia: matematica
+ nota: 8
+
+ en vez de:
+ {
+    "calificaciones":  
+    [
+        {
+            "materia": "ingles", "nota": 8
+        },
+        {
+            "materia": "matematica", "nota": 8
+        }
+    ]
+    
+ }
+
+------------------------------------------
+
+EN ARTILLERY SE ESCRIBE UN ARCHIVO .YML CON TODA LA CONFIGURACION QUE VAMOS A USAR 
+
+config:
+    target: 'http://localhost:8081;
+
+    phases:
+        -duration: 5
+        arrivalRate: 50 (50 clientes se van a crear cada 5 segundos)
+        name: Warm up 
+    payload:
+        path: 'keys.csv'
+        fields:
+            - 'id 
+
+    scenarios:
+        -name: ''
+        flow:
+            - get: 
+                url: '/api/materials'
+            - think: 10
+            - get:
+                url: '/api/materials?id={{id}}'
+
+
+eca lo que hace es pedir los materiales, esperar 10 segundos 
+y luego pedir materiales por ID
+
+en payload vamos a usar ciertas cosas que estan en otro archivo llamado:
+keys.csv
+
+ahi tenemos IDs que tenemos en nuestra base de datos,
+entonces los agarra para el get by ID 
+
+---------------------------------------------------
+
+COSAS QUE HAY QUE HACER PARA TENER UN SERVIDOR BALANCEADO Y QUE SE BANQUE MUCHOS clientes
+
+- MODO CLUSTER PARA QUE TRABAJE CON TODOS LOS NUCLEOS DE LA CPU 
+- NGINX PARA QUE TRABAJEMOS EL MISMO SERVIDOR EN VARIOS PUERTOS A LA VEZ QUE PASAN POR EL NGINX AL FINAL Y ES TODO UN SERVIDOR 
+- EVITAR CODIGO SINCRONICO SIEMPRE 
+- EVITAR CONSOLE.LOGS, USAR LOS LOGGERS QUE RECONTRA VAN 
