@@ -1,6 +1,7 @@
 import passport from 'passport';
 import { Router } from "express";
 import path from 'path'
+import log4js from 'log4js'
 
 
 const router = Router();
@@ -17,6 +18,12 @@ router.post('/signup', (req, res, next) => {
     }
     if (!user) return res.status(401).json(info);
 
+    const logger = log4js.getLogger();
+
+    logger.level = 'info';
+  
+    logger.info("Ruta /SIGNUP. Metogo POST")
+
     res.json({ msg: 'signup OK' });
   })(req, res, next);
 });
@@ -32,12 +39,25 @@ router.post(
   '/login',
   passport.authenticate('login', passportOptions),
   (req, res) => {
+
+    const logger = log4js.getLogger();
+
+    logger.level = 'info';
+  
+    logger.info("Ruta /LOGIN. Metogo POST")
+
     res.render('datos')
     
   },
 );
 
 router.get('/login', (req, res) => {
+
+  const logger = log4js.getLogger();
+
+  logger.level = 'info';
+
+  logger.info("Ruta /LOGIN. Metogo GET")
   res.render('login')
 });
 
@@ -52,6 +72,13 @@ router.get('/datos', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
+
+  const logger = log4js.getLogger();
+
+  logger.level = 'info';
+
+  logger.info("Ruta /INFO. Metogo GET")
+
  res.send({
    'directorio actual del trabajo': process.cwd(),
    'id del proceso': process.pid,
