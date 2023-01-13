@@ -22,21 +22,21 @@ import minimist from 'minimist';
 
 // } else {
 
-// const argumentsObject = {
-//     alias: {
-//         p: 'puerto'
-//     },
-//     default: {
-//         puerto: '8080'
-//     }
-// }
-// const args = minimist(process.argv, argumentsObject)
+const argumentsObject = {
+    alias: {
+        p: 'puerto'
+    },
+    default: {
+        puerto: '8080'
+    }
+}
+const args = minimist(process.argv, argumentsObject)
 
- 
+const PORT = args.puerto
 
     const init = async () => {
         await initDb()
-        server.listen(Config.PUERTO, () => console.log(`Escuchando en el puerto ${Config.PUERTO} - PID WORKER ${process.pid} `))
+        server.listen(PORT, () => console.log(`Escuchando en el puerto ${PORT} - PID WORKER ${process.pid} `))
     }
     
     init();

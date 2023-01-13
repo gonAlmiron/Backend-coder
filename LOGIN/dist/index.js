@@ -28,16 +28,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // } else {
 
-// const argumentsObject = {
-//     alias: {
-//         p: 'puerto'
-//     },
-//     default: {
-//         puerto: '8080'
-//     }
-// }
-// const args = minimist(process.argv, argumentsObject)
-
+var argumentsObject = {
+  alias: {
+    p: 'puerto'
+  },
+  "default": {
+    puerto: '8080'
+  }
+};
+var args = (0, _minimist["default"])(process.argv, argumentsObject);
+var PORT = args.puerto;
 var init = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -47,8 +47,8 @@ var init = /*#__PURE__*/function () {
             _context.next = 2;
             return (0, _db.initDb)();
           case 2:
-            _server["default"].listen(_index["default"].PUERTO, function () {
-              return console.log("Escuchando en el puerto ".concat(_index["default"].PUERTO, " - PID WORKER ").concat(process.pid, " "));
+            _server["default"].listen(PORT, function () {
+              return console.log("Escuchando en el puerto ".concat(PORT, " - PID WORKER ").concat(process.pid, " "));
             });
           case 3:
           case "end":

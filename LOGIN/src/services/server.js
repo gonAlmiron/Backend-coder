@@ -9,6 +9,7 @@ import path from 'path';
 import {engine} from 'express-handlebars'
 import cookieParser from 'cookie-parser';
 import minimist from 'minimist';
+import compression from 'compression'
 
 
 
@@ -38,6 +39,8 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '../../public')));
+
+// app.use(compression())
 
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');

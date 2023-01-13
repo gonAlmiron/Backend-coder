@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Router } from "express";
 import path from 'path'
 
+
 const router = Router();
 
 const passportOptions = { badRequestMessage: 'Falta username / password' };
@@ -51,7 +52,16 @@ router.get('/datos', (req, res) => {
 });
 
 router.get('/info', (req, res) => {
-  res.render('info')
+ res.send({
+   'directorio actual del trabajo': process.cwd(),
+   'id del proceso': process.pid,
+   'Version de Node': process.version,
+   'titulo del proceso': process.title,
+   'sistema operativo': process.platform,
+   'uso de la memoria': process.memoryUsage(),
+ }
+  
+ )
 })
 
 

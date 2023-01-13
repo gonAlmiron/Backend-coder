@@ -46,7 +46,14 @@ router.get('/datos', function (req, res) {
   });
 });
 router.get('/info', function (req, res) {
-  res.render('info');
+  res.send({
+    'directorio actual del trabajo': process.cwd(),
+    'id del proceso': process.pid,
+    'Version de Node': process.version,
+    'titulo del proceso': process.title,
+    'sistema operativo': process.platform,
+    'uso de la memoria': process.memoryUsage()
+  });
 });
 var scriptPath = _path["default"].resolve(__dirname, './utils/calculo.js');
 router.get('/randoms', function (req, res) {
