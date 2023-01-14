@@ -1243,3 +1243,54 @@ LA VERSION AXIOS NATIVA ESTA BUENA
 PARA ENCRIPTAR CONTRASEÑAS SE USA UNA LIBRERIA LLAMADA CRYPTO 
 
 ---------------------------------
+
+CLAVES PARA PROFILING
+
+SE HACE UN ARCHIVO CON CURL
+
+ESTE TIENE SCRIPTS QUE SE EJECUTAN SOLOS COMO UN POSTMAN
+CUANDO LE HACEMOS NODE /ARCHIVO
+extension .sh 
+
+
+X EJEMPLO CREA UN USUARIO (1 LINEA CURL)
+Y PRUEBA 100 REQUESTS CON ARTILLERY
+
+script para CURL : 
+
+--------------------------------------------------
+
+curl -X get "http://localhost:8080/newUser?username=gonzi&password=1234"
+
+artillery quick --count 10 -n 50 "http://localhost:8080/autorizarUser?username=gonzi&password=1234" >     result_bloq.txt 
+
+el > manda resultados a un archivo con ese nombre 
+
+--------------------------------------------
+
+Y HAY UNA FORMA DE EN VEZ DE MOSTRAR EN CONSOLA, Q MANDE A UN ARCHIVO EL ANALISIS 
+
+QUEDAN LOS SCRIPTS ASI:
+
+primero:
+node --inspect /scritps/script1.sh
+(puede ser asi:
+"start:inspect": "node --inspect dist/index.js",
+"start"profiling": "node --prof --logfile= foo.log --no-logfile-per-isolate dist/index.js")
+
+el --prof crea un archivo nuevo 
+(en este caso isolate-0x1241241-412-v8.log) 
+en este archivo tenemos la info pa saber si nuestra app funciona bien o no
+
+esto nos da un archivo feo hecho para q lea una maquina 
+
+entonces tenemos que convertirlo asi:
+
+node --prof-process [nombreArchivoIsolate].log > [archivoSalida].txt 
+
+el > crea un archivo con el nombre q pongamos 
+
+y en ese archivo nos tira cuanto tiempo estuvo el procesador haciendo ciertas cosas
+lo + imp es la cant de procesador q le costo hacer cada trabajo (medido en pulsos -> ticks)
+
+

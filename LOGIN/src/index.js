@@ -5,22 +5,22 @@ import cluster from 'cluster';
 import os from 'os';
 import minimist from 'minimist';
 
-// const numCPUs = os.cpus().length
+const numCPUs = os.cpus().length
 
-// console.log(numCPUs)
+console.log(numCPUs)
 
-// if (cluster.isPrimary) {
+if (cluster.isPrimary) {
 
-//     for (let i = 0; i <= numCPUs; i++) {
-//         cluster.fork();
-//     }
+    for (let i = 0; i <= numCPUs; i++) {
+        cluster.fork();
+    }
 
-//     cluster.on('exit', (worker, code) => {
-//         console.log(`worker ${worker.process.pid} died`)
-//         cluster.fork();
-//     })
+    cluster.on('exit', (worker, code) => {
+        console.log(`worker ${worker.process.pid} died`)
+        cluster.fork();
+    })
 
-// } else {
+} else {
 
 const argumentsObject = {
     alias: {
@@ -41,6 +41,6 @@ const PORT = args.puerto
     
     init();
 
-// }
+}
 
  
