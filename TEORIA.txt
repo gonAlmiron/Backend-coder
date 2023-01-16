@@ -1264,6 +1264,8 @@ curl -X get "http://localhost:8080/newUser?username=gonzi&password=1234"
 
 artillery quick --count 10 -n 50 "http://localhost:8080/autorizarUser?username=gonzi&password=1234" >     result_bloq.txt 
 
+---------------
+
 el > manda resultados a un archivo con ese nombre 
 
 --------------------------------------------
@@ -1293,4 +1295,21 @@ el > crea un archivo con el nombre q pongamos
 y en ese archivo nos tira cuanto tiempo estuvo el procesador haciendo ciertas cosas
 lo + imp es la cant de procesador q le costo hacer cada trabajo (medido en pulsos -> ticks)
 
+----------------------------------------------
+
+el --inspect 
+(node --inspect dist/index.js)
+
+ejecuta la aplicacion pero con el profiling de NodeJS, y que node haga su trabajo de mirarla bien
+
+ACA ES DONDE HAY QUE TENER UN SCRIPT .SH 
+DONDE METEMOS 
+
+curl -X get "http://localhost:8080/newUser?username=gonzi&password=1234"
+
+artillery quick --count 10 -n 50 "http://localhost:8080/autorizarUser?username=gonzi&password=1234" >     result_bloq.txt 
+
+(esto es un proceso automatizado que ejecute la primera ruta )
+y con artillery la segunda linea vamos a crear 10 usuarios que le van a pegar 50 veces al siguiente endpoint
+y con > result.bloq.txt LO MANDAMOS A UN ARCHIVO LOS RESULTADOS 
 
