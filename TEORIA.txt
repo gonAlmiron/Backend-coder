@@ -1422,3 +1422,62 @@ nos da el grafico de flama
 clinic : 
 lo mismo pero mas cheto 
 
+----------------------------------------------------------------------------------------------------
+
+CONTROL DE VERSIONES 
+
+sirve para organizar a los grupos de programadores o nosotros mismos 
+se registran los cambios que se hicieron 
+
+cada desarrollador se baja una copia local de la NUBE
+y con esa copia podemos hacer lo que querramos 
+pero no afecta al proyecto original en el repositorio central
+asi podemos experimentar sin afectar a la fuente 
+
+cuando se trabaja en el mismo sector de codigo desde 2 diferentes lugares 
+cuando ambos suban su codigo habra un conflicto 
+en las empresas se arregla hablando con el otro programador y decidiendo que va y que no 
+
+con estos controles podemos ver 
+cuando fueron, quienes los hizo y como 
+permite desarrollar versiones de un mismo proyecto a la vez, o ramificarlos 
+
+las BRANCH son ramas / copias del proyecto original de la rama original 
+y a partir de ahi se clona y cada proyecto sigue su camino 
+entonces podemos trabajar en esa rama, ir guardando y una vez que funcionó
+si queremos podemos fusionar estos cambios en la rama principal en algun momento 
+o se puede descartar 
+la fusion de 2 branches se llama MERGE 
+
+ESTO ES EL DIA A DIA DE UN PROGRAMADOR 
+
+en las empresas hay una rama principal llamada main como la de github 
+
+cuando hay que hacer un trabajo, creamos una rama a partir dela principal 
+
+y ahi nos hacemos los cambios y probar cosas, hacer lo que nos piden 
+una vez testeado solicitamos la fusion de nuestra rama con la principal 
+esto es una PULL REQUEST / PR 
+esto permite q la rama principal solo se suban los cambios que hay que subir 
+
+------------------
+
+GIT 
+
+herramienta para llevar a cabo el control de versiones 
+el mas utilizado 
+
+mas alla de que usemos github, gitlab, gitbucket 
+(son todos servidores de repositorios, pero es el mismo concepto)
+la que va es github 
+
+amazon tiene su repositorio
+asure y goodflow tambien 
+(pero nadie le gana a github)
+
+EN LA DESCRIPCION DEL COMMIT SIEMPRE VA EL CAMBIO QUE HICIMOS 
+
+
+git add .                                       (el . hace que mandemos todo, sino podemos elegir por lineas )
+git commit -m "descripcion del commit"          (la -m es para mandar al MAIN)
+git push -u origin main
