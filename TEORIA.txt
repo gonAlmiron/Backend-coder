@@ -1481,3 +1481,29 @@ EN LA DESCRIPCION DEL COMMIT SIEMPRE VA EL CAMBIO QUE HICIMOS
 git add .                                       (el . hace que mandemos todo, sino podemos elegir por lineas )
 git commit -m "descripcion del commit"          (la -m es para mandar al MAIN)
 git push -u origin main
+
+
+git pull                                traemos los cambios que se hayan hecho
+
+->  editamos el codigo 
+
+        -> publicamos/creamos la rama (branch) 
+            -> subimos cambio 
+                -> hago mi commit 
+                    -> push
+                        -> el MERGE es para unir la rama al MAIN 
+
+cuando hay conflictos de merge se crea un PULL REQUEST 
+    -> pide que se resuelvan los conflictos MANUALMENTE 
+        -> esto pasa cuando editamos algo que ya no existe por un commit anterior (puede ser de otra persona del grupo de programadores)
+
+se resuelve asi:
+    -> yendo a la rama MAIN 
+        -> hacemos git pull 
+            -> aparece el nuevo cambio 
+                -> una vez q tenemos la ultima version del main VOLVEMOS A MI RAMA 1 
+                    -> escribimos le commanod GIT MERGE (nombre rama que quiero mergear)
+                    (esto agarra mi rama main del local, y lo fusiona con la rama 1, se hace lo inverso )
+                    (parados en rama 1, vamos a decir fusioname la rama MAIN a esta rama)
+                    
+
