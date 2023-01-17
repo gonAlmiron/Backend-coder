@@ -40,7 +40,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '../../public')));
 
-// app.use(compression())
+app.use(compression())
 
 
 const viewsFolderPath = path.resolve(__dirname, '../../views');

@@ -80,6 +80,7 @@ router.get('/info', (req, res) => {
   logger.info("Ruta /INFO. Metogo GET")
 
  res.send({
+
    'directorio actual del trabajo': process.cwd(),
    'id del proceso': process.pid,
    'Version de Node': process.version,

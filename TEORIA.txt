@@ -1313,3 +1313,112 @@ artillery quick --count 10 -n 50 "http://localhost:8080/autorizarUser?username=g
 y con artillery la segunda linea vamos a crear 10 usuarios que le van a pegar 50 veces al siguiente endpoint
 y con > result.bloq.txt LO MANDAMOS A UN ARCHIVO LOS RESULTADOS 
 
+--------------------
+
+AUTOCANNON 
+
+npm i -g autocannon 0x (aca instalamos autocannon y 0x)
+
+es como artillery 
+
+se puede ejecutar de 2 maneras distintas: 
+- a dif de artillery, se puede ejecutar a traves de un script JSX
+
+
+0x 
+
+es otra libreria de Node. que nos ayuda a crear un flame graph (grafico de flama )
+este grafico nos muestra el rendimiento de nuestra aplicacion 
+xq nos muestra los puntos calientes de la aplicacion
+
+autocannon puede reemplazar a Aritllery, 0x no
+0x es algo nuevo 
+
+AUTOCANNON 
+
+tambien lleva sus scripts automatizados 
+
+pero tienen diferentes opciones 
+
+-c 
+numero de clientes en simultaneo que vamos a llamar 
+
+-d
+cuanto tiempo va a correr autocannon (en segundos)
+
+-b
+body para mandar en las request 
+
+-m
+que metodo HTTP vamos a usar (por defecto esta 'GET')
+
+-w
+si va haber un intervalo de warmup o van a estar todos pegando a la vez 
+
+-L 
+numero de milisegundos entre cada peticion (por defecto es '1')
+intervalo entre cada cliente va a pegar al endpoint 
+
+------------------------------------------------
+
+(primero creamos el usuario)
+
+curl -X GET "http://localhost:8080/signup?username=gonzi&password=1234" 
+
+(luego ejecutamos autocannon al endpoint de autenticacion)
+
+autocannon -c 100 -d 15 ""http://localhost:8080/login?username=gonzi&password=1234" 
+
+----------------------------------
+
+luego en package json
+en vez de ejecutar node, ejecutamos 0x 
+
+"start": "0x dist/index.js",
+"dev": "nodemon",
+
+IMPORTANTE: 
+x temas de permisos 
+mejor ejecutar el 0x dist/index.js en una consola comun aparte 
+
+luego en otra consola comun ejecutamos el script del curl -X get 
+
+
+------------------------------------
+
+autocannon tambien se puede ejecutar como un script de JS normal 
+
+ALTERNATIVA A 0x es: CLINIC 
+
+es un flame graph pero mas cheto, se instala. se ejecuta los script para que le peguen al endpoint 
+y luego se ve el analisis con graficos piolas 
+
+npm i -g clinic 
+
+mismo sistema que con 0x
+
+AUTOCANNON O ARTILLERY SON PARA SIMULAR LOS CLIENTES QUE LE PEGAN A NUESTRA APLICACION 
+
+y para VER RENDIMIENTO en nuestra aplicacion: 
+profiling comun:
+( con el node --prof dist/index.js, 
+este nos generaba un archivo que luego habia que 
+hacerle node --prof-process resultado.log > resultadoLindo.log 
+y nos mostraba el numero de ticks(latidos de la app )
+)
+profiler de google chrome: 
+(lo mismo pero se corre con: 
+node --inspect dist/index.js 
+luego en el navegador chrome ponemos: 
+chrome://inspect 
+
+abrimos el devTools
+ponemos a grabar nuestra sesion/ para obtener data de profiling 
+cuando terminamos de grabar 
+podemos ver los tiempos de demora en nuestro codigo y donde fueron 
+)
+0x:
+nos da el grafico de flama 
+clinic : 
+lo mismo pero mas cheto 
+
