@@ -1,9 +1,9 @@
 import server from './services/server'
 import {initDb} from './services/db'
-import Config from './config/index'
-import cluster from 'cluster';
-import os from 'os';
-import minimist from 'minimist';
+// import Config from './config/index'
+// import cluster from 'cluster';
+// import os from 'os';
+// import minimist from 'minimist';
 
 // const numCPUs = os.cpus().length
 
@@ -22,17 +22,17 @@ import minimist from 'minimist';
 
 // } else {
 
-const argumentsObject = {
-    alias: {
-        p: 'puerto'
-    },
-    default: {
-        puerto: '8080'
-    }
-}
-const args = minimist(process.argv, argumentsObject)
+// const argumentsObject = {
+//     alias: {
+//         p: 'puerto'
+//     },
+//     default: {
+//         puerto: '8080'
+//     }
+// }
+// const args = minimist(process.argv, argumentsObject)
 
-const PORT = args.puerto
+const PORT = process.env.PORT || 8080
 
     const init = async () => {
         await initDb()
