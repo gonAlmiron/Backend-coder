@@ -1847,3 +1847,28 @@ entonces tenemos que definir como usarla en -> resources
 AWS SKILLBUILDER 
 ACA HAY CONTENIDO GRATUITO PARA APRENDER AWS GRATIS y tienen de todo
 
+-------------------
+
+RAILWAY
+es la opcion a heroku gratuita con eso hacemos el desafio 
+ponemos start new proyect 
+deploy from github repo 
+elegimos el repo de la app 
+
+cosas a considerar: 
+- importante el script start y build al package.json 
+- const PORT = process.env.PORT || 8080 
+
+Railway por defecto busca el puerto 8080, no el ENV.PORT como los demas 
+
+- buscar en settings la opcion de generar un dominio gratuito 
+    generate domain 
+ahi nos da el dominio y nos abre la aplicacion 
+
+cuando hacemos cambios
+git add .
+git commit 
+git push 
+
+y deberia actualizarse
+
