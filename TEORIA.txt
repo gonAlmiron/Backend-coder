@@ -1892,3 +1892,245 @@ fetch(http://localhost:8080/api/usuarios)
 )
 
 hora 1.01 de la clase consumiendo APIs de react explica ejemplo
+
+-----------------------------
+
+en el modulo de por ejemplo TablaServicioTecnico:
+se hace una funcion con el nombre del componente 
+dentro se pone un fetch que responde una promesa 
+es decir que va un .then y .catch despues de eso 
+dentro del then va una funcion con un parámetro (resp) 
+y dentro de esa funcion va la resolucion de la promesa en un objeto response 
+esta tiene informacion sobre la respuesta de la peticion 
+y lleva lo que es la data que devolvio la URL 
+
+como pasar del objeto response a la data de la API:
+capturar el parametro (resp) y aplicarle un metodo .json()
+el console log retorna una promesa en estado pendiente 
+esto significa que el resp.json() retorna una promesa tambien 
+esta tengo que trabajarla de forma asincronica 
+
+capturamos la respuesta ed resp.json() sumandole un .then adicional 
+hay que return la resp.json()
+en el .then adicional va un parametro (data)
+y sumarle el otro then donde vamos a capturar la respuesta en formato JSON 
+(la data real que envia la API) 
+
+
+const TablaServicioTecnico () => {
+
+    fetch('http://localhost:8080/users)
+        .then( (resp) => {
+             return resp.json()
+            } )
+            .then( (data) => {
+                console.log(data)
+            } )
+        .catch( 
+
+        )
+
+
+    return ( 
+
+        <div className="container my-5">
+            <h2> Users </h2>
+
+        </div>
+
+    )
+
+
+}
+
+export default TablaServicioTecnico
+
+------------------------------------
+
+LA SINTAXIS CON FETCH SERIA SIEMPRE ASI 
+
+SE CONCATENAN 2(dos) 
+.then 
+el primer .then retorna una respuesta que retornamos en formato json
+el segundo .then recibe la data en JSON como parametro y ya la tiene transformada en la data real 
+
+SE PUEDE SUMARLE ASYNC AWAIT 
+pero el objeto .json() hay que capturarlo igual
+
+se puede hacer lo mismo con una sintaxis mas comoda:
+(return implicito )
+
+  fetch('http://localhost:8080/users)
+    .then((resp) => resp.json())
+    .then((data) => {
+        console.log(data)
+    })
+
+---------------------------
+
+aplicamos el metodo .json porque la info de la api venia en formato json
+las API REST trabajan en formato json siempre 
+
+ALGO CLAVE EN EL FETCH 
+PORQUE TIENE DEFAULT "GET"
+ES PONERLE LA CONFIGURACION CON UNA COMA ,
+LUEGO DEL 'URL'
+
+fetch('url', {
+    method: 'POST',
+    headers: {
+        'ApiKey': 'ag1fgafafs-11234-af12'
+    },
+    body: JSON.stringify({
+        id: 2500,
+        nombre: 'Mouse Logitech',
+        compatibilidad: ['PC', 'PS4', 'PS5' ],
+        tipo: [1, 2, 3 ]
+    })
+})
+.then((resp) => resp.json())
+.then((data) => console.log(data))
+
+asi creamos un recurso de backend y si sale todo bien 
+esta bueno el console.log(data ) que nos manda una copia del resultado 
+
+
+
+-------------
+
+Y ASI ESTARIAMOS HACIENDO UNA PETICION GET
+PONIENDO EN EL BODY LO QUE NECESITAMOS 
+COMO SI FUERA UN POSTMAN 
+
+-----------------
+
+AHORA EL RENDERIZADO 
+
+es clave usar el State de react 
+y el useEffect 
+para contemplar el estado inicial antes de pasarlo porque nos daria error sino 
+
+y en vez del console.log(data) del segundo fetch 
+tenemos que guardar la data en nuestro componente
+poniendo en la funcion del segundo .then con el parametro data el estado de lo que pedimos 
+setUsers(data) 
+
+
+const TablaServicioTecnico () => {
+
+    const [users, setUsers] = useState(null) // CLAVE que empiece como null xq cuando hacemos la peticion el estado inicial no está en realidad y da errores 
+                                            // 
+    useEffect( () => { 
+
+    fetch('http://localhost:8080/users)
+        .then( (resp) => resp.json() )
+        .then( (data) => {
+            setUsers(data)
+            } )
+        .catch( 
+
+        )
+
+    }, [])
+
+    return ( 
+
+        <div className="container my-5">
+                <h2> Users </h2>
+                <hr/>
+                {
+                    user
+                    ?
+                    <div>
+                        <h3> {user.name} </h3>
+                        <h3> {user.password} </h3>
+                        <img src={user.img} alt={user.name} />
+
+                    </div>
+                    :
+                    null
+                }
+
+        </div>
+
+    )
+
+
+}
+
+export default TablaServicioTecnico
+
+--------------------------------------------
+
+PARA DARLE FUNCIONALIDAD A LOS BOTONES:
+
+se declara una variable que queremos modificar 
+y luego funciones que van a modificar de alguna forma
+(eliminando, cambiando un estado )
+se llaman 
+handleBorrar = () => {
+
+}
+
+handleSumar = () => {
+
+}
+
+y luego en el:
+
+    return (
+    <div>
+
+        <button onClick={handleBorrar} className="btn btn-outline-primary"> BORRAR USER </button>
+
+        <button
+        onClick={handleSiguiente} 
+        className="btn btn-outline-primary"> 
+        SIGUIENTE USUARIO 
+        </button>
+
+    </div>
+)
+
+----------------
+
+ES CLAVE EL ONCLICK={} EN LOS BOTONES 
+
+---------------------------------------------------
+
+cuando modificamos algo hay que modificar el useEffect()
+podriamos meter el useEffect completo dentro de cada funcion Borrar o Siguiente 
+pero es incomodo
+
+para eso esta el ARRAY DE DEPENDENCIAS que va al final de los useEffect
+
+    useEffect( () => { 
+
+    fetch('http://localhost:8080/users/${id})
+        .then( (resp) => resp.json() )
+        .then( (data) => {
+            setUsers(data)
+            } )
+        .catch( 
+
+        )
+
+    }, [id])
+
+    aca por ejemplo decimos poniendo el id en el []
+    que cada vez que detecte un cambio en el ID
+    refresque la informacion 
+
+    LOGICA:
+    montamos el componente y ejecutamos el fetch 
+    llamamos a la peticion y preparamos la respuesta con los .then
+    luego retornamos el XML donde vemos todo reflejado 
+
+    y cada vez que modifiquemos nuestro estado de id 
+    que arriba declaramos: 
+
+    const [id, setId] = useState(1) //el parametro significa que arranque en... 1 en este caso 
+
+        ->  se repetiria el efecto (useEffect)
+        y actualiza todo incluyendo la renderizacion 
+        
