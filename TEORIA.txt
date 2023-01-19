@@ -1872,3 +1872,23 @@ git push
 
 y deberia actualizarse
 
+
+-----------------------------------------------------------------------------
+
+PETICIONES DESDE REACT 
+
+FETCH
+Libería nativa de NodeJS que sirve para hacer peticiones
+trabaja con promesas, retorna una promesa despues del fetch asi que lleva un .then()
+
+el fetch viene por defecto en GET, sino se aclara con una coma despues del URL 
+
+fetch(http://localhost:8080/api/usuarios)
+.then(
+
+)
+.catch( 
+
+)
+
+hora 1.01 de la clase consumiendo APIs de react explica ejemplo
