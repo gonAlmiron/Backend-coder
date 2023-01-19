@@ -1507,3 +1507,343 @@ se resuelve asi:
                     (parados en rama 1, vamos a decir fusioname la rama MAIN a esta rama)
                     
 
+<<<<<< HEAD (current change)
+
+LO QUE ESTA ARRIBA ES LO QUE ESTAMOS INTENTANDO CAMBIAR 
+
+===========
+
+ACA ABAJO VA LO QUE YA ESTABA CAMBIADO 
+
+-------------------------------------------------------------
+
+Hay varias opciones, aceptar un cambio, el otro o los dos.
+
+-------------------------------------------------------------------
+
+CLOUD COMPUTING 
+
+ES COMO LA ELECTRICIDAD QUE NO TENEMOS NUESTRO GENERADOR DE ENERGIA 
+UTILIZAMOS LA QUE NOS DA EL PROVEEDOR 
+
+CLOUD COMPUTING ES LA IDEA Q LE PAGAMOS A UN PROVEEDOR LOS RECURSOS QUE NECESITEMOS
+(MAQUINAS VIRTUALES PARA PONER APP, DISCOS PARA ALMACENAMIENTO, SOLUCIONES DE NETWORKING/SEGURIDAD )
+
+INFRAESTRUCTURA COMO SERVICIO: EL PROVEEDOR NOS OFRECE COMPUTO Y ALMACENAMIENTO 
+    Y EL CLIENTE TIENE RESPONSABILIDADES DE BAJO NIVEL
+    (AMAZON NOS ASEGURA Q NADIE VA A TOCAR ESA MAQUINA, PERO NOSOTROS TENEMOS QUE INICIAR NODE Y TODAS LAS MOVIDAS)
+    SOMOS EL ENCARGADO DE QUE FUNCIONE 
+
+PLATAFORMA COMO SERVICIO: ESTE NIVEL ES EL MAS COMODO PARA DESARROLLADORES 
+    (NOS OLVIDAMOS DEL BALANCEO DE CARGA CON NGINX, O SI LA PC TIENE WINDOWS LINUS O MAC XQ SE ENCARGAN DE ESO)
+
+SOFTWARE COMO SERVICIO: ES UNA CAPA MAS,
+    COMO PARA ALGUIEN QUE NO SEPA DESARROLLAR, NOS DAN EL SERVICIO PARA GUARDAR COSAS EN AL NUBE
+    VENDRIA A SER GOOGLE DRIVE ESTO 
+
+----------------------------------------------------------------------------------
+
+
+HEROKU
+es una plataforma en la nube que ofrece servicios
+para alojar o implementar aplicaciones web
+
+nos crea un dominio
+
+HAY QUE CREARSE UNA CUENTA EN HEROKU 
+
+logear
+crear nueva app
+el deployment method va a ser github
+(nos conectamos a nuestro repositorio)
+ 
+ cuando creamos app:
+ activar deploy automatico 
+
+ y deploy branch en master 
+
+IMPORTANTE: 
+
+    - como cargar las variables de entorno:
+    settings -> config vars -> keysvalues
+    ahi va:
+    ENV_EJEMPLO = INDEPENDIENTE 
+
+    - NO setear puerto dentro del codigo nuestro, porque lo hace HEROKU y tira bardo 
+        se hace asi: 
+            export const PORT = process.env.PORT 
+        (como en glitch)
+        heroku define el puerto - crea esta variable de entorno por nosotros 
+        en el proceso de deploy, heroku primero busca un puerto libre dentro de los suyos
+        y luego setea esta variable de entorno 
+
+--------------------------------------------------------
+
+para subir cambios:
+se hace un push y heroku baja los ultimos cambios y reconstruye la aplicacion 
+solo con un push estaría
+
+x eso es clave tener linkeado a GITHUB 
+asi cuando hacemos push HEROKU se da cuenta automaticamente
+
+ESTO ES SETEANDO EL DEPLOY AUTOMATICO
+
+PARA HACER EN BABEL 
+scripts:
+
+    "build": "npm install && babel src --out-dir dist",
+    "start": "npm run build && node ./dist/index.js",
+    "dev": "nodemon --exec babel-node .src/index.js",
+
+ASI ESTA LISTO PARA SUBIRSE A HEROKU:
+(el start hace el buildeo + instalacion de todo 
+y inicia la aplicacion )
+
+
+-----------------------------------------------------------------------------------
+
+AWS 
+
+siempre que creemos usuario usar la doble autenticacion xq te roban todo 
+se puede poner tarjeta para probar y despues sacarla 
+
+ELASTIC BEANSTALK
+
+- es un servicio que se encarga de administrar la infraestructura de nuestra aplciacion 
+(se encarga de levantar las maquinas virtuales, cargar nuestro codigo en esas, mantenerlas, la escalabilidad)
+- tambien ajusta el escalado de la aplcacion automaticamente:
+si seteo que minimo siempre haya 1 maquina corriendo y maximo 10 
+como se da cuenta cuando levantarlas para no tener q pagar 10 maquinas todo el tiempo
+hay una logica: 
+    -> levanta una maquina 
+    -> cuando la capacidad el procesador llega al 80%, empieza acrear instanacias para ayudarlo
+    -> agregan otra maquina 
+    (se cobra por hora de uso de cada maquina)
+
+---------------------------------------------------------------------------
+
+SERVICIOS DE AWS CLAVES: 
+    EC2 
+    el primer servicio q tiene AWS 
+    crea las maquinas virtuales on-demand 
+    hay una lista con diferentes maquinas y precios x hora 
+    (distintas memorias, storage, nucleos)
+
+    ES IMPORTANTE CONOCER DE CLOUD COMPUTING PARA SER BACKEND DEVELOPER 
+    LO IDEAL ES METERLE A AWS 
+    CERTIFICACIONES: 
+    1- CLOUD PRACTICIONER 
+        luego se ramifica, lo recomendable es:
+    2- DEVELOPER ASOCIATE (y solutions arquitect para armar la arquitectura )
+    3- luego vienen los profesionales pero con los primeros va bien
+
+---------------------------------------------------
+
+    AMAZON S3 
+    es un servicio de almacenamiento de archivos en la nube
+    podemos guardar cualquier cosa(archivos, imagenes lo que sea)
+    solo cobran por lo que gastamos en lectura y subida (no cobran por tener el archivo guardado ahi )
+    no hay servidor (serverless) 
+
+    AMAZON DYNAMODB
+    es la base de datos NoSQL de amazon
+    su principal ventaja: 
+    muy poca latencia para las consultas 
+    tambien es serverless (esta bueno porque por ejemplo si queremos usar una DB SQL tiene q estar montada a un servidor, y este se cobra.
+                            en cambio con serverless no se nos cobra nada solo por tener la base en la nube
+                            nos cobran solo las unidades de lectura o escritura )
+
+    se basa en que todos los registros tienen una clave (no es como mongoDB)
+    tiene la primary key y se puede agregar una segunda KEY 
+    - solo se puede consultar por una primary key, eso la hace tan rapida 
+        (es otra forma de pensar el diseño de base de datos)
+    
+    AWS LAMBDA 
+
+    es clave porque le podemos subir una porcion de nuestro codigo 
+    y nada mas nos cobran por el tiempo en el que se ejecuto el codigo
+    (diferente a levantar una maquina virtual y que nos cobren por hora de uso)
+    aca cargamos codigo, configuramos un evento (puede ser un timer cada 3 min, un evento a un endpoint HTTP, una notificacion)
+    cuando llega ese evento, LAMBDA cobra vida, ejecuta ese codigo cargado y muere
+    solo nos cobran por el tiempo que se invoco ese codigo 
+    
+    este hay que investigarlo porque sirve para tener servidores baratos 
+
+
+    AMAZON SIMPLE EMAIL SERVICE 
+
+    servicio que sirve para enviar emails a personas 
+
+    AMAZON SIMPLE NOTIFICATION SERVICE 
+
+    servicio para enviar notificaciones que no son solo emails,
+    pueden ser PUSH a celulares,
+    (si tenemos una app movil y queremos enviar un push 
+    se manda un mensaje a este "topico" (se le dice asi) 
+    y reparte a todos los que esten registrados  )
+    es un tema de arquitectura publisher suscriber 
+    (este patron hace que los suscriptores queden guardados en un servicio 
+    y cuando nosotros enviamos una notificacion solo 1 vez hacemos que se reparta a todos)
+
+    esta bueno si hay q mandar mucha info a muchos lugares 
+    es mas facil asi q lo mandamos una sola vez y que un servicio como este se encarge de distribuirlo 
+    tambien soporta emails, y esta muy bueno para eso 
+
+    SIMPLE QUEUE SERVICE 
+
+    parecido, es un sistema de colas de mensajes 
+    si hay que hacer un market , y hacer el endpoint comprar 
+    y en el medio tenemos muchos pasos (ver stock, envio, etc)
+    para soportar todas estas cargas se usa una:
+    comunicacion por colas de mensajes 
+    (tambien es un patron de arquitectura )
+    tenemos 2 servicios A y B 
+    y en vez de hablar directamente 
+    A lo manda a una cola de mensajes y cuando se tiene tiempo le llega a B
+    asi se garantiza q el mensaje se envíe, y pueda ser procesado bien 
+
+    ---------------------------------------------------------
+
+    navegando en AWS 
+
+    hay 2 formas de crear cosas en AWS 
+        - a traves de la consola, de forma grafica 
+
+        - a traves de forma programatica
+        (por consola creando los recursos )
+        cuando creamos un usuario nuevo nos pide credenciales 
+            -programatic access CLAVE (nos da una access key que solo se muestra 1 vez y hay que guardarla )
+            -password - AWS managemente console access 
+
+    permisos: 
+    AdministratorAccess -> con este el usuario tiene todos los permisos 
+    
+    si no ponemos nada no vamos a poder hacer nada en AWS ni leer cosas 
+
+    ELASTIC BEANSTALK 
+    
+    se busca en el buscador de AWS 
+    podemos crear todos los recursos por consola 
+    tiene ventaja de ser mas intuitivo, pero es dificil de automatizar 
+    para esto necesitamos un usuario con acceso programatico 
+
+    hay que configurarle la seguridad porque dice NO SEGURO cuando entras ahi 
+    HEROKU hace esto por nosotros y en ese sentido se recomienda 
+    (la unica contra de heroku es que la app cuando no le pegamos se duerme,
+    algunos hacen un script para que cada cierto tiempo le peguen a la app para que este siempre on
+    
+    )
+
+    JENKINS
+
+    importante: para automatizar test y hace algunas cosas 
+    averiguar.
+    tambien averiguar DevOps 
+
+
+    CODE PIPELINE 
+
+    (se crea un pipeline)
+    minuto 1.10 clase AWS explica bien 
+
+    CLOUDWATCH 
+
+    otro servicio clave para guardar LOGS en la nube 
+
+----------------------------------------------------------------------------------
+
+SERVERLESS 
+
+FRAMEWORK que nos ayuda escribir codigo
+donde ahi creamos infraestructura con archivos YML 
+creamos base de datos 
+creamos backend ds3 
+
+solo nos cobran por el uso porque es serverless 
+
+otro framework:
+TERRAFORM 
+mismo proposito, la idea es escribir codigo
+y ahi describir la infraestructura 
+si queremos crear una maquina virtual 
+creamos un archivo en terraform 
+
+(aca podemos crear lo que quieras, 
+maquina virtual, red de internet )
+serverless esta mas pensado para las aplicaciones
+para arrancar es serverless clave 
+pero TERRAFORM es mucho mas completo 
+
+otro framework:
+SAM 
+(tiene un video clave que explica 
+
+)
+
+-------------------------------------------------
+
+APLICACION TIPICA DE SERVERLESS:
+(como arrancar)
+
+ver video en youtube serverless framework complete coding 
+gran tutorial de serverless 
+
+npm install -g serverless 
+
+serverless --help 
+
+vamos a la carpeta donde queremos crear el proyecto 
+
+serverless create --help 
+
+--template (arrancamos la aplicacion de lo que querramos)
+            (aca va aws-nodejs por ejemplo)
+
+queda algo asi: 
+
+serverless create -t "aws-nodejs" -p "path-donde-creamos-el-servicio"
+
+y nos crea una carpeta con el nombre que le pusimos 
+se crea un archivo serverless.yml 
+    y aca declaramos nuestras funciones 
+la idea es hacerlo con LAMBDA 
+se incorpora en el serverless.yml 
+la lambda tiene cargado un codigo
+se usa un blueprint -> getting started with lambda HTTP 
+se usa mediante HTTP que es lo mas comun para que ejecute nuestro codigo con un endpoint 
+y nos cobra solo el timepo q ejecutamos ese codigo 
+
+CODIGO: 
+
+en el index.js 
+importamos express, 
+se inicializa la aplicacion con express()
+
+y se exporta la app con serverless asi:
+export const handler = serverless(app)
+
+envuelve la aplicacion de express en serverless 
+y tenemos los endpoints que vamos a estar pidiendo aca
+a partir de aca es un servidor de express normal 
+
+en los archivos /routes donde estan las rutas get, post 
+se importa:
+
+import AWS from 'aws-sdk';
+
+esto es clave para unir NodeJS con AWS 
+sirve para crear recursos, leer cosas , hacer todo lo q podemos hacer en la consola AWS pero en esta libreria 
+(hay un manual cualquier cosa)
+
+volviendo al YML 
+tambien definimos una tabla de base de datos donde vamos a alojar nuestros registros 
+en DynamoDB las tablas se manejan por una PRIMARY KEY
+entonces tenemos que definir como usarla en -> resources 
+(hay un video que explica bien esto buscar )
+
+
+---------
+
+AWS SKILLBUILDER 
+ACA HAY CONTENIDO GRATUITO PARA APRENDER AWS GRATIS y tienen de todo
+
