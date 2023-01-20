@@ -2134,3 +2134,44 @@ para eso esta el ARRAY DE DEPENDENCIAS que va al final de los useEffect
         ->  se repetiria el efecto (useEffect)
         y actualiza todo incluyendo la renderizacion 
         
+
+
+----------------------------------------------------------------------------------------------------
+
+INICIAR APLICACION CON REACT 
+
+- npm init -y 
+
+- preparar el index.js y services/server.js 
+
+- instalamos express y todas las dependencias con la base de babel 
+
+- mandamos a puerto 3001 todo lo del servidor 
+
+- antes del server.listen(PORT.....)
+
+- hay que hacer un 
+
+    app.get('/api', (req, res) => {
+        res.json({
+            msg: "Hola desde el servidor!"
+        })
+    })
+
+INSTALAMOS BABEL
+
+- npm i @babel/core @babel/cli @babel/node @babel/preset-env -D
+
+- crear archivo .babelrc y adentro 
+{
+    "presets": ["@babel/preset-env"]
+  }
+
+- mandamos los scripts a package.json:
+
+    "build": "babel src --out-dir dist",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon --exec babel-node ./src/index.js"
+
+
+-
