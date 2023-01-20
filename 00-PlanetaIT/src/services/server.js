@@ -4,7 +4,7 @@ const app = express()
 
 app.get('/api', (req, res) => {
     res.json({
-        msg: "Hola desde el servidor API"
+        message: "Hola desde el servidor API"
     })
 })
 

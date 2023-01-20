@@ -2137,6 +2137,8 @@ para eso esta el ARRAY DE DEPENDENCIAS que va al final de los useEffect
 
 
 ----------------------------------------------------------------------------------------------------
+https://www.freecodecamp.org/espanol/news/como-crear-una-aplicacion-react-con-un-backend-de-node-la-guia-completa/
+
 
 INICIAR APLICACION CON REACT 
 
