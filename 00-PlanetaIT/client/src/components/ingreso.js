@@ -1,4 +1,4 @@
-
+import {useState, useEffect} from 'react'
 
 const Ingresos = async () => {
 
@@ -7,14 +7,14 @@ const [data, setData] = useState(null)
 useEffect( () => {
   fetch('http://localhost:3002/api/ingresos')
   .then( (res) => res.json())
-  .then( (data) => setData(data.message))
+  .then( (data) => setData(data))
 
  
 
 }, [] )
 
 
-return(
+return (
 
   <div className="App">
     <header className="App-header">
