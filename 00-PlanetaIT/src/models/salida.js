@@ -1,13 +1,12 @@
 import { Schema, model } from 'mongoose';
 
-const IngresoSchema = new Schema({
+const SalidaSchema = new Schema({
   nombre: { type: String, required: true, unique: true },
-  telefono: { type: String, required: true },
-  email: { type: String},
+  tecnico: { type: String, required: true },
   descripcion: { type: String, required: true },
   fecha: { type: String, required: true },
   numOrden: { type: String, required: true },
-  contraseña: {type: String, }
+  precio: {type: Number, required: true}
 });
 
-export const IngresoModel = model('ingreso', IngresoSchema);
+export const SalidaModel = model('salida', SalidaSchema);

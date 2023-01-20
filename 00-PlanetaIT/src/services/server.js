@@ -4,6 +4,7 @@ import MongoStore from 'connect-mongo';
 import Config from '../config';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import mainRouter from '../routes';
 
 const ttlSeconds = 180;
 
@@ -31,10 +32,6 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cors())
 
-app.get('/api', (req, res) => {
-    res.json({
-        message: "Hola desde el servidor API"
-    })
-})
+app.use('/api', mainRouter);
 
 export default app
