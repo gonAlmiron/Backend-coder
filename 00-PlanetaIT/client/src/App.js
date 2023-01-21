@@ -1,7 +1,7 @@
 import './App.css';
 import {useEffect} from 'react';
 import {useState} from 'react';
-import Ingresos from './components/ingreso'
+
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
         <header className="App-header">
           <h1>App React PlanetaIT desde Node</h1>
           <h4> {data} </h4>
-        <Ingresos/>
+        
         </header>
       </div>
 

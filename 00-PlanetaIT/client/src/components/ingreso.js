@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react'
 
-const Ingresos = async () => {
+export const Ingresos = async () => {
 
-const [data, setData] = useState(null)
+const [data, setData] = useState([])
 
-useEffect( () => {
-  fetch('http://localhost:3002/api/ingresos')
+useEffect( async () => {
+   fetch('http://localhost:3002/api/ingresos')
   .then( (res) => res.json())
   .then( (data) => setData(data))
 
@@ -19,7 +19,8 @@ return (
   <div className="App">
     <header className="App-header">
         
-      <h4> {data} </h4>
+      <h4> {data.nombre} </h4>
+      <h4> {data.descripcion} </h4>
 
     </header>
   </div>
@@ -27,7 +28,6 @@ return (
 )
 }
 
-export default Ingresos
 
 // const Ingresos = async () => {
 
