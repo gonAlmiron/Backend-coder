@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', (req, res) => {
     res.json({
-        message: "Hola desde el SERVIDOR ROUTER"
+        message: "Fetch desde el SERVIDOR / ROUTER"
     })
 })
 
@@ -36,10 +36,10 @@ router.post('/ingresos', async (req, res) => {
         }) 
 }})
 
-router.get('/ingresos', (req, res) => {
+router.get('/ingresos', async (req, res) => {
     try {
 
-        const data = IngresoModel.find()
+        const data = await IngresoModel.find()
     
         res.json({
             message: "ok",
