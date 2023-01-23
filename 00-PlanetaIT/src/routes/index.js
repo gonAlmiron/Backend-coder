@@ -36,10 +36,10 @@ router.post('/ingresos', async (req, res) => {
         }) 
 }})
 
-router.get('/ingresos', async (req, res) => {
+router.get('/ingresos', (req, res) => {
     try {
 
-        const data = await IngresoModel.find()
+        const data = IngresoModel.find()
     
         res.json({
             message: "ok",

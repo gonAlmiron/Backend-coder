@@ -2176,4 +2176,25 @@ INSTALAMOS BABEL
     "dev": "nodemon --exec babel-node ./src/index.js"
 
 
--
+
+
+-------------------------------------------------------
+
+PARA IMPORTAR IMAGENES EN REACT 
+SE PONE EN LA CARPETA LA IMAGEN .SVG:
+
+import logo from './logo.svg'
+
+const App = () => {
+
+    return (
+        <div>
+
+            <img src={logo}/>
+
+        </div>
+    )
+
+}
+
+------------------------------------------------------

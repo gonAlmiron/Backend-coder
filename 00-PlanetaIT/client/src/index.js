@@ -10,8 +10,7 @@ root.render(
   <React.StrictMode>
 
     <App />
-    <Ingresos/>
-
+    
     
   </React.StrictMode>
 
