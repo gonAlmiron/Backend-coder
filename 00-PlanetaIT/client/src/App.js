@@ -6,34 +6,45 @@ import {useState} from 'react';
 
 const App = () => {
 
-    const [data, setData] = useState(null)
+    const [ingresos, setIngresos] = useState([])
+
+    console.log(ingresos)
 
     useEffect( () => {
-      fetch('http://localhost:3002/api')
+      fetch('http://localhost:3002/api/ingresos')
       .then( (res) => res.json())
-      .then( (data) => setData(data.message))
-
-     
-
+      .then( (ingresos) => setIngresos(ingresos))
+      
+      
     }, [] )
 
 
-    return(
 
-      <div className="App">
-        <header className="App-header">
-          <h1>App React PlanetaIT desde Node</h1>
-          <h4> {data} </h4>
+    return (
+      <div>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+          {ingresos.map(ing => {
+            return (
+                <tr >
+                  <td>{ing.nombre}</td>
+                  <td>{ing.descripcion}</td>
+                  <td>{ing.telefono}</td>
+                </tr>
+                );
+              })}
           
-
-        
-        </header>
+          </tbody>
+        </table>
       </div>
-
-    )
-  
-
-
-}
+    );
+  }
 
 export default App;

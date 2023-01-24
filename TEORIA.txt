@@ -2278,5 +2278,5 @@ class Email {
 
 POINTS PARA TYPESCRIPT:
 
-- por cada librería que tengaos, hay que instalar el @types/... de esa libreria 
+- por cada librería que tengamos, hay que instalar el @types/... de esa libreria 
 - 
