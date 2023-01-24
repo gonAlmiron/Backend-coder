@@ -8,8 +8,6 @@ const App = () => {
 
     const [ingresos, setIngresos] = useState([])
 
-    console.log(ingresos)
-
     useEffect( () => {
       fetch('http://localhost:3002/api/ingresos')
       .then( (res) => res.json())
@@ -18,7 +16,7 @@ const App = () => {
       
     }, [] )
 
-
+    console.log(ingresos)
 
     return (
       <div>
@@ -31,9 +29,9 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-          {ingresos.map(ing => {
+          { Object.entries(ingresos).map(ing => {
             return (
-                <tr >
+                <tr key= {ing._id}>
                   <td>{ing.nombre}</td>
                   <td>{ing.descripcion}</td>
                   <td>{ing.telefono}</td>
