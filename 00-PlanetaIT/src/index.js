@@ -1,7 +1,8 @@
 import server from './services/server';
 import {initDb} from './services/database'
+import Config from './config';
 
-const PORT = process.env.PORT || 3002
+const PORT = process.env.PORT || Config.PUERTO
 
     const init = async () => {
         await initDb()

@@ -6,55 +6,43 @@ import {useState} from 'react';
 
 const App = () => {
 
-    const [data, setData] = useState(null)
+    const [ingresos, setIngresos] = useState([])
 
     useEffect( () => {
-      fetch('http://localhost:3001/api')
+      fetch('http://localhost:3002/api/ingresos')
       .then( (res) => res.json())
-      .then( (data) => setData(data.message))
-
-     
-
+      .then( (ingresos) => setIngresos(ingresos))
+      
+      
     }, [] )
 
+    console.log(ingresos)
 
-    return(
-
-      <div className="App">
-        <header className="App-header">
-          <h1>App React PlanetaIT desde Node</h1>
-          <h4> {data} </h4>
-        
-        </header>
+    return (
+      <div>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+          { Object.entries(ingresos).map(ing => {
+            return (
+                <tr key= {ing._id}>
+                  <td>{ing.nombre}</td>
+                  <td>{ing.descripcion}</td>
+                  <td>{ing.telefono}</td>
+                </tr>
+                );
+              })}
+          
+          </tbody>
+        </table>
       </div>
-
-    )
-  
-
-
-}
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-    
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+    );
+  }
 
 export default App;

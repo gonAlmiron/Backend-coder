@@ -2176,4 +2176,107 @@ INSTALAMOS BABEL
     "dev": "nodemon --exec babel-node ./src/index.js"
 
 
--
+
+
+-------------------------------------------------------
+
+PARA IMPORTAR IMAGENES EN REACT 
+SE PONE EN LA CARPETA LA IMAGEN .SVG:
+
+import logo from './logo.svg'
+
+const App = () => {
+
+    return (
+        <div>
+
+            <img src={logo}/>
+
+        </div>
+    )
+
+}
+
+------------------------------------------------------
+
+ENVIO DE MENSAJES Y SEGURIDAD 
+
+NODEMAILER 
+
+es un modulo sencillo para aplicaciones node
+no tiene dependencias 
+
+enfocada en envio seguro de mails (se pueden incluir htmls o archivos)
+
+usa un protocolo (SMTP) que es por el cual se envian mails 
+
+podemos utilizarla dandole permisos a nuestra cuenta de gmail 
+
+primero trabajamos con una prueba con un mail falso y enviamos a esa casilla 
+(esto es bueno para los desarrollos locales )
+
+para los mails "falsos" vamos a utilizar:
+
+ETHEREAL 
+
+es un servidor SMPT falso (como crearse una cuenta dem ail falsa)
+el objetivo es probar el funcionamiento del envio de mails 
+
+hay que hacerse una cuenta en la pag de Ethereal y ahi llegan los mails 
+
+luego es usar la liberia de Ethereal ,
+y mandar un post a un endpoint 
+poniendole dentro de la funcion las variables predeterminadas q tiene Ethereal
+como el cuerpo, destinatario, etc 
+
+y para NODEMAILER 
+se importa la libreria en un /services/email.js 
+
+y se usa una clase 
+
+esto es en TYPESCRIPT: (en js no se puede asi)
+se declaran variables privates que nadie podra ver salvo nosotros 
+
+------------------
+
+import Config from '../config';
+import nodemailer from 'nodemailer;
+
+
+class Email {
+    private owner;
+    private transporter
+}
+    constructor() {
+        this.owner = {
+            name: Config.ETHEREAL_NAME,
+            adress: Config.ETHEREAL_EMAIL
+        };
+
+        this.transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: Config.ETHEREAL_EMAIL,
+                pass: Config.ETHEREAL_PASSWORD
+            },
+        });
+    }
+
+    async sendEmail(dest: String, subject: String, content: String) {
+        const mailOptions = {
+            from: this.owner,
+            to: dest,
+            subject,
+            html: content 
+        }
+    
+    const response = await this.transporter.sendMail(mailOptions)
+
+
+-----------------------------------------------------------------------------------
+
+POINTS PARA TYPESCRIPT:
+
+- por cada librería que tengamos, hay que instalar el @types/... de esa libreria 
+- 

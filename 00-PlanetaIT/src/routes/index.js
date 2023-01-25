@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', (req, res) => {
     res.json({
-        message: "Hola desde el SERVIDOR ROUTER"
+        message: "Fetch desde el SERVIDOR / ROUTER"
     })
 })
 
@@ -24,9 +24,7 @@ router.post('/ingresos', async (req, res) => {
             })
         
             res.json({
-                msg: "POST OK!",
                 data: newIngreso
-        
             })
 
     } catch (err) {
@@ -39,11 +37,10 @@ router.post('/ingresos', async (req, res) => {
 router.get('/ingresos', async (req, res) => {
     try {
 
-        const data = await IngresoModel.find()
+        const ingresos = await IngresoModel.find()
     
         res.json({
-            message: "ok",
-            data: data
+            ingresos
         })
 
     } catch (err) {
@@ -52,6 +49,25 @@ router.get('/ingresos', async (req, res) => {
       stack: err.stack,
     }) 
     } 
+})
+
+router.delete('/ingresos/:id', async (req, res) => {
+
+    try {
+        const {id} = req.params;
+        await IngresoModel.findByIdAndDelete(id)
+
+        res.json({
+            msg: "Ingreso borrado"
+        })
+
+    } catch (err) {
+        res.status(500).json({
+          error: err.message,
+          stack: err.stack,
+        }) 
+        } 
+
 })
 
 export default router;
