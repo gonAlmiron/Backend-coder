@@ -1,46 +1,17 @@
 import './App.css';
-import {useEffect} from 'react';
-import {useState} from 'react';
+
+import Ingreso from './components/ingreso';
 
 
 
 const App = () => {
 
-    const [ingresos, setIngresos] = useState([])
-
-    useEffect( () => {
-      fetch('http://localhost:3002/api/ingresos')
-      .then( (res) => res.json())
-      .then( (ingresos) => setIngresos(ingresos.ingresos))
-      
-      
-    }, [] )
-
-    console.log(ingresos)
 
     return (
-      <div>
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Descripción</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-          { ingresos.map(ing => {
-            return (
-                <tr key= {ing._id}>
-                  <td>{ing.nombre}</td>
-                  <td>{ing.descripcion}</td>
-                  <td>{ing.telefono}</td>
-                </tr>
-                );
-              })}
-          
-          </tbody>
-        </table>
+      <div className="App">
+        <header className="App-header">
+          <Ingreso/>
+        </header>
       </div>
     );
   }
