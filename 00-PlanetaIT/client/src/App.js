@@ -11,7 +11,7 @@ const App = () => {
     useEffect( () => {
       fetch('http://localhost:3002/api/ingresos')
       .then( (res) => res.json())
-      .then( (ingresos) => setIngresos(ingresos))
+      .then( (ingresos) => setIngresos(ingresos.ingresos))
       
       
     }, [] )
@@ -29,7 +29,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-          { Object.entries(ingresos).map(ing => {
+          { ingresos.map(ing => {
             return (
                 <tr key= {ing._id}>
                   <td>{ing.nombre}</td>
