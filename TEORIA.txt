@@ -2280,3 +2280,5 @@ POINTS PARA TYPESCRIPT:
 
 - por cada librería que tengamos, hay que instalar el @types/... de esa libreria 
 - 
+
+xx
