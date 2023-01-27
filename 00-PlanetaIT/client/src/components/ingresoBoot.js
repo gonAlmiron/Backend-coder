@@ -20,8 +20,8 @@ const IngresoBoot = () => {
   console.log(ingresos)
 
   return (
-    <div className="App-header">
-      <div>
+    
+      <div className="container my-4">
 
       <Table striped bordered hover variant="dark">
         <thead>
@@ -39,7 +39,7 @@ const IngresoBoot = () => {
                   <td>{ing.nombre}</td>
                   <td>{ing.descripcion}</td>
                   <td>{ing.telefono}</td>
-                  <Button variant="success">Listo</Button>
+                  <td><Button variant="success">Listo</Button></td>
                 </tr>
                 );
               })}
@@ -48,7 +48,6 @@ const IngresoBoot = () => {
       </Table>
       </div>
   
-    </div>
   );
 }
 

@@ -2,7 +2,8 @@ import './App.css';
 import IngresoBoot from './components/ingresoBoot';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar';
-
+import './App.css';
+import Home from './components/Home';
 
 
 const App = () => {
@@ -10,24 +11,20 @@ const App = () => {
 
     return (
 
-      <div className="App-header">
-
 
       <BrowserRouter>
 
         <NavBar/>
 
+
         <Routes>
 
           <Route path='/ingresos' element={ <IngresoBoot/> } />
-
+          <Route path='/' element={ <Home/>} />
 
         </Routes>
-          
-      
 
       </BrowserRouter>
-      </div>
 
     );
   }
