@@ -19,7 +19,7 @@ const Navbar = () => {
             <FaIcons.FaBars onClick={showSidebar} />
          
           </Link>
-          <header className="nav-text"> <h3 className="titulo">Planeta IT - Soluciones tecnológicas</h3></header>
+          <header> <h3 className="App-header">Planeta IT - Soluciones tecnológicas</h3></header>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
