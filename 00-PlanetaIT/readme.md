@@ -1,0 +1,24 @@
+PARA EL ESTADO DE LOS SOPORTE
+    -LISTO PARA RETIRAR
+    -ESPERANDO REPUESTO
+    -ENTREGADO
+    -EN SOPORTE
+
+PARA DESCRIPCION DE SOPORTE
+    -BOTON EDITAR DESCRIPCION QUE LLEVE A UN MODAL Y LO EDITE
+    -EL ESTADO SE PODRIA CAMBIAR CON UN SELECT QUE HAGA UN 
+
+
+PARA EL GENERADOR DE CODIGOS QR 
+
+    - OPCION GENERAR CODIGO
+        -> CREA QR CON UN LINK A NUESTRA APP CON EL ID DE SU PRODUCTO 
+        -> GENERA UNA VISTA DE: 
+                                -PRODUCTO
+                                -NOMBRE
+                                -DESCRIPCION
+                                -ESTADO
+                                -PRESUPUESTO
+
+
+

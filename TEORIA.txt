@@ -2293,3 +2293,88 @@ CLAVE PARA DEPLOYAR APLICACIONES ESTOS SCRIPT:
 
 
 ------------------------------------------------------------------
+------------------------------------------------------------
+
+TERCERA ENTREGA 
+
+1-  SE USA PASSPORT PARA AUTENTICACION DE USUARIOS  
+2-  SE USA EL LOGIN QUE GUARDA:
+    - EMAIL Y PASSWORD PARA INGRESAR 
+    - NOMBRE 
+    - DIRECCION 
+    - EDAD 
+    - TELEFONO 
+    - FOTO (tiene q estar guardada en una carpeta public)
+    (ver de validar con JSONSchema)
+3- ALMACENAR LA CONTRASEÑA ENCRIPTADA EN LA BASE DE DATOS (CRYPTO)
+4- FORMULARIO POST DE REGISTRO Y LOGIN
+5- LUEGO HAY QUE ACCEDER A UN HOME 
+6- EL USUARIO ACCESA CON MAIL Y PASSWORD Y TIENE ACCESO A UN MENU
+    (TIPO BARRA DE NAVEGACION, que tenga productos y eso.)
+    SUMAR TAMBIEN UN CARRITO 
+
+7- TIENE QUE HABER OPCION PARA DESLOGEARSE DEL SISTEMA 
+8- CUANDO SE INCORPORA / REGISTRA UN USUARIO. SE MANDA A NUESTRAS CUENTAS: 
+    -MAIL
+    -WHATSAPP 
+    AVISANDO QUE TAL USUARIO SE REGISTRO 
+9- INCORPORAR PRODUCTOS Y UN CARRITO 
+    - Y DESDE EL CARRITO TAMBIEN SE ENVIAN DATOS AL BACKEND 
+    Y CON ESOS DATOS TAMBIEN SE NOS TIENE Q MANDAR UN MAIL DE QUE COMPRARON ALGO 
+    TAMBIEN HAY QUE MANDARLE UN MSJ AL USUARIO CON EL NUMERO QUE DEJO 
+    
+----------------------------------------------------------------------------------------
+
+REACT 
+COMO USAR ROUTER 
+(ver curso de Material UI)
+
+para empezar hay que importar en App (para que sea global) 3 librerias claves de React: 
+
+import { BrowseRouter, Routes, Route } from 'react-router-dom';
+
+luego se ponen todos los componentes de la App dentro de un :
+
+<BrowseRouter>
+
+
+
+</BrowseRouter>
+
+----------------------------------------------
+
+luego hay que sumar el <Routes> y ponemos todo ahi tambien menos el HEADER, FOOTER, cosas que dejamos fijas . 
+queda asi: 
+
+
+
+<BrowseRouter>
+
+<Header/>
+
+<Routes>
+
+
+
+</Routes>
+
+
+</BrowseRouter>
+
+---------------------------------------------------
+
+LUEGO VA CADA <Route>
+los <Route> reciben 2 elementos como parametros:
+1- el path 
+2- el element donde va un elemento JSX
+
+    <Route path='/' element='{  }' />
+
+en el element entre corchetes van los componentes que estamos importando por ejemplo <Ingresos/>
+
+
+
+
+
+
+
