@@ -2282,3 +2282,14 @@ POINTS PARA TYPESCRIPT:
 - 
 
 xx
+
+
+--------------------------------------------------------
+
+CLAVE PARA DEPLOYAR APLICACIONES ESTOS SCRIPT: 
+
+    "build": "npm install && babel src --out-dir dist",
+    "start": "npm run build && node ./dist/index.js",
+
+
+------------------------------------------------------------------
