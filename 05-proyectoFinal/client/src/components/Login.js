@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios";
 import {useState} from "react"
+import { Link } from "react-router-dom";
 
 
 const Login = (props) =>  {
@@ -24,6 +25,7 @@ const Login = (props) =>  {
       }
 
     }
+
 
   return (
     <div className="Auth-form-container">
@@ -54,9 +56,16 @@ const Login = (props) =>  {
             <button type="submit" className="btn btn-primary">
               Ingresar
             </button>
+            <div>
+              <br/>
+              <p>No tenes usuario?</p>
+              <br/>
+              <Link to="/signup">Registrate aquí</Link>
+            </div>
           </div>
         </div>
       </form>
+
     </div>
   )
 }

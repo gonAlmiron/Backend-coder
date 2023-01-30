@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios";
 import {useState} from "react"
-
+import { Link } from "react-router-dom";
 
 const SignUp = (props) =>  {
 
@@ -10,8 +10,6 @@ const SignUp = (props) =>  {
     const [password, setPassword] = useState('')
 
   
-
-
 
     
     const handleSubmit = async (e) => {
@@ -26,7 +24,6 @@ const SignUp = (props) =>  {
         catch(err) {
 
       }
-
     }
 
   return (
@@ -58,16 +55,21 @@ const SignUp = (props) =>  {
             <button type="submit" className="btn btn-primary">
               Ingresar
             </button>
+
+            <div>
+              <br/>
+              <p>Ya tenés un usario?</p>
+              <br/>
+
+              <Link to="/login"> Ingresa aquí </Link>
+            </div>
           </div>
+          
         </div>
       </form>
-      <br/>
-      <p>OR</p>
-      <br/>
-
-      <Link to="/login"> Login Page</Link>
+     
     </div>
   )
 }
 
-export default Login
+export default SignUp

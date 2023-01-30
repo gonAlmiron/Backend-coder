@@ -1,10 +1,10 @@
 import './App.css';
-import IngresoBoot from './components/ingresoBoot';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import './App.css';
-import Home from './components/Home';
+import UserData from './components/UserData';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 
 const App = () => {
@@ -20,9 +20,10 @@ const App = () => {
 
         <Routes>
 
-          <Route path='/ingresos' element={ <IngresoBoot/> } />
-          <Route path='/' element={ <Home/>} />
+          <Route path='/' element={ <Login/>} />
           <Route path='/login' element={ <Login/>} />
+          <Route path='/signup' element={ <SignUp/>} />
+          <Route path='/userdata' element={ <UserData/>} />
 
         </Routes>
 
