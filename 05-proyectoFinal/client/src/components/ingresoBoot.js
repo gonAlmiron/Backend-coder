@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import {useState} from 'react';
 import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import React from 'react'
 

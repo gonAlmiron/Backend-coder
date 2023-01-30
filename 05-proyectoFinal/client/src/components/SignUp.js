@@ -3,11 +3,15 @@ import axios from "axios";
 import {useState} from "react"
 
 
-const Login = (props) =>  {
+const SignUp = (props) =>  {
 
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+  
+
+
 
     
     const handleSubmit = async (e) => {
@@ -16,7 +20,7 @@ const Login = (props) =>  {
 
       try {
 
-        await axios.post("http://localhost:3002/api/login",
+        await axios.post("http://localhost:3002/api/signup",
         {username, password} 
         )} 
         catch(err) {
@@ -29,7 +33,7 @@ const Login = (props) =>  {
     <div className="Auth-form-container">
       <form onSubmit={handleSubmit} className="Auth-form" action="POST">
         <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Ingresar</h3>
+          <h3 className="Auth-form-title">Registrate</h3>
           <div className="form-group mt-3">
             <label>Usuario</label>
             <input
@@ -57,6 +61,11 @@ const Login = (props) =>  {
           </div>
         </div>
       </form>
+      <br/>
+      <p>OR</p>
+      <br/>
+
+      <Link to="/login"> Login Page</Link>
     </div>
   )
 }

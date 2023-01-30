@@ -1,5 +1,6 @@
 import {Router} from 'express';
-import { IngresoModel } from '../models/ingreso';
+import passport from 'passport';
+import log4js from 'log4js';
 
 const router = Router();
 
@@ -9,65 +10,49 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/ingresos', async (req, res) => {
 
-    try {
-        
-            let {nombre, telefono, descripcion, fecha, numOrden} = req.body
-        
-            const newIngreso = await IngresoModel.create({
-                nombre, 
-                telefono, 
-                descripcion, 
-                fecha, 
-                numOrden
-            })
-        
-            res.json({
-                data: newIngreso
-            })
+const passportOptions = { badRequestMessage: 'Falta username / password' };
 
-    } catch (err) {
-        res.status(500).json({
-          error: err.message,
-          stack: err.stack,
-        }) 
-}})
 
-router.get('/ingresos', async (req, res) => {
-    try {
+router.post('/signup', (req, res, next) => {
+  passport.authenticate('signup', passportOptions, (err, user, info) => {
+    console.log('Info SIGNUP');
+    console.log(err, user, info);
+    if (err) {
+      return next(err);
+    }
+    if (!user) return res.status(401).json(info);
 
-        const ingresos = await IngresoModel.find()
+    const logger = log4js.getLogger();
+
+    logger.level = 'info';
+  
+    logger.info("Ruta /SIGNUP. Metogo POST")
+
+    res.json({ msg: 'signup OK' });
+  })(req, res, next);
+});
+
+router.post(
+    '/login',
+    passport.authenticate('login', passportOptions),
+    (req, res) => {
+  
+      const logger = log4js.getLogger();
+  
+      logger.level = 'info';
     
-        res.json({
-            ingresos
-        })
+      logger.info("Ruta /LOGIN. Metogo POST")
 
-    } catch (err) {
-    res.status(500).json({
-      error: err.message,
-      stack: err.stack,
-    }) 
-    } 
-})
+      res.json({
+        msg: "LOGIN OK!"
+      })
+  
+      
+    },
+  );
 
-router.delete('/ingresos/:id', async (req, res) => {
 
-    try {
-        const {id} = req.params;
-        await IngresoModel.findByIdAndDelete(id)
 
-        res.json({
-            msg: "Ingreso borrado"
-        })
-
-    } catch (err) {
-        res.status(500).json({
-          error: err.message,
-          stack: err.stack,
-        }) 
-        } 
-
-})
 
 export default router;
