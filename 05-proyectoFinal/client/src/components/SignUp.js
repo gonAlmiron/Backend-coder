@@ -56,11 +56,9 @@ const SignUp = (props) =>  {
               Ingresar
             </button>
 
-            <div>
+            <div className="Auth-route">
               <br/>
               <p>Ya tenés un usario?</p>
-              <br/>
-
               <Link to="/login"> Ingresa aquí </Link>
             </div>
           </div>

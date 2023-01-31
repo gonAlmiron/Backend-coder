@@ -56,14 +56,15 @@ const Login = (props) =>  {
             <button type="submit" className="btn btn-primary">
               Ingresar
             </button>
-            <div>
+          
+          </div>
+          <div className="Auth-route">
               <br/>
               <p>No tenes usuario?</p>
-              <br/>
               <Link to="/signup">Registrate aquí</Link>
             </div>
-          </div>
         </div>
+        
       </form>
 
     </div>
