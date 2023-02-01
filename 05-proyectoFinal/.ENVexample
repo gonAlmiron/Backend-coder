@@ -1,0 +1,10 @@
+MONGO_ATLAS_URL=mongodb+srv://gonAlmiron:1234@cluster0.ohn3xaw.mongodb.net/?retryWrites=true&w=majority
+PUERTO=3002
+EMAIL=gonzaloalmiron.25@gmail.com
+PASSWORD=ylvsaqqjtoqfpuls
+PORT_GMAIL=465
+
+SMS=----------
+SID=AC51b61aac30e429d8e1425f000fc00737
+TOKEN=fee56bead0193c3a96a7c0318f954317
+CEL=whatsapp:+14155238886
