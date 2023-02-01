@@ -21,6 +21,7 @@
     "express-session": "^1.17.3",
     "log4js": "^6.7.1",
     "mongoose": "^6.8.4",
+    "nodemailer": "^6.9.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "react-icons": "^4.7.1"
