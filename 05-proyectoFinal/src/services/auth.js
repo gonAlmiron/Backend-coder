@@ -3,6 +3,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import log4js from 'log4js';
 
+const logger = log4js.getLogger();
+logger.level = 'info';
 
 
 const strategyOptions = {
@@ -12,23 +14,23 @@ const strategyOptions = {
 };
 
 const login = async (req, username, password, done) => {
-  console.log('LOGIN!!');
+  logger.info("LOGIN!")
   const user = await UserModel.findOne({ username, password });
-
+  console.log(user)
   if (!user) return done(null, false, { mensaje: 'Usuario no encontrado' });
 
-  console.log('ENCONTRE UN USUARIO');
+  logger.info("ENCONTRE UN USUARIO", user)
   return done(null, user);
 };
 
 const signup = async (req, username, password, done) => {
-  console.log('SIGNUP!!');
+  logger.info('SIGNUP!!');
   try {
     const newUser = await UserModel.create({ username, password });
     return done(null, newUser);
   } catch (err) {
-    console.log('Hubo un error!');
-    console.log(err);
+    logger.info('Hubo un error!');
+    logger.info(err);
     return done(null, false, { mensaje: 'Error Inesperado', err });
   }
 };
@@ -46,7 +48,7 @@ export const signUpFunc = new LocalStrategy(strategyOptions, signup);
  * En este caso estamos creando una key llamado user con la info del usuario dentro de req.session.passport
  */
  passport.serializeUser((user, done) => {
-  console.log('Se Ejecuta el serializeUser');
+  logger.info('Se Ejecuta el serializeUser');
   done(null, user._id);
 });
 
@@ -54,7 +56,7 @@ export const signUpFunc = new LocalStrategy(strategyOptions, signup);
  * DeserializeUser Permite tomar la info que mandamos con el serializeUser para hacer algun extra de busqueda de informacion
  */
  passport.deserializeUser((userId, done) => {
-  console.log('Se Ejecuta el desserializeUser');
+  logger.info('Se Ejecuta el desserializeUser');
   UserModel.findById(userId).then((user) => {
     return done(null, user);
   })

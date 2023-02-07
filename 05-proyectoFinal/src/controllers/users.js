@@ -13,7 +13,7 @@ export const signUpController = async (req, res, next) => {
           }
           if (!user) return res.status(401).json(info);
     
-          const logger = log4js.getLogger();
+          
       
           logger.level = 'info';
           
