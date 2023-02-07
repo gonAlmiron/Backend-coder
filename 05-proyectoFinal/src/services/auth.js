@@ -1,6 +1,9 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
+import log4js from 'log4js';
+
+
 
 const strategyOptions = {
   usernameField: 'username',
@@ -32,6 +35,7 @@ const signup = async (req, username, password, done) => {
 
 export const loginFunc = new LocalStrategy(strategyOptions, login);
 export const signUpFunc = new LocalStrategy(strategyOptions, signup);
+
 
 
 /**
