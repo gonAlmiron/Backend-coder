@@ -2374,6 +2374,26 @@ en el element entre corchetes van los componentes que estamos importando por eje
 
 
 
+-----------------------------------------------------------------------------
+
+DAO - DTO - FACTORY
+
+la DAO es una api que nos permite trabajar con la base de datos 
+en vez de trabajar directamente, usamos la api 
+
+FACTORY 
+
+sirve para, en funcion a una variable, que utilice una clase segun lo que necesitemos 
+y no tengamos 10 clases distintas que repitan codigo
+se puede combinar DAO con FACTORY , y segun la persistencia que necesitemos la factory haga lo suyo 
+
+las clases FACTORY 
+se definen con un metodo static (TYPESCRIPT)
+por lo general se llama "create"
+ y mete un switch - case 
+ y cada case x ejemplo "mongo" 
+ hace un:
+    return new Mongo()
 
 
 
