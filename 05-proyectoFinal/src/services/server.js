@@ -8,14 +8,17 @@ import mainRouter from '../routes';
 import { loginFunc, signUpFunc } from './auth';
 import passport from 'passport';
 
+const app = express()
+app.use(express.json())
+
 const ttlSeconds = 180;
 
 const StoreOptions = {
   store: MongoStore.create({
     mongoUrl: Config.MONGO_ATLAS_URL,
-    // crypto: {
-    //   secret: 'squirrel',
-    // },
+    crypto: {
+      secret: 'squirrel',
+    },
   }),
   secret: 'shhhhhhhhhhhhhhhhhhhhh',
   resave: false,
@@ -25,18 +28,16 @@ const StoreOptions = {
   },
 };
 
-const app = express()
-const mySecret = 'mySecret';
 app.use(session(StoreOptions));
+const mySecret = 'mySecret';
+
 app.use(cookieParser(mySecret));
-app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}))
-app.use(express.json())
+
 app.use(cors())
 
 app.use('/api', mainRouter);
 
-app.use(session(StoreOptions));
 
 //Indicamos que vamos a usar passport en todas nuestras rutas
 app.use(passport.initialize());
@@ -49,5 +50,13 @@ passport.use('login', loginFunc);
 
 //signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
 passport.use('signup', signUpFunc);
+
+app.use(function (err, req, res, next) {
+  const status = err.statusCode || 500;
+  const msg = err.message || 'Internal Server Error';
+  const stack = err.stack;
+  Logger.error(err);
+  res.status(status).send({ msg, stack });
+});
 
 export default app

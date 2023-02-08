@@ -2,9 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import log4js from 'log4js';
-
-const logger = log4js.getLogger();
-logger.level = 'info';
+import logger from './logger'
 
 
 const strategyOptions = {
@@ -14,9 +12,9 @@ const strategyOptions = {
 };
 
 const login = async (req, username, password, done) => {
-  logger.info("LOGIN!")
+
   const user = await UserModel.findOne({ username, password });
-  console.log(user)
+
   if (!user) return done(null, false, { mensaje: 'Usuario no encontrado' });
 
   logger.info("ENCONTRE UN USUARIO", user)
