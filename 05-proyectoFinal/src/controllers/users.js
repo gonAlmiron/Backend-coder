@@ -13,10 +13,7 @@ export const signUpController = async (req, res, next) => {
           }
           if (!user) return res.status(401).json(info);
     
-          
-      
           logger.level = 'info';
-          
           logger.info(user)
           logger.info(`Se registró un usuario. Ruta /SIGNUP. Metogo POST`)
       
@@ -25,20 +22,15 @@ export const signUpController = async (req, res, next) => {
       }
 
 
-
 export const loginController = async (req, res) => {
   
   await passport.authenticate('login', passportOptions)
   const logger = log4js.getLogger();
-
   logger.level = 'info';
 
   logger.info("Se logeó un usuario. Ruta /LOGIN. Metogo POST")
 
-
   res.json({
     msg: "LOGIN OK!"
   })
-
-  
 }
