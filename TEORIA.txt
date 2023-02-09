@@ -2395,6 +2395,20 @@ por lo general se llama "create"
  hace un:
     return new Mongo()
 
+---------------------------------
+
+el DTO mapea la info y devuelve los datos que nos está pidiendo el front 
+es como un filtro o "reformateo" de la informacion 
+
+---------------------------------
+
+EL FACTORY ES PARTE DEL DAO, ES EL QUE DIVIDE ESO
+
+
+----------------
+
+EL REPOSITORY ES EL QUE JUNTA TODO, AGARRA EL DAO Y LE METE EL DTO 
+
 
 
 

@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import { gmailController } from '../controllers/gmail.js';
-import { loginController, signUpController } from '../controllers/users.js';
+import { getUserByName, createUser } from '../controllers/users.js';
 import { inboxController, wppController } from '../controllers/whatsapp.js';
 
 
@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/signup', signUpController);
+router.post('/signup', createUser);
 
-router.post('/login', loginController);
+router.post('/login', getUserByName);
 
 router.post('/gmail', gmailController)
 

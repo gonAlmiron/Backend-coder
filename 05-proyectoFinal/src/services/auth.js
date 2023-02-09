@@ -2,6 +2,10 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import logger from './logger'
+import {
+  getUserByName,
+  createUser,
+} from '../controllers/users';
 
 
 const strategyOptions = {
@@ -12,19 +16,35 @@ const strategyOptions = {
 
 const login = async (req, username, password, done) => {
 
-  const user = await UserModel.findOne({ username, password });
+  const user = await getUserByName(username)
 
-  if (!user) return done(null, false, { mensaje: 'Usuario no encontrado' });
+  if (!user) 
+    return done(null, false, { mensaje: 'Usuario no encontrado' });
+
+  const isValidPassword = await user.isValidPassword(password);
+
+  if (!isValidPassword) {
+    return done(null, false, { message: 'Invalid Username/Password' });
+  }
 
   logger.info("ENCONTRE UN USUARIO", user)
+
   return done(null, user);
 };
 
 const signup = async (req, username, password, done) => {
+
+
   logger.info('SIGNUP!!');
+
   try {
-    const newUser = await UserModel.create({ username, password });
+    const {username, password} = req.body
+    const newUser = await createUser({username, password});
+
+    logger.info(newUser)
+
     return done(null, newUser);
+
   } catch (err) {
     logger.info('Hubo un error!');
     logger.info(err);
