@@ -7,11 +7,13 @@ import cookieParser from 'cookie-parser';
 import mainRouter from '../routes';
 import { loginFunc, signUpFunc } from './auth';
 import passport from 'passport';
+import logger from './logger';
+
 
 const app = express()
 app.use(express.json())
 
-const ttlSeconds = 180;
+const ttlSeconds = 1800;
 
 const StoreOptions = {
   store: MongoStore.create({
@@ -20,18 +22,20 @@ const StoreOptions = {
       secret: 'squirrel',
     },
   }),
-  secret: 'shhhhhhhhhhhhhhhhhhhhh',
-  resave: false,
-  saveUninitialized: false,
+  secret: 'shhhhhh',
+  resave: true,
+  saveUninitialized: true,
   cookie: {
     maxAge: ttlSeconds * 1000,
   },
 };
 
 app.use(session(StoreOptions));
+
 const mySecret = 'mySecret';
 
 app.use(cookieParser(mySecret));
+
 app.use(express.urlencoded({extended: true}))
 
 app.use(cors())
@@ -55,7 +59,7 @@ app.use(function (err, req, res, next) {
   const status = err.statusCode || 500;
   const msg = err.message || 'Internal Server Error';
   const stack = err.stack;
-  Logger.error(err);
+  logger.error(err);
   res.status(status).send({ msg, stack });
 });
 

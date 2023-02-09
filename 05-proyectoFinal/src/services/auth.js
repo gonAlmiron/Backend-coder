@@ -16,40 +16,47 @@ const strategyOptions = {
 
 const login = async (req, username, password, done) => {
 
-  const user = await getUserByName(username)
+    const user = await getUserByName(username)
 
-  if (!user) 
-    return done(null, false, { mensaje: 'Usuario no encontrado' });
+    if (!user) 
+      return done(null, false, { mensaje: 'Usuario no encontrado' });
 
-  const isValidPassword = await user.isValidPassword(password);
+    const isValidPassword = await user.isValidPassword(password);
 
-  if (!isValidPassword) {
-    return done(null, false, { message: 'Invalid Username/Password' });
-  }
+    if (!isValidPassword) {
+      return done(null, false, { message: 'Invalid Username/Password' });
+    }
 
-  logger.info("ENCONTRE UN USUARIO", user)
+    logger.info("ENCONTRE UN USUARIO", user)
 
-  return done(null, user);
+    return done(null, user);
 };
+
+
 
 const signup = async (req, username, password, done) => {
 
+    logger.info('SIGNUP!!');
 
-  logger.info('SIGNUP!!');
+    try {
+      const {username, password} = req.body
 
-  try {
-    const {username, password} = req.body
-    const newUser = await createUser({username, password});
+      const userData = {
+        username, 
+        password
+      }
 
-    logger.info(newUser)
+      const newUser = await createUser(userData);
 
-    return done(null, newUser);
+      logger.info(newUser)
 
-  } catch (err) {
-    logger.info('Hubo un error!');
-    logger.info(err);
-    return done(null, false, { mensaje: 'Error Inesperado', err });
-  }
+      return done(null, newUser);
+
+    } catch (err) {
+      logger.info('Hubo un error!');
+      logger.info(err);
+      return done(null, false, { mensaje: 'Error Inesperado', err });
+    }
 };
 
 export const loginFunc = new LocalStrategy(strategyOptions, login);
