@@ -39,14 +39,8 @@ const signup = async (req, username, password, done) => {
     logger.info('SIGNUP!!');
 
     try {
-      const {username, password} = req.body
 
-      const userData = {
-        username, 
-        password
-      }
-
-      const newUser = await createUser(userData);
+      const newUser = await createUser(username, password);
 
       logger.info(newUser)
 

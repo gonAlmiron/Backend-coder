@@ -1,8 +1,7 @@
 import {Router} from 'express';
 import { gmailController } from '../controllers/gmail.js';
-import { signUpController, loginController } from '../controllers/users.js';
+import { signUpController, loginController, createUser } from '../controllers/users.js';
 import { inboxController, wppController } from '../controllers/whatsapp.js';
-
 
 const router = Router();
 
