@@ -9,7 +9,7 @@ import {UserModel} from '../models/user'
 
 const findByName = (username) => UserModel.findOne({ username });
 
-const create = (newUser) => UserModel.create(newUser);
+const create = (username, password) => UserModel.create(username, password);
 
 const update = (id, data) =>
   UserModel.findByIdAndUpdate(id, data, {

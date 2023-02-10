@@ -3,9 +3,9 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import logger from './logger'
 import {
-  getUserByName,
-  createUser,
+  loginController
 } from '../controllers/users';
+import UserAPI from '../api';
 
 
 const strategyOptions = {
@@ -15,8 +15,8 @@ const strategyOptions = {
 };
 
 const login = async (req, username, password, done) => {
-
-    const user = await getUserByName(username)
+ 
+    const user = await loginController(username)
 
     if (!user) 
       return done(null, false, { mensaje: 'Usuario no encontrado' });
@@ -40,7 +40,8 @@ const signup = async (req, username, password, done) => {
 
     try {
 
-      const newUser = await createUser(username, password);
+      const {username, password} = req.body
+      const newUser = await UserAPI.create(username, password);
 
       logger.info(newUser)
 

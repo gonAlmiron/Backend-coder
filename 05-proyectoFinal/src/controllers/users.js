@@ -1,5 +1,6 @@
 import passport from 'passport';
 import logger from '../services/logger';
+import UserAPI from '../api';
 
 const passportOptions = { 
 badRequestMessage: 'Falta username / password'
@@ -17,22 +18,29 @@ export const createUser = async (req, res, username, password) => {
 
 export const signUpController = async (req, res, next, username, password) => {
 
-      await passport.authenticate('signup', passportOptions, (err, user, info) => {
-
-      if (err) {
-            return next(err);
+      try {
+        
+        await passport.authenticate('signup', passportOptions, (err, user, info) => {
+  
+        if (err) {
+              return next(err);
+        }
+        
+        if (!user) return res.status(401).json(info);
+  
+        logger.info(user)
+        logger.info(`Se registró un usuario. Ruta /SIGNUP. Metogo POST`)
+        
+        
+  
+        res.json({ msg: 'signup OK' });
+  
+        
+      })(req, res, next);
+      } catch (err ) {
+        logger.info(err.message)
+        logger.info(err.stack)
       }
-      if (!user) return res.status(401).json(info);
-
-      logger.info(user)
-      logger.info(`Se registró un usuario. Ruta /SIGNUP. Metogo POST`)
-      
-      
-
-      res.json({ msg: 'signup OK' });
-
-      
-    })(req, res, next);
       }
 
 
