@@ -504,3 +504,8 @@
   level: 'info',
   timestamp: '2023-02-10T15:50:44.075Z'
 }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9628 ',
+  level: 'info',
+  timestamp: '2023-02-10T22:13:27.491Z'
+}
