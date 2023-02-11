@@ -17,6 +17,10 @@ const login = async (req, username, password, done) => {
 
     if (!user) 
       return done(null, false, { mensaje: 'Usuario no encontrado' });
+    
+
+
+    logger.info("ENCONTRE UN USUARIO", user)
 
     const isValidPassword = await user.isValidPassword(password);
 
@@ -24,31 +28,22 @@ const login = async (req, username, password, done) => {
       return done(null, false, { message: 'Invalid Username/Password' });
     }
 
-    logger.info("ENCONTRE UN USUARIO", user)
-
     return done(null, user);  
 
     } catch(err) {
       logger.info(err);
       logger.info(err.stack)
     }
-
-    
 };
-
 
 
 const signup = async (req, username, password, done) => {
 
     logger.info('SIGNUP!!');
-
     try {
-
       const {username, password} = req.body
       const newUser = await UserModel.create({username, password});
-
       logger.info(newUser)
-
       return done(null, newUser);
 
     } catch (err) {
@@ -65,7 +60,6 @@ export const signUpFunc = new LocalStrategy(strategyOptions, signup);
   logger.info('Se Ejecuta el serializeUser');
   done(null, user._id);
 });
-
 
  passport.deserializeUser((userId, done) => {
   logger.info('Se Ejecuta el desserializeUser');

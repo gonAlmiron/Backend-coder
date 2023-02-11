@@ -55,12 +55,4 @@ passport.use('login', loginFunc);
 //signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
 passport.use('signup', signUpFunc);
 
-app.use(function (err, req, res, next) {
-  const status = err.statusCode || 500;
-  const msg = err.message || 'Internal Server Error';
-  const stack = err.stack;
-  logger.error(err);
-  res.status(status).send({ msg, stack });
-});
-
 export default app
