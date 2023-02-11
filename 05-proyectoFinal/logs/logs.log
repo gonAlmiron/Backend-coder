@@ -509,3 +509,158 @@
   level: 'info',
   timestamp: '2023-02-10T22:13:27.491Z'
 }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8480 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:50:11.986Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T12:51:07.352Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 14216 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:52:46.380Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 20124 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:53:25.977Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10844 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:54:28.500Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4888 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:54:39.909Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T12:55:12.638Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 14264 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:55:52.913Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 17632 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:56:31.147Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 1912 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:56:44.199Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 18696 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:56:52.397Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11840 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:57:05.409Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T12:57:21.012Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10004 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:58:21.406Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 16140 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:59:44.897Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9620 ',
+  level: 'info',
+  timestamp: '2023-02-11T12:59:58.854Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:00:04.026Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 17404 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:00:56.144Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 3528 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:02:14.609Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:02:18.671Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7508 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:05:44.185Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:05:47.325Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:05:52.709Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 18300 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:07:14.712Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:07:17.178Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7056 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:07:50.868Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 3528 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:08:28.684Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 14572 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:08:53.030Z'
+}
+{
+  message: 'Se logeó un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T13:27:06.739Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11116 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:27:47.927Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4780 ',
+  level: 'info',
+  timestamp: '2023-02-11T13:31:07.914Z'
+}

@@ -2,11 +2,12 @@ import passport from 'passport';
 import logger from '../services/logger';
 import UserAPI from '../api';
 
+
 const passportOptions = { 
 badRequestMessage: 'Falta username / password'
  };
 
-// export const getUserByName = (username) => UserAPI.findByName(username);
+export const getUserByName = (username) => UserAPI.findByName(username);
 
 export const createUser = async (req, res, username, password) => {
   
@@ -14,6 +15,8 @@ export const createUser = async (req, res, username, password) => {
   await CartAPI.create(newUser._id);
   return newUser;
 };
+
+
 
 
 export const signUpController = async (req, res, next, username, password) => {
@@ -44,13 +47,14 @@ export const signUpController = async (req, res, next, username, password) => {
       }
 
 
-export const loginController = async (req, res) => {
+export const loginController =  (req, res) => {
   
-    await passport.authenticate('login', passportOptions)
+    passport.authenticate('login', passportOptions)
 
     logger.info("Se logeó un usuario. Ruta /LOGIN. Metogo POST")
 
     res.json({
-      msg: "LOGIN OK!"
+      msg: "LOGIN OK!",
+      user: req.user
     })
 }

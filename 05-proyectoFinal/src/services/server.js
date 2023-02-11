@@ -23,7 +23,7 @@ const StoreOptions = {
     },
   }),
   secret: 'shhhhhh',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   cookie: {
     maxAge: ttlSeconds * 1000,

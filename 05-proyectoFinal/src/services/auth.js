@@ -2,10 +2,6 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import logger from './logger'
-import {
-  loginController
-} from '../controllers/users';
-import UserAPI from '../api';
 
 
 const strategyOptions = {
@@ -16,7 +12,8 @@ const strategyOptions = {
 
 const login = async (req, username, password, done) => {
  
-    const user = await loginController(username)
+    try {
+    const user = await UserModel.findOne({username, password})
 
     if (!user) 
       return done(null, false, { mensaje: 'Usuario no encontrado' });
@@ -29,7 +26,14 @@ const login = async (req, username, password, done) => {
 
     logger.info("ENCONTRE UN USUARIO", user)
 
-    return done(null, user);
+    return done(null, user);  
+
+    } catch(err) {
+      logger.info(err);
+      logger.info(err.stack)
+    }
+
+    
 };
 
 
@@ -41,7 +45,7 @@ const signup = async (req, username, password, done) => {
     try {
 
       const {username, password} = req.body
-      const newUser = await UserAPI.create(username, password);
+      const newUser = await UserModel.create({username, password});
 
       logger.info(newUser)
 
@@ -57,23 +61,12 @@ const signup = async (req, username, password, done) => {
 export const loginFunc = new LocalStrategy(strategyOptions, login);
 export const signUpFunc = new LocalStrategy(strategyOptions, signup);
 
-
-
-/**
- * Express-session crea un objeto session en la request
- * passport agrega a req.session un objeto llamado passport para guardar la info del usuario
- * Cuando llamamos a done en login o en signup y pasamos el usuario lo siguiente que ocurre es que se ejecuta passport.serializeUser
- * Esta funcion agarra el usuario que recibio y lo guarda en req.session.passport 
- * En este caso estamos creando una key llamado user con la info del usuario dentro de req.session.passport
- */
  passport.serializeUser((user, done) => {
   logger.info('Se Ejecuta el serializeUser');
   done(null, user._id);
 });
 
-/**
- * DeserializeUser Permite tomar la info que mandamos con el serializeUser para hacer algun extra de busqueda de informacion
- */
+
  passport.deserializeUser((userId, done) => {
   logger.info('Se Ejecuta el desserializeUser');
   UserModel.findById(userId).then((user) => {
