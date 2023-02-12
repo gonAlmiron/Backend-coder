@@ -37,8 +37,7 @@ router.get('/', (req, res) => {
 
 router.post(
   '/login',
-  passport.authenticate('login', passportOptions),
-  (req, res) => {
+  passport.authenticate('login', passportOptions),(req, res) => {
 
     const logger = log4js.getLogger();
 

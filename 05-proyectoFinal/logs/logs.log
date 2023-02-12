@@ -1470,3 +1470,1311 @@
   level: 'info',
   timestamp: '2023-02-11T21:08:53.929Z'
 }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12392 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:26:20.265Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T14:26:25.697Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:26:25.702Z' }
+{
+  message: 'TypeError: res.json is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:42:11\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T14:26:25.706Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8132 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:42:44.954Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 13292 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:43:52.749Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:43:57.129Z' }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12848 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:44:17.934Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 356 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:44:26.004Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4784 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:44:30.299Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8512 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:46:37.594Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 3152 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:47:10.485Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7928 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:47:21.041Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T14:47:26.259Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:47:26.264Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:43:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T14:47:26.268Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11796 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:48:37.866Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T14:48:43.795Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:48:43.800Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:43:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T14:48:43.804Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6272 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:48:59.330Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12576 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:50:37.021Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 2424 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:51:09.295Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T14:51:13.415Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:51:13.419Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:43:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T14:51:13.423Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4916 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:52:30.933Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 2972 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:52:41.400Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10256 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:53:11.682Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9164 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:53:27.626Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11504 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:53:37.509Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T14:53:40.295Z'
+}
+{ level: 'info', timestamp: '2023-02-12T14:53:40.300Z' }
+{
+  message: "TypeError: Cannot read properties of null (reading 'logIn')\n" +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:44:9\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T14:53:40.304Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 2988 ',
+  level: 'info',
+  timestamp: '2023-02-12T14:53:58.305Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T14:55:03.946Z'
+}
+{
+  message: {
+    username: 'mick',
+    password: '1234',
+    _id: new ObjectId("63e8fdc7e12bc67fc2c75e90"),
+    createdAt: 2023-02-12T14:55:03.957Z,
+    updatedAt: 2023-02-12T14:55:03.957Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T14:55:04.005Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 3032 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:05:54.577Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:05:57.529Z'
+}
+{
+  message: 'Hubo un error!',
+  level: 'info',
+  timestamp: '2023-02-12T15:05:57.584Z'
+}
+{
+  index: 0,
+  code: 11000,
+  keyPattern: { username: 1 },
+  keyValue: { username: 'mick' },
+  level: 'info',
+  timestamp: '2023-02-12T15:05:57.587Z',
+  [Symbol(errorLabels)]: Set(0) {}
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:11.220Z'
+}
+{
+  message: {
+    username: 'mickito',
+    password: '1234',
+    _id: new ObjectId("63e9006391768f57df2f2cb1"),
+    createdAt: 2023-02-12T15:06:11.223Z,
+    updatedAt: 2023-02-12T15:06:11.223Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T15:06:11.265Z'
+}
+{
+  message: 'Hubo un error!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:11.269Z'
+}
+{ level: 'info', timestamp: '2023-02-12T15:06:11.270Z' }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 2288 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:26.850Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:28.502Z'
+}
+{
+  message: 'Hubo un error!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:28.553Z'
+}
+{
+  index: 0,
+  code: 11000,
+  keyPattern: { username: 1 },
+  keyValue: { username: 'mickito' },
+  level: 'info',
+  timestamp: '2023-02-12T15:06:28.554Z',
+  [Symbol(errorLabels)]: Set(0) {}
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:38.921Z'
+}
+{
+  message: {
+    username: 'mickitopppp',
+    password: '1234',
+    _id: new ObjectId("63e9007e922ee1318743aabc"),
+    createdAt: 2023-02-12T15:06:38.924Z,
+    updatedAt: 2023-02-12T15:06:38.924Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T15:06:38.963Z'
+}
+{
+  message: 'Ruta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:38.967Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:47.071Z'
+}
+{
+  message: {
+    username: 'mickitoppppasd',
+    password: '1234',
+    _id: new ObjectId("63e90087922ee1318743aabe"),
+    createdAt: 2023-02-12T15:06:47.074Z,
+    updatedAt: 2023-02-12T15:06:47.074Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T15:06:47.114Z'
+}
+{
+  message: 'Ruta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:06:47.118Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6176 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:08:54.921Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12892 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:09:15.875Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 1292 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:09:26.513Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:09:37.886Z'
+}
+{
+  message: {
+    username: 'alejandrito',
+    password: '1234',
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T15:09:37.941Z'
+}
+{
+  message: 'Se registró un usuario: alejandritoRuta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:09:37.947Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8264 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:09:57.033Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9412 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:10:07.349Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8468 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:10:29.004Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11644 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:10:40.096Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 2604 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:10:45.768Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12728 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:10:59.706Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:11:04.009Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:04.054Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9736 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:15.538Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:11:17.540Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:17.596Z'
+}
+{
+  message: 'Se loge{o} un usuario: undefined \n\n. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:17.663Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11580 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:40.648Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 1840 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:50.851Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:11:59.215Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:59.259Z'
+}
+{
+  message: 'Se loge{o} un usuario: undefined \n\n. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:11:59.316Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7820 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:12:26.533Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:12:29.257Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:12:29.309Z'
+}
+{
+  message: 'Se loge{o} un usuario: undefined \n\n. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:12:29.370Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6412 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:12:46.454Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 5296 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:12:52.744Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:13:03.895Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:13:03.948Z'
+}
+{
+  message: 'Se loge{o} un usuario: undefined \n\n. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:13:04.029Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12792 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:14:45.260Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10260 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:15:26.782Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:16:02.133Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:02.180Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11468 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:14.769Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:16:16.853Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:16.924Z'
+}
+{
+  message: 'Se Ejecuta el desserializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:17.007Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8256 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:29.851Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:16:32.164Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:32.212Z'
+}
+{
+  message: 'Se loge{o} un usuario: undefined \n\n. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:32.270Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8808 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:16:52.072Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11548 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:17:55.025Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9512 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:18:20.874Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12712 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:20:04.246Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:20:07.086Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:20:07.133Z'
+}
+{
+  message: 'Se loge{o} un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:20:07.191Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 1216 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:29:17.254Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 12888 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:29:21.146Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9288 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:29:30.110Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4172 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:30:02.857Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6552 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:30:12.042Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6892 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:43:15.368Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11448 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:43:18.967Z'
+}
+{
+  messageFormat: undefined,
+  stringValue: `"{ username: 'alejandrito', password: '1234' }"`,
+  kind: 'string',
+  value: { username: 'alejandrito', password: '1234' },
+  path: 'username',
+  reason: null,
+  valueType: 'Object',
+  level: 'info',
+  timestamp: '2023-02-12T15:43:28.591Z'
+}
+{
+  message: `CastError: Cast to string failed for value "{ username: 'alejandrito', password: '1234' }" (type Object) at path "username" for model "user"\n` +
+    '    at model.Query.exec (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\mongoose\\lib\\query.js:4913:21)\n' +
+    '    at model.Query.Query.then (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\mongoose\\lib\\query.js:5012:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-12T15:43:28.594Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7668 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:44:00.989Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90131c18a2501de9d9ce4"),
+    username: 'alejandrito',
+    password: '1234',
+    createdAt: 2023-02-12T15:09:37.897Z,
+    updatedAt: 2023-02-12T15:09:37.897Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:44:14.385Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:44:14.432Z'
+}
+{
+  message: 'Se loge{o} un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:44:14.492Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 6092 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:44:47.528Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:01.706Z'
+}
+{
+  message: 'Hubo un error!',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:01.709Z'
+}
+{ level: 'info', timestamp: '2023-02-12T15:45:01.711Z' }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 13196 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:22.468Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:26.815Z'
+}
+{
+  message: {
+    username: 'alejandritoAlmiron',
+    password: '12345',
+    _id: new ObjectId("63e90996a6d61a2717d13bcf"),
+    createdAt: 2023-02-12T15:45:26.833Z,
+    updatedAt: 2023-02-12T15:45:26.833Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-12T15:45:26.877Z'
+}
+{
+  message: 'Se registró un usuario: alejandritoAlmiron \n\n. Ruta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:26.882Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90996a6d61a2717d13bcf"),
+    username: 'alejandritoAlmiron',
+    password: '12345',
+    createdAt: 2023-02-12T15:45:26.833Z,
+    updatedAt: 2023-02-12T15:45:26.833Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:45:39.513Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:39.562Z'
+}
+{
+  message: 'Se loge{o} un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:45:39.623Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 5812 ',
+  level: 'info',
+  timestamp: '2023-02-12T15:48:57.639Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e90996a6d61a2717d13bcf"),
+    username: 'alejandritoAlmiron',
+    password: '12345',
+    createdAt: 2023-02-12T15:45:26.833Z,
+    updatedAt: 2023-02-12T15:45:26.833Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-12T15:49:00.489Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-02-12T15:49:00.534Z'
+}
+{
+  message: 'Se loge{o} un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-12T15:49:00.591Z'
+}

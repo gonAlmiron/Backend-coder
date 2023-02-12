@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserModel } from '../models/user';
 import logger from './logger'
+import UserAPI from '../api'
 
 
 const strategyOptions = {
@@ -10,10 +11,12 @@ const strategyOptions = {
   passReqToCallback: true,
 };
 
+export const passportOptions = { badRequestMessage: 'Falta username / password' };
+
 const login = async (req, username, password, done) => {
  
     try {
-    const user = await UserModel.findOne({username, password})
+    const user = await UserAPI.find(username, password)
 
     if (!user) 
       return done(null, false, { mensaje: 'Usuario no encontrado' });
@@ -38,7 +41,7 @@ const signup = async (req, username, password, done) => {
     logger.info('SIGNUP!!');
     try {
       const {username, password} = req.body
-      const newUser = await UserModel.create({username, password});
+      const newUser = await UserAPI.create({username, password});
       logger.info(newUser)
       return done(null, newUser);
 
