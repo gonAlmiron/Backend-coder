@@ -21,30 +21,37 @@ export const createUser = async (req, res, username, password) => {
 
 export const signUpController = (req, res, next) => {
         
-         passport.authenticate('signup', passportOptions, (err, user, info) => {
-  
-        if (err) {
-              return next(err);
-        }
-        if (!user) return res.status(401).json(info);
 
-        logger.info(user)
-        logger.info(`Se registró un usuario. Ruta /SIGNUP. Metogo POST`)
+  try {
+    passport.authenticate('signup', passportOptions, (req, res, err, user, info) => {
+
+
+      logger.info(user)
+      logger.info(`Se registró un usuario. Ruta /SIGNUP. Metogo POST`)
+      
+      res.json({ msg: 'signup OK' });
+
+    })(req, res, next);
+  } catch(err) {
+    logger.info(err)
+  }
         
-        res.json({ msg: 'signup OK' });
-
-      })(req, res, next);
       
      
       }
 
 
 export const loginController = (req, res, next) => {
-  passport.authenticate('login', passportOptions, (req, res, err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) return res.status(401).json({ data: info });
-    return res.json({ msg: 'login OK', user });
-  })(req, res, next);
+  
+  try {
+    passport.authenticate('login', passportOptions, (req, res, err, user, info) => {
+
+      res.json({ msg: 'login OK', user });
+
+    })(req, res, next);
+  } catch(err) {
+    logger.info(err)
+  }
+  
+ 
 };

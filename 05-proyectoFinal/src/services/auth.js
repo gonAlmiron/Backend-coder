@@ -22,11 +22,7 @@ const login = async (req, username, password, done) => {
 
     logger.info("ENCONTRE UN USUARIO", user)
 
-    const isValidPassword = await user.isValidPassword(password);
-
-    if (!isValidPassword) {
-      return done(null, false, { message: 'Invalid Username/Password' });
-    }
+  
 
     return done(null, user);  
 

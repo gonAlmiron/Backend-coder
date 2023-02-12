@@ -53,9 +53,9 @@ const Login = (props) =>  {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <input type="submit" className="btn btn-primary">
               Ingresar
-            </button>
+            </input>
           
           </div>
           <div className="Auth-route">

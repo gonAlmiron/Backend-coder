@@ -1055,3 +1055,418 @@
   level: 'info',
   timestamp: '2023-02-11T15:47:25.956Z'
 }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 11136 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:03:53.695Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 4352 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:04:29.933Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-02-11T21:05:00.084Z'
+}
+{
+  message: {
+    username: 'ernesto',
+    password: '1234',
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-11T21:05:00.149Z'
+}
+{
+  message: {
+    username: 'ernesto',
+    password: '1234',
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-02-11T21:05:00.151Z'
+}
+{
+  message: 'Se registró un usuario. Ruta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-02-11T21:05:00.154Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:05:10.467Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:05:10.472Z' }
+{
+  message: 'TypeError: user.isValidPassword is not a function\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:25:40)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:05:10.480Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7228 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:06:08.570Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:06:12.976Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:06:12.980Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:47:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:06:12.984Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10488 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:06:51.564Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:06:53.727Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:06:53.734Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:47:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:06:53.738Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8044 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:07:24.628Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10068 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:07:29.195Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 5124 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:07:33.751Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:07:36.460Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:07:36.465Z' }
+{
+  message: 'TypeError: res.status is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:49:27\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:07:36.469Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 9392 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:09.830Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 8676 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:16.384Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 7032 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:23.888Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:08:25.757Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:08:25.770Z' }
+{
+  message: 'TypeError: res.json is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:49:18\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:25.779Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 1464 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:39.365Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 10552 ',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:52.363Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("63e802fc3e3a34b25a326a15"),
+    username: 'ernesto',
+    password: '1234',
+    createdAt: 2023-02-11T21:05:00.098Z,
+    updatedAt: 2023-02-11T21:05:00.098Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-02-11T21:08:53.921Z'
+}
+{ level: 'info', timestamp: '2023-02-11T21:08:53.925Z' }
+{
+  message: 'TypeError: res.json is not a function\n' +
+    '    at C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\controllers\\/users.js:49:11\n' +
+    '    at Strategy.strategy.success (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport\\lib\\middleware\\authenticate.js:222:18)\n' +
+    '    at done (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\node_modules\\passport-local\\lib\\strategy.js:83:10)\n' +
+    '    at _callee$ (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:27:12)\n' +
+    '    at tryCatch (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.<anonymous> (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at Generator.next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at asyncGeneratorStep (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at _next (C:\\Users\\Gonzalo\\Desktop\\GONZI\\Back End\\Backend-octubre\\05-proyectoFinal\\src\\services\\/auth.js:2:1)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:96:5)',
+  level: 'info',
+  timestamp: '2023-02-11T21:08:53.929Z'
+}
