@@ -2409,6 +2409,28 @@ EL FACTORY ES PARTE DEL DAO, ES EL QUE DIVIDE ESO
 
 EL REPOSITORY ES EL QUE JUNTA TODO, AGARRA EL DAO Y LE METE EL DTO 
 
+-----------------
+
+DAOS 
+es importante que haya una clase para cada DAO (persistencia ya sea en MongoDB o SQL)
+y que la clase tenga los mismos nombres de metodos 
+(getAll, save, delete, getByID, etc)
+
+y desde el dao general se llaman a esos metodos de clases, que segun el parametro q le pasemos 
+va a usar una base de datos que le pasemos 
+
+EL DAO GENERAL ES UN SWITCH/CASE (O VARIOS IF)
+(donde primero se declara una variable
+ let dao;
+ let argv = process.argv[2] 
+ )
+
+luego viene el switch / case  SE ELIGE LA BASE DE DATOS POR ARGUMENTO QUE PUEDE SER ARGV O VARIABLE DE ENTORNO 
+y dentro de los CASE se hacen instancias de las clases que importamos de los daos
+
+
+Y LUEGO EXPORTA ASYNC FUNCTION getAll, save, delete, etc (MISMOS NOMBRES QUE EN LOS DAOS )
+
 
 
 
