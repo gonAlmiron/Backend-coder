@@ -2431,6 +2431,38 @@ y dentro de los CASE se hacen instancias de las clases que importamos de los dao
 
 Y LUEGO EXPORTA ASYNC FUNCTION getAll, save, delete, etc (MISMOS NOMBRES QUE EN LOS DAOS )
 
+-------------------------------------------------------
 
+DTO
+TAMBIEN EXPORTA UNA CLASE Y UNA FUNCION asDto 
+en la clase se pone en el constructor lo que queremos mostrar 
 
+y en la funcion asDto se hace retorna una instancia de la clase DTO 
+importante: ponerle el parametro a la funcion asDto
+
+LUEGO ESA FUNCION SE LE PASA EN LA FUNCION GETALL DEL DAO MONGO:
+en el return del getAll se lo encierra en la funcion asDto(docs)
+queda asi: 
+
+async getAll() {
+    const docs = await this.collection.find({});
+    return asDto(docs)
+}
+
+EL DTO VA MÁS PARA LAS PETICIONES GET 
+SUPUESTAMENTE CUANDO CAMBIA EL ESQUEMA NO NOS AFECTARÍA SOLO DEBERIAMOS CAMBIARLO EN EL DTO TAMBIEN
+
+SE PUEDE TENER MAS DE UN DTO DEPENDE EL MODELO DE DATOS QUE QUERAMOS 
+
+--------------
+
+REPOSITORY 
+
+ESTA ES UNA CAPA MÁS EN LA PERSISTENCIA QUE ES LA QUE VA A SOLICITAR A LA CAPA "SERVICIO"
+
+PRIMERO SE SELECCIONA EL DAO EN LA CAPA FACTORY 
+LUEGO EN LA CAPA REPOSITORY TENEMOS AL DAO + DTO 
+Y ESO ES LO QUE SE EXPORTA Y UTILIZA EL SERVICIO 
+
+EL REPOSITORY JUNTA EL DAO CON EL DTO Y LO MANDA AL SERVICIO 
 
