@@ -7,6 +7,7 @@ exports["default"] = void 0;
 var _passport = _interopRequireDefault(require("passport"));
 var _express = require("express");
 var _path = _interopRequireDefault(require("path"));
+var _log4js = _interopRequireDefault(require("log4js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var router = (0, _express.Router)();
 var passportOptions = {
@@ -20,6 +21,9 @@ router.post('/signup', function (req, res, next) {
       return next(err);
     }
     if (!user) return res.status(401).json(info);
+    var logger = _log4js["default"].getLogger();
+    logger.level = 'info';
+    logger.info("Ruta /SIGNUP. Metogo POST");
     res.json({
       msg: 'signup OK'
     });
@@ -32,9 +36,15 @@ router.get('/', function (req, res) {
   });
 });
 router.post('/login', _passport["default"].authenticate('login', passportOptions), function (req, res) {
+  var logger = _log4js["default"].getLogger();
+  logger.level = 'info';
+  logger.info("Ruta /LOGIN. Metogo POST");
   res.render('datos');
 });
 router.get('/login', function (req, res) {
+  var logger = _log4js["default"].getLogger();
+  logger.level = 'info';
+  logger.info("Ruta /LOGIN. Metogo GET");
   res.render('login');
 });
 router.get('/signup', function (req, res) {
@@ -46,6 +56,9 @@ router.get('/datos', function (req, res) {
   });
 });
 router.get('/info', function (req, res) {
+  var logger = _log4js["default"].getLogger();
+  logger.level = 'info';
+  logger.info("Ruta /INFO. Metogo GET");
   res.send({
     'directorio actual del trabajo': process.cwd(),
     'id del proceso': process.pid,

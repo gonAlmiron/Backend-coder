@@ -1,36 +1,36 @@
 import server from './services/server'
 import {initDb} from './services/db'
-// import Config from './config/index'
-// import cluster from 'cluster';
-// import os from 'os';
-// import minimist from 'minimist';
+import Config from './config/index'
+import cluster from 'cluster';
+import os from 'os';
+import minimist from 'minimist';
 
-// const numCPUs = os.cpus().length
+const numCPUs = os.cpus().length
 
-// console.log(numCPUs)
+console.log(numCPUs)
 
-// if (cluster.isPrimary) {
+if (cluster.isPrimary) {
 
-//     for (let i = 0; i <= numCPUs; i++) {
-//         cluster.fork();
-//     }
+    for (let i = 0; i <= numCPUs; i++) {
+        cluster.fork();
+    }
 
-//     cluster.on('exit', (worker, code) => {
-//         console.log(`worker ${worker.process.pid} died`)
-//         cluster.fork();
-//     })
+    cluster.on('exit', (worker, code) => {
+        console.log(`worker ${worker.process.pid} died`)
+        cluster.fork();
+    })
 
-// } else {
+} else {
 
-// const argumentsObject = {
-//     alias: {
-//         p: 'puerto'
-//     },
-//     default: {
-//         puerto: '8080'
-//     }
-// }
-// const args = minimist(process.argv, argumentsObject)
+const argumentsObject = {
+    alias: {
+        p: 'puerto'
+    },
+    default: {
+        puerto: '8080'
+    }
+}
+const args = minimist(process.argv, argumentsObject)
 
 const PORT = process.env.PORT || 8080
 
@@ -40,9 +40,4 @@ const PORT = process.env.PORT || 8080
     }
     
     init();
-
-// }
-
-//
-
- 
+}

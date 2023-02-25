@@ -75,18 +75,6 @@ passport.use('signup', signUpFunc);
 
 
 
-const argumentos = {
-  alias: {
-      p: 'port'
-  },
-  default: {
-      port: 8080,
-
-  }
-};
-
-const args = minimist(process.argv.slice(2), argumentos)
-console.log(args)
 
 app.use('/api', mainRouter);
 

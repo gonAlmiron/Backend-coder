@@ -15,6 +15,7 @@ var _path = _interopRequireDefault(require("path"));
 var _expressHandlebars = require("express-handlebars");
 var _cookieParser = _interopRequireDefault(require("cookie-parser"));
 var _minimist = _interopRequireDefault(require("minimist"));
+var _compression = _interopRequireDefault(require("compression"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var ttlSeconds = 180;
 var StoreOptions = {
@@ -41,6 +42,7 @@ app.use(_express["default"].urlencoded({
 }));
 app.use(_express["default"].json());
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '../../public')));
+app.use((0, _compression["default"])());
 var viewsFolderPath = _path["default"].resolve(__dirname, '../../views');
 var layoutsFolderPath = "".concat(viewsFolderPath, "/layouts");
 var partialsFolderPath = "".concat(viewsFolderPath, "/partials");
@@ -66,16 +68,6 @@ _passport["default"].use('login', _auth.loginFunc);
 
 //signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
 _passport["default"].use('signup', _auth.signUpFunc);
-var argumentos = {
-  alias: {
-    p: 'port'
-  },
-  "default": {
-    port: 8080
-  }
-};
-var args = (0, _minimist["default"])(process.argv.slice(2), argumentos);
-console.log(args);
 app.use('/api', _routes["default"]);
 var _default = app;
 exports["default"] = _default;
