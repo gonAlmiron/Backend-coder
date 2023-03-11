@@ -20,12 +20,8 @@ const login = async (req, username, password, done) => {
 
     if (!user) 
       return done(null, false, { mensaje: 'Usuario no encontrado' });
-    
-
-
-    logger.info("ENCONTRE UN USUARIO", user)
-
   
+    logger.info("ENCONTRE UN USUARIO", user)
 
     return done(null, user);  
 

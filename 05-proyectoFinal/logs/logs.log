@@ -2788,3 +2788,85 @@
   level: 'info',
   timestamp: '2023-02-17T02:47:55.901Z'
 }
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 16756 ',
+  level: 'info',
+  timestamp: '2023-03-11T15:17:04.814Z'
+}
+{
+  message: 'SIGNUP!!',
+  level: 'info',
+  timestamp: '2023-03-11T15:17:19.906Z'
+}
+{
+  message: {
+    username: 'Mariano21341112312315',
+    password: '1234',
+    _id: new ObjectId("640c9b7fc2d654bae3c77f57"),
+    createdAt: 2023-03-11T15:17:19.939Z,
+    updatedAt: 2023-03-11T15:17:19.939Z,
+    __v: 0
+  },
+  level: 'info',
+  timestamp: '2023-03-11T15:17:20.006Z'
+}
+{
+  message: 'Se registró un usuario: Mariano21341112312315 \n' +
+    '\n' +
+    '. Ruta /SIGNUP. Metogo POST',
+  level: 'info',
+  timestamp: '2023-03-11T15:17:20.015Z'
+}
+{
+  '$__': InternalCache {
+    activePaths: StateMachine {
+      paths: {
+        password: 'init',
+        username: 'init',
+        _id: 'init',
+        createdAt: 'init',
+        updatedAt: 'init',
+        __v: 'init'
+      },
+      states: {
+        require: {},
+        init: {
+          _id: true,
+          username: true,
+          password: true,
+          createdAt: true,
+          updatedAt: true,
+          __v: true
+        }
+      }
+    },
+    skipId: true
+  },
+  '$isNew': false,
+  _doc: {
+    _id: new ObjectId("640c9b7fc2d654bae3c77f57"),
+    username: 'Mariano21341112312315',
+    password: '1234',
+    createdAt: 2023-03-11T15:17:19.939Z,
+    updatedAt: 2023-03-11T15:17:19.939Z,
+    __v: 0
+  },
+  level: 'info',
+  message: 'ENCONTRE UN USUARIO',
+  timestamp: '2023-03-11T15:28:33.459Z'
+}
+{
+  message: 'Se Ejecuta el serializeUser',
+  level: 'info',
+  timestamp: '2023-03-11T15:28:33.514Z'
+}
+{
+  message: 'Se loge{o} un usuario. Ruta /LOGIN. Metogo POST',
+  level: 'info',
+  timestamp: '2023-03-11T15:28:33.605Z'
+}
+{
+  message: 'Escuchando en el puerto 3002 - PID WORKER 21648 ',
+  level: 'info',
+  timestamp: '2023-03-11T15:36:33.206Z'
+}
