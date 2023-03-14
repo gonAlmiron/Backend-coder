@@ -13,9 +13,6 @@ form.addEventListener('submit', (ev) => {
         author: author.value,
         text: text.value,
     }
-
-
-
     socket.emit('nombreDeEvento', cartaParaElServer)
 
     console.log(cartaParaElServer)
